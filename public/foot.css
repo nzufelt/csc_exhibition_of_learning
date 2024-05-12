@@ -1,0 +1,31 @@
+/* styling for foot bar that appears on every page */
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00319C;
+  margin-bottom: 0;
+  padding: 0.5em;
+
+}
+
+.foot-text { 
+  color: white;
+  text-align: right;
+  margin-right: 2em;
+  padding: 2em;
+
+}
+.foot-text p {
+  font-family: "EB Garamond", serif;
+}
+
+/* formatting and inverting color of "Phillips Academy Andover"
+image. Was originally dark grey. */
+.pa_logo {
+  filter: invert(100%);
+  width: 200px;
+  margin: 0;
+  margin-left: 30px;  
+}
+

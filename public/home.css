@@ -1,0 +1,143 @@
+body{
+  background-color: #F7F7F7;
+}
+#intro_image {
+  position: relative;
+}
+
+.intro_content {
+  position: relative;
+  z-index: 1;
+}
+
+.welcome{
+  margin: 5%;
+}
+
+.welcome_title{
+  text-align: center;
+  font-size: 80px;
+  
+}
+
+#welcome_text{
+  margin: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size:20px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.search_bar_section{
+  margin: 20px;
+}
+
+.search_bar_box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px #00319C solid;
+  border-radius: 10px;
+  height: 150px;
+  margin-top: 5%;
+  margin-left: 18%;
+  margin-right: 18%;
+  background-color: #00319C;
+  z-index: 1;
+}
+
+.search_bar{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  border-radius: 25px;
+  height: 70%;
+  width: 95%;
+  margin-left: 0%;
+  margin-right: 0%;
+  z-index: 2;
+}
+
+#search_image{
+  height: 30px;
+  margin-left: 2%;
+}
+
+#search_bar{
+  height: 70%;
+  width: 95%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+}
+
+#microphone_image{
+  height: 35px;
+  margin-right: 10px;
+}
+
+.tag_button {
+  margin: 5px;
+  padding: 8px 16px;
+  background-color: #00319C;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.tag_button:hover {
+  background-color: #00247A;
+}
+
+
+#tag_panel_of_search {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px); /* makes sure tag panel is displayed directly underneath the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 36% - 2 * 10px); /*makes sure that the tag panel is the same width as the search bar */
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 0.5px solid #ccc;
+  z-index: 100;
+}
+
+
+.highlights_text{
+  text-align: center;
+  font-size: 40px;
+}
+
+.video_highlights{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 0px;
+  margin: 2rem;
+}
+
+.video{
+  margin: 1rem;
+  width: 300px;
+  max-width: 320px;
+}
+
+.video_thumbnail{
+  margin: 1rem;
+}
+
+.video_text{
+  align-self: start;
+  margin-bottom: 3%;
+}
+
+

@@ -1,0 +1,112 @@
+/* styling for CS at Andover Page */
+
+.intro {
+  margin: 5%;
+}
+
+.blurb {
+  width: 65em;
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.throughline {
+  display: flex;
+  align-items: center;
+}
+
+.human_communication {
+  background-color: #3c78d9;
+}
+
+.working_with_code {
+  background-color: #8e7cc3;
+}
+
+.research_and_design {
+  background-color: #6aa84f;
+}
+
+.asking_questions {
+  background-color: #990000;
+}
+
+.working_with_systems {
+  background-color: #bf9000;
+  margin-bottom: 8em;
+}
+
+.throughline_title {
+  width: 20em;
+  padding-left: 10%;
+  padding-right: 5%;
+  font-family: "EB Garamond", serif;
+  font-weight: bold;
+  color: white;
+  font-size: 1.75em;
+  align-self: stretch;
+  align-content: center;
+}
+
+.skills_column {
+  list-style: none;
+  width: 100%;
+  border-left: solid darkgrey;
+}
+
+.throughline button { 
+  height: 100%;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.25em;
+  color: white;
+  padding: 0.5em;
+  padding-left: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.throughline button:hover {
+  transform: translatey(-2px);
+  font-weight: bold;
+} 
+
+.skill {
+  border-bottom: solid darkgrey;
+}
+
+.bottom_skill {
+  border-bottom: none;
+}
+
+.skills_column p {
+  color: white;
+  padding: .5em 4em 1em 3em;
+}
+
+/* the hidden text and "expandless" button are not displayed until 
+their related skill is clicked. */
+.hidden-text {
+  display: none;
+}
+
+.expandless {
+  display: none;
+}
+
+/* adjusting display for smaller viewing screen */
+@media(max-width: 800px){
+  .throughline{
+    flex-direction: column;
+  }
+  .throughline_title{
+    border-bottom: solid darkgrey;
+    width: 100%;
+    height: 3em;
+  }
+  .skills_column {
+    border: none;
+  }
+  .skills_column p {
+    padding: 2% 5%;
+  }
+}

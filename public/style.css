@@ -1,0 +1,44 @@
+/* General styling across all pages.  */
+
+/* Importing EB Garamond */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+/* Importing Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 50px;
+  background-color: #F7F7F7;
+  line-height: 1.5;
+  min-height: 100vh;
+/*   border-style: solid;
+  border-color: black; */
+}
+
+p { 
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 { 
+  color: black;
+  font-family: "EB Garamond", serif;
+  text-align: center;
+  max-width: 55em;
+  font-size: 60px;
+}
+
+a {
+  cursor: pointer;
+}
+
+button { 
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+button:hover {
+  transform: translatey(-2px);
+}
