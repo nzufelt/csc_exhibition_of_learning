@@ -11,7 +11,6 @@ const getAllAdmins = async(req, res) => {
     }
 }
 
-// all functions must be exported
 module.exports = {
     getAllAdmins
 };

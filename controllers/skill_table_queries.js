@@ -11,7 +11,6 @@ const getAllSkills = async(req, res) => {
     }
 }
 
-// all functions must be exported
 module.exports = {
     getAllSkills
 };

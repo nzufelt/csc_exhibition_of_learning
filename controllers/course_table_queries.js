@@ -11,7 +11,7 @@ const getAllCourses = async(req, res) => {
     }
 }
 
-// get a list of unique course names/numbers
+// get a list of unique course names and numbers
 const getUniqueCourseNames = async(req, res) => {
     try {
         const courses = await db.select(["course_name", "course_number"]).from("courses")
@@ -41,7 +41,6 @@ const getCourseIdFromCourseName = async(req, res) => {
 }
 // ---------
 
-// all functions must be exported
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,

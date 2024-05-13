@@ -21,7 +21,6 @@ const getStudentNames = async(req, res) => {
     }
 }
 
-// all functions must be exported
 module.exports = {
     getAllUsers,
     getStudentNames
