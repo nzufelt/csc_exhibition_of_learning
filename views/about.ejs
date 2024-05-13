@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="about.css"/>
     <link rel="stylesheet" href="popup.css"/>
     <script src="popup.js"></script>
+
     <style>
       .about {
           font-weight: bold;
@@ -17,16 +18,16 @@
   <body>
     <div class="overlay"></div>
     
-    <div class="container1">
+    <div class="text_container">
       <h1>
         Meet the Team
       </h1>
       
       <div class="blurb">
-        <h2>
+        <h2 class="blurb__header">
           Computer Science Faculty
         </h2>
-        <p>
+        <p class="blurb__text">
           This is a sample bio for the Phillips Academy Computer Science 
           department faculty. Excepteur sint occaecat cupidatat non proident, 
           sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -39,68 +40,112 @@
         <div class="teacher_profile">
           <div class="teacher_image">
             <div class="teacher_name">
-              <em>Faculty Name</em>
+              <b>Nick Zufelt</b>
             </div>
           </div>
           <button class="expand" onclick="openPopup(this)">            
             <b>+</b>
           </button>
           <div class = "popup">
-            <%- include('popup') %>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Nick Zufelt</b></h2>
+                <p class="info__text">
+                    Nick came to Computer Science after his formal education in Mathematics. He loves teaching CS because
+                    it keeps him learning — preparing students for a rapidly-changing field keeps him on his toes in ways that
+                    he finds deeply generative. He focuses his teaching practice on cultivating a workshop feel in his
+                    classroom, where each student spends their time passionately honing their work and in doing so, their
+                    craft. He is constantly experimenting with his courses to find effective new ways of teaching. In that way,
+                    and in his recent adventures learning 日本語 and homesteading, he’s very much still a student.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
         <div class="teacher_profile">
           <div class="teacher_image">
             <div class="teacher_name">
-             <em>Faculty Name</em>
+             <b>Meghan Clarke</b>
             </div>
           </div>
           <button class="expand" onclick="openPopup(this)">
             <b>+</b>
           </button>
           <div class = "popup">
-            <%- include('popup') %>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Meghan Clarke</b></h2>
+                <p class="info__text">
+                    Meghan Clarke joined Phillips Academy in 2022, primarily as an instructor of Computer Science, after a
+                    decade of living abroad in the United Kingdom. She strives to create a classroom environment that is
+                    inclusive, collaborative, and engaging, and where all students feel empowered to challenge themselves
+                    and make mistakes.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
         <div class="teacher_profile">
           <div class="teacher_image">
             <div class="teacher_name">
-              <em>Faculty Name</em>
+              <b>Faculty Name</b>
             </div>
           </div>
           <button class="expand" onclick="openPopup(this)">
             <b>+</b>
           </button>
           <div class = "popup">
-            <%- include('popup') %>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>[faculty name]</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
         <div class="teacher_profile">
           <div class="teacher_image">
             <div class="teacher_name">
-              <em>Faculty Name</em>
+              <b>Faculty Name</b>
             </div>
           </div>
           <button class="expand" onclick="openPopup(this)">
             <b>+</b>
           </button>
           <div class = "popup">
-            <%- include('popup') %>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>[faculty name]</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         
     </div>
 
     
-    <div class="container1"> 
+    <div class="text_container"> 
       <div class="blurb">
-        <h2>
+        <h2 class="blurb__header">
           Makers of the EoL Website
         </h2>
-        <p>
+        <p class="blurb__text">
           This is a sample bio for the Phillips Academy Computer Science 
           department faculty. Excepteur sint occaecat cupidatat non proident, 
           sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -113,107 +158,180 @@
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Emma Capaldi</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Emma Capaldi</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Hannah Chen</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Hannah Chen</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Kyle Chen</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Kyle Chen</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Amber Chou</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Amber Chou</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Peter Elliott</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Peter Elliott</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Magnus Julin</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Magnus Julin</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Leticia (Tisha) Nhaule</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Leticia (Tisha) Nhaule</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
       
       <div class="student_profile">
         <div class="student_image"></div>
           <div class="student_name">
-            <em>Student Name</em>
+            <b>Karen Wang</b>
           </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
-          <%- include('popup') %>
-        </div>
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Karen Wang</b></h2>
+                <p class="info__text">
+                  [sample bio]
+                </p>
+              </div>
+            </div>
+          </div>
       </div>
     </div> 
+        
   </body>
         
   <%- include('foot') %>

@@ -1,5 +1,5 @@
 body{
-  background-color: #F7F7F7;
+  background-color: #EDEEEE;
 }
 #intro_image {
   position: relative;
@@ -10,23 +10,29 @@ body{
   z-index: 1;
 }
 
+.intro_section{
+  background-color: pink;
+  padding: 2rem;
+}
+
 .welcome{
   margin: 5%;
 }
 
-.welcome_title{
-  text-align: center;
-  font-size: 80px;
-  
-}
-
-#welcome_text{
-  margin: 20px;
+.welcome_text{
+  margin: 1rem;
   margin-left: 20%;
   margin-right: 20%;
-  font-size:20px;
-  font-weight: bold;
-  line-height: 1.5;
+  font-size:16px;
+  color: #042A2B;
+  line-height: 180%;
+  font-family: 'Sintony', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.welcome > *:first-child{
+  margin-top: 5rem;
 }
 
 .search_bar_section{
@@ -38,13 +44,14 @@ body{
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px #00319C solid;
+  border: 1px #306BAC solid;
   border-radius: 10px;
   height: 150px;
   margin-top: 5%;
   margin-left: 18%;
   margin-right: 18%;
-  background-color: #00319C;
+  margin-bottom: 6%;
+  background-color: #306BAC;
   z-index: 1;
 }
 
@@ -106,7 +113,7 @@ body{
   max-height: 200px;
   overflow-y: auto;
   background-color: white;
-  border: 0.5px solid #ccc;
+  border: 0.5px solid #cccccc;
   z-index: 100;
 }
 
@@ -114,6 +121,8 @@ body{
 .highlights_text{
   text-align: center;
   font-size: 40px;
+  margin-top:5%;
+  font-family: 'Prociono', serif;
 }
 
 .video_highlights{
@@ -123,6 +132,7 @@ body{
   grid-column-gap: 1rem;
   grid-row-gap: 0px;
   margin: 2rem;
+  margin-bottom: 5rem;
 }
 
 .video{
@@ -138,6 +148,9 @@ body{
 .video_text{
   align-self: start;
   margin-bottom: 3%;
+  font-family: 'Sintony', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 

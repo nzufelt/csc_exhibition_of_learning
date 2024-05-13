@@ -8,7 +8,7 @@
 }
 
 nav {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Sintony", sans-serif;
   background-color: #F7F7F7;
   position: fixed;
   top: 0;
@@ -34,6 +34,7 @@ nav ul {
 nav li {
   height: 50px;
   padding: 10px 0px;
+  transition: transform 0.5s ease;
 }
 
 /* buttons "transform" when hovered over */

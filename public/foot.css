@@ -12,12 +12,16 @@
 .foot-text { 
   color: white;
   text-align: right;
-  margin-right: 2em;
+  margin-right: 1em;
   padding: 2em;
 
 }
 .foot-text p {
-  font-family: "EB Garamond", serif;
+  font-family: "Prociono", sans-serif;
+  color: #E5E9E9;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 200%;
 }
 
 /* formatting and inverting color of "Phillips Academy Andover"
@@ -27,5 +31,14 @@ image. Was originally dark grey. */
   width: 200px;
   margin: 0;
   margin-left: 30px;  
+}
+
+@media(max-width: 400px){
+  .foot {
+    flex-direction: column;
+  }
+  .foot-text {
+    text-align: center;
+  }
 }
 

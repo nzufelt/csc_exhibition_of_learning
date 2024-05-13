@@ -40,6 +40,7 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+  font-family: "Prociono", sans-serif;
 }
 
 /* close button within popup*/
@@ -47,7 +48,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Sintony", sans-serif;
   cursor: pointer; /* Change cursor to pointer on hover */
 }
 
@@ -77,5 +78,12 @@ to display the popup and the overlay*/
   display: block;
 }
 
+.info__name{
+  margin: .5rem 0;
+}
 
+.info__text{
+  margin: .5rem 0;
+  font-family: "Sintony", sans-serif;
+}
 
