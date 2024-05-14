@@ -11,6 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 const router = require("./routes/route_index.js");
 app.use(router);
 
+//authentication middleware
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
