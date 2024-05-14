@@ -15,6 +15,7 @@
   </style>
 </head>
 
+
 <%- include('nav') %>
 
 <body>
@@ -33,42 +34,148 @@ that growth here.
       </p>
     </div>
 
-  <!-- includes the search bar and tagging system-->
-    <div class="search_bar_section">
-      <div class="search_bar_box">
-        <div class="search_bar">
-          <img id="search_image" src="https://cdn-icons-png.flaticon.com/512/61/61088.png">
-          <input type="text" id="search_bar" placeholder="Hashtag Search ... " onkeyup="search()">
-          <div id="tag_panel_of_search">
-            <!-- when the tag panel is opened, the tags (as buttons) are all displayed-->
-            <button class="tag_button" onclick="insertTag('CSC403', 'computerScienceClasses')">CSC403</button>
-            <button class="tag_button" onclick="insertTag('CSC573', 'computerScienceClasses')">CSC461</button>
-            <button class="tag_button" onclick="insertTag('CSC580', 'computerScienceClasses')">CSC471</button>
-            <button class="tag_button" onclick="insertTag('CSC600', 'computerScienceClasses')">CSC552</button>
-            <button class="tag_button" onclick="insertTag('CSC561', 'computerScienceClasses')">CSC561</button>
-            <button class="tag_button" onclick="insertTag('CSC562', 'computerScienceClasses')">CSC562</button>
-            <button class="tag_button" onclick="insertTag('CSC573', 'computerScienceClasses')">CSC573</button>
-            <button class="tag_button" onclick="insertTag('CSC600', 'computerScienceClasses')">CSC600</button>
-            <button class="tag_button" onclick="insertTag('Introductory', 'courseLevel')">Introductory</button>
-            <button class="tag_button" onclick="insertTag('Intermediate', 'courseLevel')">Intermediate</button>
-            <button class="tag_button" onclick="insertTag('Advanced', 'courseLevel')">Advanced</button>
-            <button class="tag_button" onclick="insertTag('Independent Research', 'courseLevel')">Independent Research</button>
-            <button class="tag_button" onclick="insertTag('Collaboration', 'skills')">Collaboration</button>
-            <button class="tag_button" onclick="insertTag('Writing Code', 'skills')">Writing Code</button>
-            <button class="tag_button" onclick="insertTag('Questioning Impact', 'skills')">Questioning Impact</button>
-          </div>
-          <img id="microphone_image" src="https://www.iconpacks.net/icons/1/free-microphone-icon-342-thumb.png">
+
         </div>
       </div>
 
-      
+  <button id="search_button">
+    <h1 class="search_text"> Search Exhibitions</h1>
+  </button>
+  
+  <div class="search_pop_up">
+    <div class="search_section">
+      <div class="search_bar_container">
+        <div class="search_bar">
+          <input type="text" id="search_bar" placeholder="Hashtag Search ... " onkeyup="search()">
+        </div>
+      </div>
     </div>
-    
-    
-    
+    <div class="tag_section">
+      <div class="tag_type_list">
+        <button class="tag_type" id="throughline_button">
+          Throughlines
+        </button>
+        <button class="tag_type" id="skill_button">
+          Skills
+        </button>
+        <button class="tag_type" id="course_button">
+          Courses
+        </button>
+        <button class="tag_type" id="level_button">
+          Level
+        </button>
+      </div>
+      <div class="tag_pop_up" id="throughline_pop_up">
+        <button class="tag human_communication">Human Communication</button>
+        <button class="tag working_with_code">Working with Code</button>
+        <button class="tag research_and_design">Research and Design</button>
+        <button class="tag asking_questions" >Asking Questions</button>
+        <button class="tag working_with_systems">Working with Systems</button>
+      </div>
+      
+      <div class="tag_pop_up" id="skill_pop_up">
+        <!-- Content for skill_pop_up -->
+        <button class="tag human_communication">Speaking in Translation</button>
+        <button class="tag human_communication">Writing</button>
+        <button class="tag human_communication">Collaboration</button>
+        <button class="tag working_with_code"> Writing Code</button>
+        <button class="tag working_with_code">(Re)Factoring Code</button>
+        <button class="tag working_with_code">Testing Code</button>
+        <button class="tag research_and_design">Experimental Design and Observation</button>
+        <button class="tag research_and_design">Intentional Design</button>
+        <button class="tag research_and_design">Citizenship in the Open Source Community</button>
+        <button class="tag asking_questions">Exploration and Research</button>
+        <button class="tag asking_questions">Curiosity</button>
+        <button class="tag asking_questions">Questioning Impact</button>
+        <button class="tag working_with_systems">Understanding Systems</button>
+        <button class="tag working_with_systems">Designing Systems</button>
+        <button class="tag working_with_systems">Tooling</button>
+      </div>
+      
+      <div class="tag_pop_up" id="course_pop_up">
+        <button class="tag">CSC401</button>
+        <button class="tag">CSC402</button>
+        <button class="tag">CSC403</button>
+        <button class="tag">CSC411</button>
+        <button class="tag">CSC412</button>
+        <button class="tag">CSC413</button>
+        <button class="tag">CSC451</button>
+        <button class="tag">CSC453</button>
+        <button class="tag">CSC461</button>
+        <button class="tag">CSC471</button>
+        <button class="tag">CSC551</button>
+        <button class="tag">CSC552</button>
+        <button class="tag">CSC561</buttonc>
+        <button class="tag">CSC571</button>
+        <button class="tag">CSC572</button>
+        <button class="tag">CSC573</button>
+        <button class="tag">CSC600</button>
+      </div>
+      
+      
+      <div class="tag_pop_up" id="level_pop_up">
+        <button class="tag">Introductory</button>
+        <button class="tag">Intermediate</button>
+        <button class="tag">Advanced</button>
+        <button class="tag">Independent Research</button>
+      </div>
+      
+<!--       <div class="tag_pop_up" id="all_tags_pop_up">
+
+<button class="tag human_communication">Human Communication</button>
+<button class="tag working_with_code">Working with Code</button>
+<button class="tag research_and_design">Research and Design</button>
+<button class="tag asking_questions">Asking Questions</button>
+<button class="tag working_with_systems">Working with Systems</button>
+
+<button class="tag human_communication">Speaking in Translation</button>
+<button class="tag human_communication">Writing</button>
+<button class="tag human_communication">Collaboration</button>
+<button class="tag working_with_code">Writing Code</button>
+<button class="tag working_with_code">(Re)Factoring Code</button>
+<button class="tag working_with_code">Testing Code</button>
+<button class="tag research_and_design">Experimental Design and Observation</button>
+<button class="tag research_and_design">Intentional Design</button>
+<button class="tag research_and_design">Citizenship in the Open Source Community</button>
+<button class="tag asking_questions">Exploration and Research</button>
+<button class="tag asking_questions">Curiosity</button>
+<button class="tag asking_questions">Questioning Impact</button>
+<button class="tag working_with_systems">Understanding Systems</button>
+<button class="tag working_with_systems">Designing Systems</button>
+<button class="tag working_with_systems">Tooling</button>
+
+
+<button class="tag">CSC401</button>
+<button class="tag">CSC402</button>
+<button class="tag">CSC403</button>
+<button class="tag">CSC411</button>
+<button class="tag">CSC412</button>
+<button class="tag">CSC413</button>
+<button class="tag">CSC451</button>
+<button class="tag">CSC453</button>
+<button class="tag">CSC461</button>
+<button class="tag">CSC471</button>
+<button class="tag">CSC551</button>
+<button class="tag">CSC552</button>
+<button class="tag">CSC561</button>
+<button class="tag">CSC571</button>
+<button class="tag">CSC572</button>
+<button class="tag">CSC573</button>
+<button class="tag">CSC600</button>
+
+<button class="tag">Introductory</button>
+<button class="tag">Intermediate</button>
+<button class="tag">Advanced</button>
+<button class="tag">Independent Research</button>
+      </div> -->
+      
+        <div class="tag_box">
+          <!-- Content for tag_box -->
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-    
         
 <!--   video section -->
 <div class="highlights">
