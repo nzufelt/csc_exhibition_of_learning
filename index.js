@@ -11,6 +11,29 @@ app.set('views', path.join(__dirname, 'views'));
 const router = require("./routes/route_index.js");
 app.use(router);
 
+//authentication middleware
+const passport = require('passport')
+const flash = require('express-flash')
+const session = require('express-session')
+app.use(express.urlencoded({extended: false}))
+
+app.use(flash())
+
+app.use(session({
+    //specifies the secret used to sign (encrypt) the session cookie, value is retrived from .env file
+    secret: process.env.SESSION_SECRET,
+    //asking if we should resave our session variables if nothing has changed
+    resave: false,
+    //asking if we want to save an empty value in the session if there is no value
+    saveUninitialized: false
+}))
+
+//initializing passport and adding its middleware
+app.use(passport.initialize())
+//manages session data
+app.use(passport.session())
+
+
 // IN PROGRESS: Uploading, parsing, and saving excel files -----------
 
 // a lot of this will go into middleware!

@@ -6,6 +6,16 @@ const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
 
+const bcrypt = require('bcrypt')
+const initializePassport = require('./passport-config')
+/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById
+initializePassport(
+    passport,
+    email => users.find(user => user.email === email),
+    id => users.find(user => user.id === id)
+)
+*/
+
 const middleware = require('../middleware')
 
 const router = express.Router();
