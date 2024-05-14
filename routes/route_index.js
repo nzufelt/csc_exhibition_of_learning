@@ -5,6 +5,7 @@ const exhibitionController = require('../controllers/exhibition_table_queries');
 const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
+const bcrypt = require('bcrypt')
 
 const middleware = require('../middleware')
 
