@@ -1,91 +1,101 @@
-// Arrays to store tags
-let computerScienceClasses = [];
-let skills = [];
-let courseLevel=[];
-
-// Function to insert a tag
-function insertTag(tag, category) {
-  const searchBar = document.getElementById('search_bar'); //https://www.w3schools.com/jsref/met_document_getelementbyid.asp
-  const tagButton = document.createElement('button');
-  tagButton.textContent = tag;
-  tagButton.classList.add('tag_button');
-
-  // Add an event listener to remove the tag when the button is clicked
-  
-  https://www.w3schools.com/js/js_switch.asp
-  tagButton.addEventListener('click', function() {
-    searchBar.value = searchBar.value.replace(tag, '').trim();
-    
-    // https://stackoverflow.com/questions/767821/is-else-if-faster-than-switch-case
-    //checks which type of tag was used, and removes it to the corresponding array
-    switch (category) {
-      case 'computerScienceClasses':
-        computerScienceClasses = computerScienceClasses.filter(selectedTag => selectedTag !== tag);
-        break;
-      case 'skills':
-        skills = skills.filter(selectedTag => selectedTag !== tag);
-        break;
-      case 'courseLevel':
-        courseLevel = courseLevel.filter(selectedTag => selectedTag !== tag);
-        break;
-      default:
-        break;
-    }
-    this.remove();
+function toggleTagPopUp(tag_panel) {
+  // Hide all pop-ups
+  var popUps = document.querySelectorAll('.tag_section > div[id$="_pop_up"]');
+  popUps.forEach(function(popUp) {
+      if (popUp.id !== tag_panel) {
+          popUp.style.display = 'none';
+      }
   });
 
-  // Append the button as a child of the search bar
-  searchBar.parentNode.insertBefore(tagButton, searchBar.nextSibling);
-
-  //checks which type of tag is used, and appends it to the corresponding array
-  switch (category) {
-    case 'computerScienceClasses':
-      computerScienceClasses.push(tag);
-      break;
-    case 'skills':
-      skills.push(tag);
-      break;
-    case 'courseLevel':
-      courseLevel.push(tag);
-    default:
-      break;
+  // Toggle the clicked pop-up
+  var popUp = document.getElementById(tag_panel);
+  if (popUp.style.display === 'block') {
+      popUp.style.display = 'none';
+  } else {
+      popUp.style.display = 'block';
   }
 }
 
-// https://www.youtube.com/watch?v=ZFUOC-y4i0s&t=18s&ab_channel=Tech2etc
-//Filter tag buttons based on search
-function search() {
-  const searchbox = document.getElementById("search_bar").value.toUpperCase(); //easier to check if all characters are capitalized
-  const tagButtons = document.querySelectorAll(".tag_button");
-  
-  tagButtons.forEach(button => {
-    const buttonText = button.textContent.toUpperCase();
-    
-    if (buttonText.includes(searchbox)) { 
-      button.style.display = "";
-    } else {
-      button.style.display = "none";
-    }
+
+// Function to insert a tag into the tag_box panel
+function insertTagIntoTagBox(tag) {
+const tagBox = document.querySelector('.tag_box');
+
+// Create a new button element for the tag
+const tagButton = document.createElement('button');
+tagButton.textContent = tag;
+tagButton.classList.add('tag'); // Add the 'tag' class to make the button appear like the original tags
+
+// Get the original tag
+const originalTag = document.querySelector(`.tag.${CSS.escape(tag.replace(' ', '_'))}`);
+if (originalTag) {
+  // Copy the class list from the original tag
+  originalTag.classList.forEach(className => {
+    tagButton.classList.add(className);
   });
 }
 
-// https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null
-document.addEventListener('DOMContentLoaded', function() {
-  //Show tag panel when search bar is clicked
-  document.getElementById('search_bar').addEventListener('click', function() {
-    const tagPanel = document.getElementById('tag_panel_of_search');
-    if (tagPanel) {
-      tagPanel.style.display = 'block';
-    }
-  });
-  
-   // Hide tag panel when clicking outside
-  document.body.addEventListener('click', function(event) {
-    const tagPanel = document.getElementById('tag_panel_of_search');
-    const searchBar = document.getElementById('search_bar');
+// Add an event listener to remove the tag when the button is clicked
+tagButton.addEventListener('click', function() {
+  this.remove();
+});
 
-    if (tagPanel && searchBar && !tagPanel.contains(event.target) && event.target !== searchBar) {
-      tagPanel.style.display = 'none';
-    }
-  });
+// Append the button as a child of the tag_box panel
+tagBox.appendChild(tagButton);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+ 
+// Add event listener to throughlineButton
+var throughlineButton = document.getElementById('throughline_button');
+throughlineButton.addEventListener('click', function() {
+  toggleTagPopUp("throughline_pop_up");
+});
+
+// Add event listener to skillButton
+var skillButton = document.getElementById('skill_button');
+skillButton.addEventListener('click', function() {
+  toggleTagPopUp("skill_pop_up");
+});
+
+// Add event listener to courseButton
+var courseButton = document.getElementById('course_button');
+courseButton.addEventListener('click', function() {
+  toggleTagPopUp("course_pop_up");
+});
+
+
+// Add event listener to levelButton
+var levelButton = document.getElementById('level_button');
+levelButton.addEventListener('click', function() {
+  toggleTagPopUp("level_pop_up");
+});
+
+// Add event listeners to all tags to insert them into the tag_box panel when clicked
+const allTags = document.querySelectorAll('.tag');
+allTags.forEach(function(tag) {
+tag.addEventListener('click', function() {
+  // Get the text content of the clicked tag
+  const tagText = this.textContent;
+
+  // Insert the tag into the tag_box panel
+  insertTagIntoTagBox(tagText);
+});
+});
+
+// Add event listener to search exhibitions button
+var searchExhibitionsButton = document.getElementById('search_button');
+searchExhibitionsButton.addEventListener('click', function() {
+  toggleSearchPopUp(); // Toggle the visibility of the search pop-up
+});
+
+// Function to toggle the visibility of the search pop-up
+function toggleSearchPopUp() {
+  var searchPopUp = document.querySelector('.search_pop_up');
+  if (searchPopUp.style.display === 'block') {
+      searchPopUp.style.display = 'none';
+  } else {
+      searchPopUp.style.display = 'block';
+  }
+}
 });
