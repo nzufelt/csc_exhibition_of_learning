@@ -24,8 +24,14 @@ module.exports = router;
 
 router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
+    skills = await skillController.getAllSkillsJSON();
+    courses = await courseController.getAllCoursesJSON();
+    
+
     res.render("home", 
-       {exhibitions
+       {exhibitions,
+        skills,
+        courses
        })
  });
  

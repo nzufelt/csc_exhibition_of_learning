@@ -13,6 +13,7 @@ body{
 .intro_section{
   background-color: pink;
   padding: 2rem;
+  margin-bottom: 3rem;
 }
 
 .welcome{
@@ -34,6 +35,7 @@ body{
 .welcome > *:first-child{
   margin-top: 5rem;
 }
+
 #search_button{
   display: block;
   margin: auto;
@@ -82,6 +84,7 @@ body{
   border-radius: 0.3em;
   background-color: #00319C;
   z-index: 1;
+  padding: .25em .05em;
 }
 
 #search_bar{
@@ -91,7 +94,7 @@ body{
   margin-right: 2%;
   background-color: transparent;
   border: none;
-  font-size: 1.5em;
+  font-size: 1em;
   font-family: "Sintony", sans-serif;
 }
 
@@ -166,6 +169,7 @@ body{
   border-radius: 20px;
   cursor: pointer;
   font-family: "Sintony", sans-serif;
+  padding: .75rem;
 }
 
 .tag:hover {
@@ -255,7 +259,7 @@ body{
   z-index: 3;
 }
 
-/* #all_tags_pop_up{
+#all_tags_pop_up{
   display: none;
   position: relative;
   background-color: #D9D9D9;
@@ -264,7 +268,7 @@ body{
   z-index: 5;
   left: calc(-1%);
   z-index: 3;
-} */
+}
 
 .tag_pop_up{
   overflow-y: scroll;
@@ -289,14 +293,20 @@ body{
 
 .video {
   display: flex;
-  margin: 1rem;
+  margin: 2rem;
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  width: 350px;
+/*   border: 3px solid black; */
 }
 
 .video_thumbnail{
   margin-bottom: 1rem;
+}
+
+#kaltura_player {
+  width: 350px;
+  height: 250px
 }
 
 .video_text {
@@ -304,3 +314,6 @@ body{
   margin-bottom: 3%;
   font-family: "Sintony", sans-serif;
 }
+
+
+

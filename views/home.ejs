@@ -75,6 +75,19 @@ that growth here.
       
       <div class="tag_pop_up" id="skill_pop_up">
         <!-- Content for skill_pop_up -->
+
+        <% if (skills.length > 0) {
+          skills.forEach(function(skill) {
+            %>
+              <button class="tag human_communication">
+                <%-skill.skill_name%>
+                skill.throughline
+                </button>
+            <%
+          })
+        }
+        %>
+        <!--
         <button class="tag human_communication">Speaking in Translation</button>
         <button class="tag human_communication">Writing</button>
         <button class="tag human_communication">Collaboration</button>
@@ -90,9 +103,22 @@ that growth here.
         <button class="tag working_with_systems">Understanding Systems</button>
         <button class="tag working_with_systems">Designing Systems</button>
         <button class="tag working_with_systems">Tooling</button>
+        -->
       </div>
       
+      
       <div class="tag_pop_up" id="course_pop_up">
+          <% if (courses.length > 0) {
+          courses.forEach(function(course) {
+            %>
+              <button class="tag">
+                <%-course.course_number%>: <%-course.course_name%>
+                </button>
+            <%
+          })
+        }
+        %>
+      <!--
         <button class="tag">CSC401</button>
         <button class="tag">CSC402</button>
         <button class="tag">CSC403</button>
@@ -110,6 +136,7 @@ that growth here.
         <button class="tag">CSC572</button>
         <button class="tag">CSC573</button>
         <button class="tag">CSC600</button>
+        -->
       </div>
       
       

@@ -11,6 +11,16 @@ const getAllCourses = async(req, res) => {
     }
 }
 
+const getAllCoursesJSON = async() => {
+    try {
+        const courses = await db.select("*").from("courses")
+        return courses;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 // get a list of unique course names and numbers
 const getUniqueCourseNames = async(req, res) => {
     try {
@@ -44,5 +54,6 @@ const getCourseIdFromCourseName = async(req, res) => {
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,
-    getCourseIdFromCourseName
+    getCourseIdFromCourseName,
+    getAllCoursesJSON
 };

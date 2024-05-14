@@ -11,6 +11,17 @@ const getAllSkills = async(req, res) => {
     }
 }
 
+const getAllSkillsJSON = async() => {
+    try {
+        const skills = await db.select("*").from("skills");
+        return skills;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 module.exports = {
-    getAllSkills
+    getAllSkills,
+    getAllSkillsJSON
 };
