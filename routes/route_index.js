@@ -7,6 +7,7 @@ const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
 
 const bcrypt = require('bcrypt')
+const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
 /* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById
 initializePassport(
@@ -60,11 +61,11 @@ router.get("/about_us", function (req, res) {
     res.render("about");
 });
 
-router.get("/admin-login", function (req, res) {
+router.get("/admin-login", checkAuthentication.checkNotAuthenticated, function (req, res) {
     res.render("admin-login");
 });
 
-router.get("/admin-home", function (req, res) {
+router.get("/admin-home", checkAuthentication.checkAuthenticated, function (req, res) {
     res.render("admin-home");
 });
 
