@@ -9,13 +9,14 @@ const adminController = require('../controllers/admin_table_queries') // THIS IS
 
 const bcrypt = require('bcrypt')
 const initializePassport = require('../passport-config')
-/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById"
+
+/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById" */
 initializePassport(
     passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    adminController.GetAdminByEmail(email),
+    adminController.GetAdminById(id),
 )
-*/
+
 
 const middleware = require('../middleware')
 
@@ -27,12 +28,16 @@ router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();
     courses = await courseController.getAllCoursesJSON();
+    students = await userController.getAllUsersJSON();
+    teachers = await adminController.getAllAdminsJSON();
     
 
     res.render("home", 
        {exhibitions,
         skills,
-        courses
+        courses,
+        students,
+        teachers
        })
  });
  
