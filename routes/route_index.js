@@ -9,12 +9,13 @@ const adminController = require('../controllers/admin_table_queries') // THIS IS
 
 const bcrypt = require('bcrypt')
 const initializePassport = require('../passport-config')
+const passport = require('passport')
 
 /* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById" */
 initializePassport(
     passport,
-    adminController.GetAdminByEmail(email),
-    adminController.GetAdminById(id),
+    email => adminController.GetAdminByEmail(email),
+    id => adminController.GetAdminById(id),
 )
 
 
