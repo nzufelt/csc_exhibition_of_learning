@@ -5,10 +5,11 @@ const exhibitionController = require('../controllers/exhibition_table_queries');
 const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
+const adminController = require('../controllers/admin_table_queries') // THIS IS WHERE "GetAdminByEmail" AND "GetAdminById" ARE STORED
 
 const bcrypt = require('bcrypt')
 const initializePassport = require('../passport-config')
-/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById
+/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById"
 initializePassport(
     passport,
     email => users.find(user => user.email === email),

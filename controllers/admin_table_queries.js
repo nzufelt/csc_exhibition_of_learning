@@ -11,6 +11,32 @@ const getAllAdmins = async(req, res) => {
     }
 }
 
+const GetAdminByEmail = async(email) => {
+    try {
+        const admin = await db.select("*")
+        .from("admins")
+        .where("email", email);
+        return admin;
+    } catch (error) {
+        console.error(error);
+        return "";
+    }
+}
+
+const GetAdminById = async(id) => {
+    try {
+        const admin = await db.select("*")
+        .from("admins")
+        .where("admin_id", id);
+        return admin;
+    } catch (error) {
+        console.error(error);
+        return "";
+    }
+}
+
 module.exports = {
-    getAllAdmins
+    getAllAdmins,
+    GetAdminByEmail,
+    GetAdminById
 };
