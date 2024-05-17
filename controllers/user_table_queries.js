@@ -11,6 +11,16 @@ const getAllUsers = async(req, res) => {
     }
 }
 
+const getAllUsersJSON = async() => {
+    try {
+        const users = await db.select("*").from("users");
+        return users;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 const getStudentNames = async(req, res) => {
     try {
         const users = await db.select(["first_name", "last_name"]).from("users");
@@ -23,5 +33,6 @@ const getStudentNames = async(req, res) => {
 
 module.exports = {
     getAllUsers,
-    getStudentNames
+    getStudentNames,
+    getAllUsersJSON
 };

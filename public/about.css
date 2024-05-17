@@ -1,5 +1,14 @@
 /* styling for About Us page */
 
+body {
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+h1 {
+  color: var(--color-dark);
+}
+
 .text_container {
   margin: 5%;
 }
@@ -28,7 +37,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 100px;
+  padding-bottom: 5em;
   padding-left: 5%;
   padding-right: 5%;
   font-family: "Sintony", serif;
@@ -48,18 +57,25 @@
   margin: 10px;
   height: 375px;
   width: 375px;
-/*   background-color: black; */
-  background-image: url('https://cdn.glitch.global/f93a2253-fff3-4099-9f94-8bc7985471d0/thumbnails%2Fnzufelt_headshot.jpg?1715563057523');
   background-size: cover; /* This ensures the image covers the entire container without stretching */
   background-position: center; /* This centers the image within the container */
 }
 
+.nick {
+  background-image: url('https://github.com/peterjelliott/csc_exhibition_of_learning/blob/main/public/nzufelt_headshot.jpg?raw=true');
+}
 
+.clarke {
+  background-image: url("https://github.com/peterjelliott/csc_exhibition_of_learning/blob/main/public/mclarke_headshot.jpg?raw=true");
+}
+
+.faculty {
+  background-color: black;
+}
 
 .teacher_name {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.5);
   width: 300px;
-  color: white;
   font-size: 20px;
   position: absolute;
   bottom: 5;
@@ -85,7 +101,6 @@
 
 .student_name {
   width: 150px;
-  color: black;
   font-size: 16px;
   text-align: center;
   font-family: "Sintony", sans-serif;
@@ -95,7 +110,9 @@
   border: 0px;
   background: none;
   font-size: 3em;
+  color: var(--color-dark);
 }
+
 
 
 

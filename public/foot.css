@@ -3,14 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #00319C;
+  background-color: var(--color-blue);
   margin-bottom: 0;
   padding: 0.5em;
 
 }
 
 .foot-text { 
-  color: white;
+  color: var(--color-light);
   text-align: right;
   margin-right: 1em;
   padding: 2em;

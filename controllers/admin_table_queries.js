@@ -11,6 +11,16 @@ const getAllAdmins = async(req, res) => {
     }
 }
 
+const getAllAdminsJSON = async() => {
+    try {
+        const admins = await db.select("*").from("admins");
+        return admins;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 const GetAdminByEmail = async(email) => {
     try {
         const admin = await db.select("*")
@@ -38,5 +48,6 @@ const GetAdminById = async(id) => {
 module.exports = {
     getAllAdmins,
     GetAdminByEmail,
-    GetAdminById
+    GetAdminById,
+    getAllAdminsJSON
 };
