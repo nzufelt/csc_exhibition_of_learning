@@ -84,7 +84,7 @@ that growth here.
         <% if (skills.length > 0) {
           skills.forEach(function(skill) {
             %>
-              <button class="tag human_communication">
+              <button class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill">
                 <%-skill.skill_name%>
                 </button>
             <%
