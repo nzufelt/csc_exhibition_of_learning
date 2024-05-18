@@ -55,6 +55,8 @@ that growth here.
       </div>
     </div>
     <div class="tag_section">
+
+      <!-- DROP DOWN MENUS -->
       <div class="tag_type_list">
         <button class="tag_type" id="throughline_button">
           Throughlines
@@ -128,7 +130,63 @@ that growth here.
         <button class="tag asking_questions throughline">Asking Questions</button>
         <button class="tag working_with_systems throughline">Working with Systems</button>
 
-        
+        <!-- SKILLS -->
+        <% if (skills.length > 0) {
+          skills.forEach(function(skill) {
+            %>
+              <button 
+                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                data-identifier="<%= skill.skill_id %>"
+                >
+                <%-skill.skill_name%>
+                </button>
+            <%
+          })
+        }
+        %>
+      
+      <!-- COURSES -->
+        <% if (courses.length > 0) {
+          courses.forEach(function(course) {
+            %>
+              <button class="tag course" id="<%= course.course_number.toString().toLowerCase()%>"
+                data-identifier="<%= course.course_id %>"
+                >
+                <%-course.course_number%>: <%-course.course_name%>
+                </button>
+            <%
+          })
+        }
+        %>
+
+        <!-- STUDENTS -->
+        <% if (students.length > 0) {
+          students.forEach(function(student) {
+            %>
+              <button class="tag students"
+                data-identifier="<%= student.user_id %>"
+                >
+                <%-student.first_name%> <%-student.last_name%>
+                </button>
+            <%
+          })
+        }
+        %>
+
+      <!-- TEACHERS -->
+        <% if (teachers.length > 0) {
+          teachers.forEach(function(teacher) {
+            %>
+              <button class="tag teachers"
+                data-identifier="<%= teacher.teacher_id %>"
+                >
+                <%-teacher.name%>
+                </button>
+            <%
+          })
+        }
+        %>
+
       </div>
 
       <div class="tag_box">
@@ -136,6 +194,7 @@ that growth here.
       </div>
     </div>
 
+    <!-- SUBMIT BUTTON -->
     <button class="submit-button" id="submit">Submit</button>
 
   </div>
