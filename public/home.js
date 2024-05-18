@@ -196,3 +196,20 @@ function displayArrays() {
   // Display course levels
   document.getElementById("courseLevels").textContent = JSON.stringify(courseLevel);
 }
+
+function handleButtonClick() {
+  // create url based on search parameters
+  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel)
+
+
+  // redirect to new url
+  window.location.href = url_string; 
+}
+
+// handle clicking search button
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.querySelector('#submit');
+  if (button) {
+      button.onclick = handleButtonClick;
+  }
+});

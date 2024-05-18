@@ -42,9 +42,9 @@ router.get('/', async function(req, res){
        })
  });
  
- // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&year=[2022,2023]&term=[1,2,3]&level=["Advanced"]
+ // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
  router.get('/search', async (req, res)=>{
-    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.year, req.query.term, req.query.level)
+    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.years, req.query.terms, req.query.levels)
  
    exhibitions = await exhibitionController.getExhibitionsSearchResults(search_parameters);
  
