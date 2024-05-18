@@ -84,7 +84,10 @@ that growth here.
         <% if (skills.length > 0) {
           skills.forEach(function(skill) {
             %>
-              <button class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill">
+              <button 
+                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                data-identifier="<%= skill.skill_id %>"
+                >
                 <%-skill.skill_name%>
                 </button>
             <%
@@ -98,7 +101,9 @@ that growth here.
         <% if (courses.length > 0) {
           courses.forEach(function(course) {
             %>
-              <button class="tag">
+              <button class="tag course" id="<%= course.course_number.toString().toLowerCase()%>"
+                data-identifier="<%= course.course_id %>"
+                >
                 <%-course.course_number%>: <%-course.course_name%>
                 </button>
             <%

@@ -26,6 +26,7 @@ function toggleTagPopUp(tag_panel) {
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
+  const tagIdentifier = tag.dataset.identifier; // get idenitifying data associated with tag
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -61,11 +62,11 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('skill')){
-    skills.push(tagText)
+    skills.push(tagIdentifier)
   }
   
   if (tag.classList.contains('course')){
-    courses.push(tagText)
+    courses.push(tagIdentifier)
   }
   
   if (tag.classList.contains('level')){
@@ -74,11 +75,11 @@ function insertTagIntoTagBox(tag) {
   
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
-  this.remove();
-  
-  throughlines = []
-  displayArrays();
-});
+    this.remove();
+    
+    throughlines = []
+    displayArrays();
+  });
   
 } 
 
