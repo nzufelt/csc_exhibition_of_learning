@@ -19,7 +19,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: var(--color-light);
+  color: var(--color-dark);
   z-index: 1001; /* Ensure it appears above other content, including the overlay */
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); /* Box shadow for depth */
@@ -54,13 +55,16 @@
 
 /* Placeholder for images... coming soon */
 .expanded_image {
-  height: 20em; 
   width: 20em; 
-  background-color: black; 
+  max-height: 25em;
+  object-fit: cover; /* Crop the image to cover the container */
+  object-position: center; /* Position the image in the center */
+  overflow: hidden; /* Hide overflowing content */
 }
 
 .expanded_info {
   width: 30em;
+  margin: 3%;
 }
 
 .expanded_info h2 {

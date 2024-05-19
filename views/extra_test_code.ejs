@@ -1,0 +1,50 @@
+<% if (skills.length > 0) {
+    skills.forEach(function(skill) {
+      %>
+        <button class="tag human_communication">
+          <%-skill.skill_name%>
+          </button>
+      <%
+    })
+  }
+  %>
+
+  <% if (courses.length > 0) {
+    courses.forEach(function(course) {
+      %>
+        <button class="tag">
+          <%-course.course_number%>: <%-course.course_name%>
+          </button>
+      <%
+    })
+  }
+  %>
+
+  <button class="tag level">Introductory</button>
+  <button class="tag level">Intermediate</button>
+  <button class="tag level">Advanced</button>
+  <button class="tag level">Independent Research</button>
+
+  <!-- STUDENT NAMES AS TAGS HERE -->
+  <% if (students.length > 0) {
+    students.forEach(function(student) {
+      %>
+        <button class="tag">
+          <%-student.first_name%> <%-student.last_name%>
+          </button>
+      <%
+    })
+  }
+  %>
+
+  <!-- TEACHER NAMES AS TAGS HERE -->
+  <% if (teachers.length > 0) {
+    teachers.forEach(function(teacher) {
+      %>
+        <button class="tag">
+          <%-teacher.name>
+          </button>
+      <%
+    })
+  }
+  %>

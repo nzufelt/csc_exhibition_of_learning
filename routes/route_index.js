@@ -5,17 +5,20 @@ const exhibitionController = require('../controllers/exhibition_table_queries');
 const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
+const adminController = require('../controllers/admin_table_queries') // THIS IS WHERE "GetAdminByEmail" AND "GetAdminById" ARE STORED
 
 const bcrypt = require('bcrypt')
 const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
-/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById
+const passport = require('passport')
+
+/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById" */
 initializePassport(
     passport,
-    email => users.find(user => user.email === email),
-    id => users.find(user => user.id === id)
+    email => adminController.GetAdminByEmail(email),
+    id => adminController.GetAdminById(id),
 )
-*/
+
 
 const middleware = require('../middleware')
 
@@ -27,18 +30,22 @@ router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();
     courses = await courseController.getAllCoursesJSON();
+    students = await userController.getAllUsersJSON();
+    teachers = await adminController.getAllAdminsJSON();
     
 
     res.render("home", 
        {exhibitions,
         skills,
-        courses
+        courses,
+        students,
+        teachers
        })
  });
  
- // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&year=[2022,2023]&term=[1,2,3]&level=["Advanced"]
+ // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
  router.get('/search', async (req, res)=>{
-    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.year, req.query.term, req.query.level)
+    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.years, req.query.terms, req.query.levels)
  
    exhibitions = await exhibitionController.getExhibitionsSearchResults(search_parameters);
  

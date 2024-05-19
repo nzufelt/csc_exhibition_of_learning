@@ -5,11 +5,36 @@
 /* Importing Open Sans */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+:root{
+  --color-light: hsl(253 26 93);
+  --color-light-dark: hsl(260 12 91);
+  
+  --color-dark: hsl(258 15 13);
+  
+  --color-grey: hsl(255 10 84);
+  
+  --color-red: hsl(11 56 47);
+  --color-red-dark: hsl(11 58 43);
+  
+  --color-yellow: hsl(39 57 48);
+  --color-yellow-dark: hsl(39 59 45);
+  
+  --color-green: hsl(122 37 39);
+  --color-green-dark: hsl(122 39 36);
+  
+  --color-blue: hsl(211 41 43);
+  --color-blue-dark: hsl(210 39 40);
+  
+  --color-purple: hsl(291 31 44);
+  --color-purple-dark: hsl(291 33 40);
+}
+
 body {
+  
   margin: 0;
   padding: 0;
   padding-top: 50px;
-  background-color: #F7F7F7;
+  background-color: var(--color-light);
   line-height: 1.5;
   min-height: 100vh;
 /*   border-style: solid;
@@ -17,7 +42,7 @@ body {
 }
 
 p { 
-  font-family: "Open Sans", sans-serif;
+  font-family: "Sitony", sans-serif;
 }
 
 h1 { 

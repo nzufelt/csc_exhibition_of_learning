@@ -1,6 +1,15 @@
-.intro {
+body{
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+h1, button{
+  color: var(--color-dark);
+}
+
+.text_container {
   margin: 5%;
-  font-family: "Prociono", serif
+/*   border: 3px solid black; */
 }
 
 .blurb {
@@ -37,23 +46,23 @@
 }
 
 .human_communication {
-  background-color: #3c78d9;
+  background-color: var(--color-green);
 }
 
 .working_with_code {
-  background-color: #8e7cc3;
+  background-color: var(--color-blue);
 }
 
 .research_and_design {
-  background-color: #6aa84f;
+  background-color: var(--color-red);
 }
 
 .asking_questions {
-  background-color: #990000;
+  background-color: var(--color-yellow);
 }
 
 .working_with_systems {
-  background-color: #bf9000;
+  background-color: var(--color-purple);
 }
 
 .throughline_title {
@@ -62,7 +71,7 @@
   padding-right: 5%;
   font-family: "Prociono", serif;
   font-weight: bold;
-  color: white;
+  color: var(--color-light);
   font-size: 28px;
   align-self: stretch;
   align-content: center;
@@ -78,17 +87,12 @@
   height: 100%;
   font-family: 'Sintony', sans-serif;
   font-size: 17px;
-  color: white;
+  color: var(--color-light);
   padding: .75em;
   padding-left: 2em;
   display: flex;
   align-items: center;
 }
-
-.throughline button:hover {
-  transform: translatey(-2px);
-  font-weight: bold;
-} 
 
 .skill {
   border-bottom: solid darkgrey;
@@ -98,30 +102,83 @@
   border-bottom: none;
 }
 
-.skill_description {
+.hidden_text {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.2s linear;
+  transition: max-height 0.3s ease;
+}
+
+.hidden_text p {
   font-family: "Sintony", sans-serif;
-}
-
-.hidden-text{
-  font-family: "Sintony", sans-serif;
-}
-
-
-.skill_description.visible {
-  max-height: 1000px;
-}
-
-.skill_description p {
-  color: white;
   padding: .5em 4em 1em 3em;
+}
+
+.skill_description {
+  color: var(--color-light);
+}
+
+.visible {
+  max-height: 1000;
 }
 
 .expandless {
   display: none;
 }
+
+.curriculum_map {
+  display: flex;
+  justify-content: center;
+}
+
+.courses_left_column {
+  background-color: var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  width: 35%;
+  margin: 2em;
+}
+
+.courses_right_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  width: 35%;
+  margin: 2em;
+}
+
+.course_group {
+  margin: 1em;
+  border-radius: 5px;
+  padding: 1em;
+}
+.intro_courses {
+  background-color: white;
+}
+
+.intermediate_courses {
+  background-color: white;
+}
+
+.advanced_courses {
+
+}
+
+.research_courses {
+
+}
+
+.course_description {
+  color: var(--color-dark);
+}
+
+.course_list {
+  list-style-type: none;
+  margin-left: 1em;
+}
+
 
 /* adjusting display for smaller viewing screen */
 @media(max-width: 800px){

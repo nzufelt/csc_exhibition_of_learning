@@ -1,11 +1,4 @@
 body {
-  --color-primary: #00319C;
-  --color-primary-dark: #007f67;
-  --color-secondary: #8DC63F;
-  --color-secondary-dark: #75a633;
-  --color-light: #F7F7F7;
-  --color-error: #cc3333;
-  --color-success: #4bb544;
   --border-radius: 5px;
   
   margin: 5rem;
@@ -20,7 +13,7 @@ margin: 0 5rem;
 }
 
 button{
-background-color: var(--color-primary);
+background-color: var(--color-primary-light);
 color: white;
 border: none;
 padding: 1rem 3rem;
