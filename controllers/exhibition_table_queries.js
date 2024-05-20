@@ -134,9 +134,62 @@ const getExhibitionsSearchResults = async(search_parameters) => {
 
 }
 
+const getTagDisplay = async(search_parameters) => {
+    var user_id_array = search_parameters.user_id;
+    var course_id_array = search_parameters.course_id;
+    var admin_id_array = search_parameters.admin_id; 
+    var skill_id_array = search_parameters.skill_id; 
+
+    console.log(user_id_array);
+    //var academic_year = search_parameters.academic_year;
+    //var term = search_parameters.term;
+    //var course_level = search_parameters.course_level;
+
+    var tag_display_array = [];
+
+    // REFERENCE
+    // {
+    //     tags : [
+    //         {
+    //             tag_name : "test",
+    //             tag_description : "test2"
+    //         }
+    //     ]
+    //   };
+
+    
+    if(user_id_array.length != 0) {
+        for(let i = 0; i < user_id_array.length; i++){
+            var user = await db.select("*").from("users").where("user_id", user_id_array[i]);
+                if (user.length != 0) {
+                var tag_name = user[0].first_name + user[0].last_name;
+                var tag_description = user[0].bio;
+                tag_display_array.push({
+                    tag_name : tag_name,
+                    tag_description : tag_description,
+                });
+            }
+        }
+    } else {
+        if(course_id_array.length != 0) {
+
+        }
+        if(admin_id_array.length != 0) {
+
+        }
+        if(skill_id_array.length != 0) {
+
+        }
+    }
+
+    console.log(tag_display_array);
+    return JSON.stringify(tag_display_array);
+}
+
 module.exports = {
     getAllExhibitions,
     getExhibitionsHomePage,
     getExhibitionsHomePageJSON,
     getExhibitionsSearchResults,
+    getTagDisplay
 };
