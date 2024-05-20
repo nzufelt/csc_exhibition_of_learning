@@ -163,7 +163,7 @@ that growth here.
         <% if (students.length > 0) {
           students.forEach(function(student) {
             %>
-              <button class="tag students"
+              <button class="tag student"
                 data-identifier="<%= student.user_id %>"
                 >
                 <%-student.first_name%> <%-student.last_name%>
@@ -177,7 +177,7 @@ that growth here.
         <% if (teachers.length > 0) {
           teachers.forEach(function(teacher) {
             %>
-              <button class="tag teachers"
+              <button class="tag teacher"
                 data-identifier="<%= teacher.teacher_id %>"
                 >
                 <%-teacher.name%>
