@@ -75,10 +75,25 @@ function insertTagIntoTagBox(tag) {
   
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
-    this.remove();
+  this.remove();
+   if (tag.classList.contains('throughline')){
+     throughlines.splice(throughlines.indexOf(tagText), 1);
+   }
+   
+   // remove tag from appropriate tag array
+   if (tag.classList.contains('skill')){
+     skills.splice(skills.indexOf(tagText), 1);
+   }
     
-    throughlines = []
-    displayArrays();
+   if (tag.classList.contains('course')){
+     courses.splice(courses.indexOf(tagText), 1);
+   }
+    
+   if (tag.classList.contains('level')){
+     courseLevel.splice(courseLevel.indexOf(tagText), 1);
+   }
+  
+  displayArrays();
   });
   
 } 
