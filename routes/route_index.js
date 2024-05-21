@@ -19,7 +19,6 @@ initializePassport(
     id => adminController.GetAdminById(id),
 )
 
-
 const middleware = require('../middleware')
 
 const router = express.Router();
@@ -72,6 +71,13 @@ router.get("/about-us", function (req, res) {
 router.get("/admin-login", checkAuthentication.checkNotAuthenticated, function (req, res) {
     res.render("admin-login");
 });
+
+router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.authenticate('local', {
+    //options from passport.js
+    successRedirect: "/admin-home",
+    failureRedirect: '/admin-login',
+    failureFlash: true
+}))
 
 router.get("/admin-home", checkAuthentication.checkAuthenticated, function (req, res) {
     res.render("admin-home");
