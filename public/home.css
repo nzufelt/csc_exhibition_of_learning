@@ -250,7 +250,7 @@ body{
   z-index: 3;
 }
 
-#throughline_pop_up {
+#year_pop_up {
   display: none;
   position: relative;
   background-color: var(--color-light);
