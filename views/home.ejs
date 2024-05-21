@@ -18,7 +18,7 @@
 <%- include('nav') %>
 
 <!-- TESTING ARRAY -->
-<div>Throughlines: <span id="throughlines"></span></div>
+<div>Years: <span id="years"></span></div>
 <div>Skills: <span id="skills"></span></div>
 <div>Courses: <span id="courses"></span></div>
 <div>Course Levels: <span id="courseLevels"></span></div>
@@ -58,9 +58,6 @@ that growth here.
 
       <!-- DROP DOWN MENUS -->
       <div class="tag_type_list">
-        <button class="tag_type" id="throughline_button">
-          Throughlines
-        </button>
         <button class="tag_type" id="skill_button">
           Skills
         </button>
@@ -70,15 +67,13 @@ that growth here.
         <button class="tag_type" id="level_button">
           Level
         </button>
+        <button class="tag_type" id="year_button">
+          Years
+        </button>
       </div>
 
-      <!-- THROUGHLINES -->
-      <div class="tag_pop_up" id="throughline_pop_up">
-        <button class="tag human_communication throughline">Human Communication</button>
-        <button class="tag working_with_code throughline">Working with Code</button>
-        <button class="tag research_and_design throughline">Research and Design</button>
-        <button class="tag asking_questions throughline">Asking Questions</button>
-        <button class="tag working_with_systems throughline">Working with Systems</button>
+      <!-- YEARS -->
+      <div class="tag_pop_up" id="year_pop_up">
       </div>
       
       <!-- SKILLS -->
@@ -87,7 +82,7 @@ that growth here.
           skills.forEach(function(skill) {
             %>
               <button 
-                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                class="tag <%= skill.year.toString().toLowerCase().replaceAll(' ', '_')%> skill"
                 data-identifier="<%= skill.skill_id %>"
                 >
                 <%-skill.skill_name%>
@@ -125,17 +120,12 @@ that growth here.
       <!-- ALL TAGS -->
       <div class="tag_pop_up" id="all_tags_pop_up">
 
-        <button class="tag working_with_code throughline">Working with Code</button>
-        <button class="tag research_and_design throughline">Research and Design</button>
-        <button class="tag asking_questions throughline">Asking Questions</button>
-        <button class="tag working_with_systems throughline">Working with Systems</button>
-
         <!-- SKILLS -->
         <% if (skills.length > 0) {
           skills.forEach(function(skill) {
             %>
               <button 
-                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                class="tag <%= skill.year.toString().toLowerCase().replaceAll(' ', '_')%> skill"
                 data-identifier="<%= skill.skill_id %>"
                 >
                 <%-skill.skill_name%>
