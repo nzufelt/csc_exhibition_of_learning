@@ -16,8 +16,20 @@
   </div>
   
   <div class="tag-description">
-    <h2 class="tag-description__title">SAMPLE TAG</h2>
-    <p class="tag-description__info">This is a sample tag description.. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    <% if (tag_display.length > 0) {
+      tag_display.forEach(function(tag) {
+        %>
+        <h2 class="tag-description__title"><%-tag.tag_name%></h2>
+        <p class="tag-description__info"><%-tag.tag_description%></p>
+        <%
+      })
+    } else {
+    %>
+    <h2 class="tag-description__title">Exhibitions of Learning</h2>
+    <%
+    } 
+    %>
   </div>
   
   <!--   video section -->

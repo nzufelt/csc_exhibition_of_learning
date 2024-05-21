@@ -20,12 +20,12 @@ app.use(express.urlencoded({extended: false}))
 app.use(flash())
 
 app.use(session({
-//     //specifies the secret used to sign (encrypt) the session cookie, value is retrived from .env file
-//     //secret: process.env.SESSION_SECRET,
-//     //asking if we should resave our session variables if nothing has changed
-//     resave: false,
-//     //asking if we want to save an empty value in the session if there is no value
-//     saveUninitialized: false
+    //specifies the secret used to sign (encrypt) the session cookie, value is retrived from .env file
+    secret: process.env.SESSION_SECRET,
+    //asking if we should resave our session variables if nothing has changed
+    resave: false,
+    //asking if we want to save an empty value in the session if there is no value
+    saveUninitialized: false
  }))
 
 //initializing passport and adding its middleware
