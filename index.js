@@ -26,12 +26,12 @@ app.use(session({
     resave: false,
     //asking if we want to save an empty value in the session if there is no value
     saveUninitialized: false
-}))
+ }))
 
 //initializing passport and adding its middleware
 app.use(passport.initialize())
 //manages session data
-app.use(passport.session())
+//app.use(passport.session())
 
 
 // IN PROGRESS: Uploading, parsing, and saving excel files -----------

@@ -32,7 +32,6 @@ router.get('/', async function(req, res){
     courses = await courseController.getAllCoursesJSON();
     students = await userController.getAllUsersJSON();
     teachers = await adminController.getAllAdminsJSON();
-    
 
     res.render("home", 
        {exhibitions,
@@ -45,13 +44,15 @@ router.get('/', async function(req, res){
  
  // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
  router.get('/search', async (req, res)=>{
-    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.years, req.query.terms, req.query.levels)
+    var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.years, req.query.terms, req.query.levels);
+    var exhibitions = await exhibitionController.getExhibitionsSearchResults(search_parameters);
+    var tag_display = await exhibitionController.getTagDisplay(search_parameters);
  
-   exhibitions = await exhibitionController.getExhibitionsSearchResults(search_parameters);
- 
-   res.render("search-results", 
-        {exhibitions
-        }) 
+    console.log(tag_display)
+    res.render("search-results", 
+        {exhibitions,
+            tag_display
+        })
    // also send: is this a student is sending this to colleges page or not? --> in which case send bio
    // if not user page, send all other bios (for skills, courses, etc)
    // THIS IS ASSUMING NO PRESENTABLE MODE, SEARCH RESULTS JUST IS PRESENTABLE MODE
@@ -60,11 +61,11 @@ router.get('/', async function(req, res){
    //res.send(exhibitions)
  });
  
-router.get("/cs_at_andover", function (req, res) {
+router.get("/cs-at-andover", function (req, res) {
     res.render("csAtAndover");
 });
 
-router.get("/about_us", function (req, res) {
+router.get("/about-us", function (req, res) {
     res.render("about");
 });
 
