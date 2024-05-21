@@ -8,6 +8,7 @@ const courseController = require('../controllers/course_table_queries');
 const adminController = require('../controllers/admin_table_queries') // THIS IS WHERE "GetAdminByEmail" AND "GetAdminById" ARE STORED
 
 const bcrypt = require('bcrypt')
+const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
 const passport = require('passport')
 
@@ -17,7 +18,6 @@ initializePassport(
     email => adminController.GetAdminByEmail(email),
     id => adminController.GetAdminById(id),
 )
-
 
 const middleware = require('../middleware')
 
@@ -68,11 +68,18 @@ router.get("/about-us", function (req, res) {
     res.render("about");
 });
 
-router.get("/admin-login", function (req, res) {
+router.get("/admin-login", checkAuthentication.checkNotAuthenticated, function (req, res) {
     res.render("admin-login");
 });
 
-router.get("/admin-home", function (req, res) {
+router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.authenticate('local', {
+    //options from passport.js
+    successRedirect: "/admin-home",
+    failureRedirect: '/admin-login',
+    failureFlash: true
+}))
+
+router.get("/admin-home", checkAuthentication.checkAuthenticated, function (req, res) {
     res.render("admin-home");
 });
 
