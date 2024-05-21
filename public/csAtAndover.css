@@ -1,10 +1,10 @@
 body{
-  color: var(--color-dark);
-  background-color: var(--color-light);
+  color: hsl(var(--color-dark));
+  background-color: hsl(var(--color-light));
 }
 
 h1, button{
-  color: var(--color-dark);
+  color: hsl(var(--color-dark));
 }
 
 .text_container {
@@ -46,23 +46,23 @@ h1, button{
 }
 
 .human_communication {
-  background-color: var(--color-green);
+  background-color: hsl(var(--color-green));
 }
 
 .working_with_code {
-  background-color: var(--color-blue);
+  background-color: hsl(var(--color-purple));
 }
 
 .research_and_design {
-  background-color: var(--color-red);
+  background-color: hsl(var(--color-red));
 }
 
 .asking_questions {
-  background-color: var(--color-yellow);
+  background-color: hsl(var(--color-yellow));
 }
 
 .working_with_systems {
-  background-color: var(--color-purple);
+  background-color: hsl(var(--color-pink));
 }
 
 .throughline_title {
@@ -71,7 +71,7 @@ h1, button{
   padding-right: 5%;
   font-family: "Prociono", serif;
   font-weight: bold;
-  color: var(--color-light);
+  color: hsl(var(--color-light));
   font-size: 28px;
   align-self: stretch;
   align-content: center;
@@ -87,7 +87,7 @@ h1, button{
   height: 100%;
   font-family: 'Sintony', sans-serif;
   font-size: 17px;
-  color: var(--color-light);
+  color: hsl(var(--color-light));
   padding: .75em;
   padding-left: 2em;
   display: flex;
@@ -114,7 +114,7 @@ h1, button{
 }
 
 .skill_description {
-  color: var(--color-light);
+  color: hsl(var(--color-light));
 }
 
 .visible {
@@ -128,15 +128,16 @@ h1, button{
 .curriculum_map {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .courses_left_column {
-  background-color: var(--color-blue);
+  background-color: hsl(var(--color-blue));
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 5px;
-  width: 35%;
+  width: 32em;
   margin: 2em;
 }
 
@@ -145,7 +146,7 @@ h1, button{
   flex-direction: column;
   justify-content: center;
   border-radius: 5px;
-  width: 35%;
+  width: 32em;
   margin: 2em;
 }
 
@@ -153,6 +154,17 @@ h1, button{
   margin: 1em;
   border-radius: 5px;
   padding: 1em;
+  text-align: left;
+}
+
+.course_group h3 {
+  font-size: 24px;
+  font-family: "Prociono", serif;
+}
+.course_group p {
+  font-family: 'Sintony', sans-serif;
+  font-size: 15px;
+
 }
 .intro_courses {
   background-color: white;
@@ -171,12 +183,20 @@ h1, button{
 }
 
 .course_description {
-  color: var(--color-dark);
+  color: hsl(var(--color-dark));
+  font-size: 14px;
 }
 
 .course_list {
   list-style-type: none;
   margin-left: 1em;
+}
+
+.course_list li{
+  font-family: 'Sintony', sans-serif;
+  font-size: 17px;
+  align-self: left;
+  margin: 0.1em;
 }
 
 

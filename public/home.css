@@ -1,5 +1,5 @@
 body{
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
 }
 #intro_image {
   position: relative;
@@ -11,7 +11,7 @@ body{
 }
 
 .intro_section{
-  background-color: var(--color-yellow);
+  background-color: hsl(var(--color-dark));
   padding: 2rem;
   margin-bottom: 1em;
 }
@@ -30,7 +30,7 @@ body{
   font-family: 'Sintony', sans-serif;
   font-weight: 400;
   font-size: 17px;
-  color: var(--color-dark);
+  color: hsl(var(--color-light));
 }
 
 .welcome > *:first-child{
@@ -40,8 +40,8 @@ body{
 #search_button{
   display: block;
   margin: auto;
-  background-color: var(--color-blue);
-  color: var(--color-light);
+  background-color: hsl(var(--color-blue));
+  color: hsl(var(--color-light));
   border: none;
   font-weight: bold;
   border-radius: .5em;
@@ -50,7 +50,7 @@ body{
 }
 
 #search_button:hover{
-  background-color: var(--color-blue-dark);
+  background-color: hsl(var(--color-blue));
   cursor: pointer;
 }
 
@@ -63,7 +63,7 @@ body{
 .search_bar{
   display: flex;
   justify-content: center;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   align-items: center;
   border-radius: 0.5em;
   width: 97%;
@@ -81,7 +81,7 @@ body{
   width: 100%;
   height: 100%;
   border-radius: 0.3em;
-  background-color: var(--color-blue);
+  background-color: hsl(var(--color-blue));
   z-index: 1;
   padding: .25em .05em;
 }
@@ -115,7 +115,7 @@ body{
 
 .search_text{
   font-family: "Sintony", sans-serif;
-  color: var(--color-light);
+  color: hsl(var(--color-light));
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -128,7 +128,7 @@ body{
   justify-content: space-evenly;
 /*   border: 3px black solid; */
   width: 20%;
-  background-color: var(--color-grey);
+  background-color: hsl(var(--color-blue-dark));
   z-index: 1;
   padding: .5em;
 }
@@ -139,88 +139,96 @@ body{
   height: 17%;
   border-radius: 0.5em;
   border: none;
-  color: var(--color-dark);
-  font-weight: bold;
+  color: hsl(var(--color-dark));
+  font-weight: 500;
   font-size: 1em;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   z-index: 2;
-  font-family: "Sintony", sans-serif;
+  font-family: "Prociono", sans-serif;
   overflow: auto;
   padding: .5rem;
 }
 
 .tag_type:hover{
-  background-color: var(--color-light-dark);
+  background-color: hsl(var(--color-light-dark));
   cursor: pointer;
 }
 
 .tag_box{
   width: 45%;
-  background-color: var(--color-grey);
+  background-color: hsl(var(--color-grey));
   z-index: 5;
   padding: .5em;
   overflow-y: scroll;
 }
 
+.submit-button{
+  background-color: hsl(var(--color-blue));
+  color: hsl(var(--color-light));
+  padding: .5em;
+  font-family: "Sintony", sans-serif;
+  border-radius: 5px;
+}
+
 .tag {
   margin: 5px;
   padding: 8px 16px;
-  background-color: var(--color-blue);
-  color: var(--color-light);
+  background-color: hsl(var(--color-blue));
+  color: hsl(var(--color-light));
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   font-family: "Sintony", sans-serif;
-  padding: .75rem;
+  padding: .5rem;
 }
 
 .tag:hover {
-  background-color: var(--color-blue);
+  background-color: hsl(var(--color-blue));
 }
 
 .tag.human_communication {
-  background-color: var(--color-green);
+  background-color: hsl(var(--color-green));
 }
 
 .tag.human_communication:hover {
-  background-color: var(--color-green-dark);
+  background-color: hsl(var(--color-green-dark));
 }
 
 .tag.working_with_code {
-  background-color: var(--color-blue);
+  background-color: hsl(var(--color-blue));
 }
 
 .tag.working_with_code:hover {
-  background-color: var(--color-blue-dark);
+  background-color: hsl(var(--color-blue-dark));
 }
 
 .tag.research_and_design {
-  background-color: var(--color-red);
+  background-color: hsl(var(--color-red));
 }
 
 .tag.research_and_design:hover {
-  background-color: var(--color-red-dark);
+  background-color: hsl(var(--color-red-dark));
 }
 
 .tag.working_with_systems {
-  background-color: var(--color-purple);
+  background-color: hsl(var(--color-purple));
 }
 
 .tag.working_with_systems:hover {
-  background-color: var(--color-purple-dark);
+  background-color: hsl(var(--color-purple-dark));
 }
 
 .tag.asking_questions {
-  background-color: var(--color-yellow);
+  background-color: hsl(var(--color-yellow));
 }
 .tag.asking_questions:hover {
-  background-color: var(--color-yellow-dark);
+  background-color: hsl(var(--color-yellow-dark));
 }
 
 #course_pop_up {
   display: none;
   position: relative;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   width: 31%;
   height: 100%;
   z-index: 5;
@@ -231,7 +239,7 @@ body{
 #skill_pop_up {
   display: none;
   position: relative;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   width: 31%;
   height: 100%;
   z-index: 5;
@@ -242,7 +250,7 @@ body{
 #level_pop_up {
   display: none;
   position: relative;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   width: 31%;
   height: 100%;
   z-index: 5;
@@ -253,7 +261,7 @@ body{
 #year_pop_up {
   display: none;
   position: relative;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   width: 31%;
   height: 100%;
   z-index: 5;
@@ -264,7 +272,7 @@ body{
 #all_tags_pop_up{
   display: none;
   position: relative;
-  background-color: var(--color-light);
+  background-color: hsl(var(--color-light));
   width: 31%;
   height: 100%;
   z-index: 5;
@@ -285,6 +293,8 @@ body{
   font-size: 40px;
   font-family: "Prociono", serif;
   margin-bottom: 3rem;
+  
+  color: hsl(var(--color-dark));
 }
 
 .video_highlights{
@@ -315,6 +325,7 @@ body{
   align-self: start;
   margin-bottom: 3%;
   font-family: "Sintony", sans-serif;
+  color: hsl(var(--color-blue-dark));
 }
 
 

@@ -60,8 +60,12 @@ router.get('/', async function(req, res){
    //res.send(exhibitions)
  });
  
-router.get("/cs-at-andover", function (req, res) {
-    res.render("csAtAndover");
+router.get("/cs-at-andover", async function (req, res) {
+    courses = await courseController.getAllCoursesJSON();
+
+    res.render("csAtAndover",
+    {courses
+       });
 });
 
 router.get("/about-us", function (req, res) {
