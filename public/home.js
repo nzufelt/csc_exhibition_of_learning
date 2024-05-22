@@ -3,6 +3,8 @@ let years = [];
 let skills = [];
 let courseLevel=[];
 let courses = [];
+let teachers = [];
+let students = [];
 
 function toggleTagPopUp(tag_panel) {
     // hide all pop-ups
@@ -24,44 +26,43 @@ function toggleTagPopUp(tag_panel) {
 
 // function to dynamically create the year tagsfor the year_pop_up
 function generateYearTagsYear() {
-  const startYear = 2023;
-  const currentYear = new Date().getFullYear();
-  const yearContainer = document.getElementById('year_pop_up');
+    const startYear = 2023;
+    const currentYear = new Date().getFullYear();
+    const yearContainer = document.getElementById('year_pop_up');
 
-  for (let year = startYear; year <= currentYear + 1; year++) {
-    const yearButton = document.createElement('button');
-    yearButton.classList.add('tag', 'year');
-    yearButton.textContent = String(year) + String(" - ") + String(year+1);
-    yearContainer.appendChild(yearButton);
+    for (let year = startYear; year <= currentYear + 1; year++) {
+      const yearButton = document.createElement('button');
+      yearButton.classList.add('tag', 'year');
+      yearButton.textContent = String(year) + String(" - ") + String(year+1);
+      yearContainer.appendChild(yearButton);
+    }
   }
-}
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  generateYearTagsYear();
-});
+  document.addEventListener('DOMContentLoaded', (event) => {
+    generateYearTagsYear();
+  });
 
 // function to dynamically create the year tagsfor the all_tags_pop_up
 function generateYearTagsAll() {
-  const startYear = 2023;
-  const currentYear = new Date().getFullYear();
-  const yearContainer = document.getElementById('all_tags_pop_up');
+    const startYear = 2023;
+    const currentYear = new Date().getFullYear();
+    const yearContainer = document.getElementById('all_tags_pop_up');
 
-  for (let year = startYear; year <= currentYear + 1; year++) {
-    const yearButton = document.createElement('button');
-    yearButton.classList.add('tag', 'year');
-    yearButton.textContent = String(year) + String(" - ") + String(year+1);
-    yearContainer.appendChild(yearButton);
+    for (let year = startYear; year <= currentYear + 1; year++) {
+      const yearButton = document.createElement('button');
+      yearButton.classList.add('tag', 'year');
+      yearButton.textContent = String(year) + String(" - ") + String(year+1);
+      yearContainer.appendChild(yearButton);
+    }
   }
-}
 
-document.addEventListener('DOMContentLoaded', (event) => {
-  generateYearTagsAll();
-});
+  document.addEventListener('DOMContentLoaded', (event) => {
+    generateYearTagsAll();
+  });
 
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
-  const tagIdentifier = tag.dataset.identifier; // get idenitifying data associated with tag
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -92,20 +93,28 @@ function insertTagIntoTagBox(tag) {
   tagBox.appendChild(tagButton);
   
   // add tag to appropriate tag array
-  if (tag.classList.contains('years')){
-    yearss.push(tagText)
+  if (tag.classList.contains('year')){
+    years.push(tagText)
   }
   
   if (tag.classList.contains('skill')){
-    skills.push(tagIdentifier)
+    skills.push(tagText)
   }
   
   if (tag.classList.contains('course')){
-    courses.push(tagIdentifier)
+    courses.push(tagText)
   }
   
   if (tag.classList.contains('level')){
     courseLevel.push(tagText)
+  }
+  
+  if (tag.classList.contains('teacher')){
+    teachers.push(tagText)
+  }
+  
+  if (tag.classList.contains('student')){
+    student.push(tagText)
   }
   
   // remove the tag when the button is clicked
@@ -126,6 +135,14 @@ function insertTagIntoTagBox(tag) {
     
    if (tag.classList.contains('level')){
      courseLevel.splice(courseLevel.indexOf(tagText), 1);
+   }
+    
+   if (tag.classList.contains('teacher')){
+     teachers.splice(courseLevel.indexOf(tagText), 1);
+   }
+   
+   if (tag.classList.contains('student')){
+     students.splice(courseLevel.indexOf(tagText), 1);
    }
   
   displayArrays();
@@ -245,6 +262,12 @@ function displayArrays() {
   
   // Display course levels
   document.getElementById("courseLevels").textContent = JSON.stringify(courseLevel);
+  
+  // Display teachers
+  document.getElementById("teachers").textContent = JSON.stringify(teachers);
+  
+  // Display students
+  document.getElementById("students").textContent = JSON.stringify(students);
 }
 
 function handleButtonClick() {
