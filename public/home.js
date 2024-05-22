@@ -75,6 +75,7 @@ function insertTagIntoTagBox(tag) {
   const tagButton = document.createElement('button');
   tagButton.textContent = tagText;
   tagButton.classList.add('tag');
+  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that original tag has specific classes, add them to the new tag button
   if (tag.classList.contains('human_communication')) {
@@ -98,11 +99,11 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('skill')){
-    skills.push(tagText)
+    skills.push(tagIdentifier)
   }
   
   if (tag.classList.contains('course')){
-    courses.push(tagText)
+    courses.push(tagIdentifier)
   }
   
   if (tag.classList.contains('level')){
@@ -110,11 +111,11 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('teacher')){
-    teachers.push(tagText)
+    teachers.push(tagIdentifier)
   }
   
   if (tag.classList.contains('student')){
-    student.push(tagText)
+    student.push(tagIdentifier)
   }
   
   // remove the tag when the button is clicked

@@ -15,7 +15,7 @@
   </style>
 </head>
 
-<%- include('nav') %>
+<%- include('nav') %> 
 
 <!-- TESTING ARRAY -->
 <div>Years: <span id="years"></span></div>
@@ -170,7 +170,7 @@ that growth here.
           teachers.forEach(function(teacher) {
             %>
               <button class="tag teacher"
-                data-identifier="<%= teacher.teacher_id %>"
+                data-identifier="<%= teacher.admin_id %>"
                 >
                 <%-teacher.name%>
                 </button>
