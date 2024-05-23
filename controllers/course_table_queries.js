@@ -51,6 +51,7 @@ const getCourseIdFromCourseName = async(req, res) => {
 }
 // ---------
 
+//CRUD OPERATIONS
 const createCourse = async(course_number, course_name, course_description, course_level) => {
     console.log("creating course!")
     await db('courses').insert({
@@ -63,7 +64,6 @@ const createCourse = async(course_number, course_name, course_description, cours
 
 // IN PROGRESS
 const editCourse = async(course_id, course_number, course_name, course_description, course_level) => {
-    console.log("creating course!")
     await db('courses')
     .where("course_id", course_id)
     .update({
@@ -72,6 +72,13 @@ const editCourse = async(course_id, course_number, course_name, course_descripti
         course_description,
         course_level
     });
+}
+
+// IN PROGRESS
+const deleteCourse = async(course_id) => {
+    await db('courses')
+    .where("course_id", course_id)
+    .del();
 }
 
 module.exports = {
