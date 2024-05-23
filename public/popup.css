@@ -19,8 +19,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--color-light);
-  color: var(--color-dark);
+  background-color: hsl(var(--color-light));
+  color: hsl(var(--color-dark));
   z-index: 1001; /* Ensure it appears above other content, including the overlay */
   padding: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); /* Box shadow for depth */
@@ -50,6 +50,8 @@
   top: 10px;
   right: 10px;
   font-family: "Sintony", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
   cursor: pointer; /* Change cursor to pointer on hover */
 }
 

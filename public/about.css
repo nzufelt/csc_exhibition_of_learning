@@ -62,11 +62,11 @@ h1 {
 }
 
 .nick {
-  background-image: url('../public/nzufelt_headshot.jpg?raw=true');
+  background-image: url('https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/nzufelt_headshot.jpg?raw=true');
 }
 
 .clarke {
-  background-image: url("../public/mclarke_headshot.jpg?raw=true");
+  background-image: url("https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/mclarke_headshot.jpg?raw=true");
 }
 
 /* 
