@@ -41,9 +41,18 @@ app.use(session({
 //manages session data
 app.use(passport.session())
 
+// transfer this all to route_index later!!
+const middleware = require('middleware');
+
 app.post("/api/upload", upload.single('file'), async (req, res) => {
     EoLs = await handler.parseData(req.file.buffer);
+
     if (EoLs != -99) {
+        // EMMA WILL PARSE ALL DATA HERE + MAKE APPROPRIATE NEW CLASSES/USERS
+
+        await middleware.transferEoLsToDatabase(EoLs);
+
+        // don't redirect but maybe display something like a "everything submitted" popup?
         res.send(EoLs);
         console.log("wrong thingy");
     } else {
