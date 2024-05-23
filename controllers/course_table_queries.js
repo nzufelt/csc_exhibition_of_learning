@@ -51,9 +51,20 @@ const getCourseIdFromCourseName = async(req, res) => {
 }
 // ---------
 
+const createCourse = async(course_number, course_name, course_description, course_level) => {
+    console.log("creating course!")
+    await db('courses').insert({
+        course_number,
+        course_name,
+        course_description,
+        course_level
+    });
+}
+
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,
     getCourseIdFromCourseName,
-    getAllCoursesJSON
+    getAllCoursesJSON,
+    createCourse
 };

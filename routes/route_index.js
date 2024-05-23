@@ -1,11 +1,12 @@
 // index file for website pages
 
 const express = require('express');
+
 const exhibitionController = require('../controllers/exhibition_table_queries');
 const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
-const adminController = require('../controllers/admin_table_queries') // THIS IS WHERE "GetAdminByEmail" AND "GetAdminById" ARE STORED
+const adminController = require('../controllers/admin_table_queries');
 
 const bcrypt = require('bcrypt')
 const checkAuthentication = require('../authentication')
@@ -24,6 +25,26 @@ const middleware = require('../middleware')
 const router = express.Router();
 
 module.exports = router;
+
+
+
+// test routers for submitting course information -------------
+router.get('/course-form', async function(req, res){
+    res.render("submit_course");
+});
+
+router.post('/submit-course', async function(req, res){
+    const course_number = req.body.course_number;
+    const course_name = req.body.course_name;
+    const course_description = req.body.course_description;
+    const course_level = req.body.course_level;
+
+    await courseController.createCourse(course_number, course_name, course_description, course_level);
+
+    res.send("Course Submitted Successfully!" + course_number + course_name + course_description + course_level);
+});
+
+// --------------------------
 
 router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
@@ -52,12 +73,6 @@ router.get('/', async function(req, res){
         {exhibitions,
             tag_display
         })
-   // also send: is this a student is sending this to colleges page or not? --> in which case send bio
-   // if not user page, send all other bios (for skills, courses, etc)
-   // THIS IS ASSUMING NO PRESENTABLE MODE, SEARCH RESULTS JUST IS PRESENTABLE MODE
- 
-   //res.send(search_parameters)
-   //res.send(exhibitions)
  });
  
 router.get("/cs-at-andover", async function (req, res) {
