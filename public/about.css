@@ -1,12 +1,12 @@
 /* styling for About Us page */
 
 body {
-  color: var(--color-dark);
-  background-color: var(--color-light);
+  color: hsl(var(--color-dark));
+  background-color: hsl(var(--color-light));
 }
 
 h1 {
-  color: var(--color-dark);
+  color: hsl(var(--color-dark));
 }
 
 .text_container {
@@ -62,16 +62,19 @@ h1 {
 }
 
 .nick {
-  background-image: url('https://github.com/peterjelliott/csc_exhibition_of_learning/blob/main/public/nzufelt_headshot.jpg?raw=true');
+  background-image: url('../public/nzufelt_headshot.jpg?raw=true');
 }
 
 .clarke {
-  background-image: url("https://github.com/peterjelliott/csc_exhibition_of_learning/blob/main/public/mclarke_headshot.jpg?raw=true");
+  background-image: url("../public/mclarke_headshot.jpg?raw=true");
 }
 
-.faculty {
-  background-color: black;
+/* 
+TO ADD A FACULTY MEMBER:
+.[INSERT FACULTY FIRST NAME] {
+  background-image: url("[INSERT URL TO IMAGE FILE ON REPOSITORY]");
 }
+ */
 
 .teacher_name {
   background-color: rgba(255, 255, 255, 0.5);
@@ -92,11 +95,19 @@ h1 {
 }
 
 /* placeholder for real images... coming soon */
-.student_image {
+.student_image_placeholder {
   margin: 10px;
   height: 250px;
   width: 250px;
   background-color: black;
+}
+
+.student_image {
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .student_name {
@@ -110,11 +121,6 @@ h1 {
   border: 0px;
   background: none;
   font-size: 3em;
-  color: var(--color-dark);
+  color: hsl(var(--color-dark));
+  transition: transform 0.4s ease;
 }
-
-
-
-
-
-
