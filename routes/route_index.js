@@ -26,8 +26,6 @@ const router = express.Router();
 
 module.exports = router;
 
-
-
 // test routers for submitting course information -------------
 router.get('/course-form', async function(req, res){
     res.render("submit_course");
@@ -43,7 +41,6 @@ router.post('/submit-course', async function(req, res){
 
     res.send("Course Submitted Successfully!" + course_number + course_name + course_description + course_level);
 });
-
 // --------------------------
 
 router.get('/', async function(req, res){

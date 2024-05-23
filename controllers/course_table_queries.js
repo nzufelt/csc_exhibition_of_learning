@@ -61,6 +61,17 @@ const createCourse = async(course_number, course_name, course_description, cours
     });
 }
 
+// IN PROGRESS
+const editCourse = async() => {
+    console.log("creating course!")
+    await db('courses').insert({
+        course_number,
+        course_name,
+        course_description,
+        course_level
+    });
+}
+
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,
