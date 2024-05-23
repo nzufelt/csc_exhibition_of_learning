@@ -31,6 +31,37 @@ const getStudentNames = async(req, res) => {
     }
 }
 
+//CRUD OPERATIONS
+const createUser = async(email, first_name, last_name, graduation_year, bio) => {
+    await db('skills').insert({
+        email,
+        first_name,
+        last_name,
+        graduation_year,
+        bio
+    });
+}
+
+// IN PROGRESS 
+const editUser = async(user_id, email, first_name, last_name, graduation_year, bio) => {
+    await db('users')
+    .where("user_id", user_id)
+    .update({
+        email,
+        first_name,
+        last_name,
+        graduation_year,
+        bio
+    });
+}
+
+// IN PROGRESS
+const deleteUser = async(user_id) => {
+    await db('users')
+    .where("user_id", user_id)
+    .del();
+}
+
 module.exports = {
     getAllUsers,
     getStudentNames,

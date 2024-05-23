@@ -30,7 +30,7 @@ const createSkill = async(skill_name, skill_description, throughline) => {
     });
 }
 
-// IN PROGRESS FIX
+// IN PROGRESS 
 const editSkill = async(skill_id, skill_name, skill_description, throughline) => {
     await db('skills')
     .where("skill_id", skill_id)
