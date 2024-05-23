@@ -1,5 +1,11 @@
+const exhibitionController = require('../controllers/exhibition_table_queries');
+const userController = require('../controllers/user_table_queries');
+const skillController = require('../controllers/skill_table_queries');
+const courseController = require('../controllers/course_table_queries');
+const adminController = require('../controllers/admin_table_queries');
+
 const getParametersSearchPage = async(students, teachers, skills, courses, year, term, level) => {
-    // REFACTORING CHECK: ERROR CHECKING BEFORE SETTING, WHAT IF SOMEONE DOESN'T PUT ANYTHING/PUTS A LETTER INSTEAD OF A NUMBER
+  // REFACTORING CHECK: ERROR CHECKING BEFORE SETTING, WHAT IF SOMEONE DOESN'T PUT ANYTHING/PUTS A LETTER INSTEAD OF A NUMBER
  
   var course_level = "[]"
   if (typeof level !== 'undefined') {
@@ -27,6 +33,19 @@ const getParametersSearchPage = async(students, teachers, skills, courses, year,
    };
 
    return search_parameters;
+}
+
+const transferEoLsToDatabase = async(EoLs) => {
+  EoLs.forEach(eol => {
+    const exhibition_info = []
+    const user_info = []
+    const exhibition_skill_pairs = []
+    const 
+    // first: go through, parse exhibition data
+
+    // second: make classes/users that don't exist yet
+    console.log(eol);
+  });
 }
 
 module.exports = {
