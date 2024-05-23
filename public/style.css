@@ -53,6 +53,7 @@ a {
 
 p { 
   font-family: "Sitony", sans-serif;
+/*   color: hsl(var(--color-dark)); */
 }
 
 h1 { 
@@ -69,11 +70,11 @@ button {
   border: none;
   padding: 0;
   transition: transform 0.4s ease;
-  transition: font-weight 0.3s ease;
+/*   font-weight: normal;
+  transition: font-weight 0.4s ease; */
 }
 
 button:hover {
   transform: translatey(-2px);  
-  font-weight: bold;
-
+/*   font-weight: bold; */
 }
