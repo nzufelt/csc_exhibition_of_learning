@@ -21,6 +21,33 @@ const getAllSkillsJSON = async() => {
     }
 }
 
+//CRUD OPERATIONS
+const createSkill = async(skill_name, skill_description, throughline) => {
+    await db('skills').insert({
+        skill_name,
+        skill_description,
+        throughline
+    });
+}
+
+// IN PROGRESS FIX
+const editSkill = async(skill_id, skill_name, skill_description, throughline) => {
+    await db('skills')
+    .where("skill_id", skill_id)
+    .update({
+        skill_name,
+        skill_description,
+        throughline
+    });
+}
+
+// IN PROGRESS
+const deleteSkill = async(skill_id) => {
+    await db('skills')
+    .where("skill_id", skill_id)
+    .del();
+}
+
 module.exports = {
     getAllSkills,
     getAllSkillsJSON
