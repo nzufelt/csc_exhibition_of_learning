@@ -38,7 +38,7 @@
 
     <div class="grid_container">
         <div class="teacher_profile">
-          <div class="teacher_image">
+          <div class="teacher_image nick">
             <div class="teacher_name">
               <b>Nick Zufelt</b>
             </div>
@@ -49,7 +49,7 @@
           <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/nzufelt_fun.jpeg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Nick Zufelt</b></h2>
                 <p class="info__text">
@@ -66,7 +66,7 @@
         </div>
         
         <div class="teacher_profile">
-          <div class="teacher_image">
+          <div class="teacher_image clarke">
             <div class="teacher_name">
              <b>Meghan Clarke</b>
             </div>
@@ -77,7 +77,7 @@
           <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/mclarke_fun.jpg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Meghan Clarke</b></h2>
                 <p class="info__text">
@@ -91,10 +91,11 @@
           </div>
         </div>
         
-        <div class="teacher_profile">
-          <div class="teacher_image">
+<!--     USE THIS AS A TEMPLATE TO ADD NEW TEACHER:     -->
+<!--         <div class="teacher_profile">
+          <div class="teacher_image [INSERT FACULTY FIRST NAME]">
             <div class="teacher_name">
-              <b>Faculty Name</b>
+              <b>[INSERT FACULTY NAME]</b>
             </div>
           </div>
           <button class="expand" onclick="openPopup(this)">
@@ -103,39 +104,16 @@
           <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <div class="expanded_image"></div>    [REPLACE THIS LINE WITH IMG FOR "FUN" PHOTO]
               <div class="expanded_info">
                 <h2 class="info__name"><b>[faculty name]</b></h2>
                 <p class="info__text">
-                  [sample bio]
+                  [INSERT FACULTY NAME]
                 </p>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="teacher_profile">
-          <div class="teacher_image">
-            <div class="teacher_name">
-              <b>Faculty Name</b>
-            </div>
-          </div>
-          <button class="expand" onclick="openPopup(this)">
-            <b>+</b>
-          </button>
-          <div class = "popup">
-            <div class="popup_content">
-              <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
-              <div class="expanded_info">
-                <h2 class="info__name"><b>[faculty name]</b></h2>
-                <p class="info__text">
-                  [sample bio]
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> -->
         
     </div>
 
@@ -156,7 +134,7 @@
     <div class="grid_container">
       
       <div class="student_profile">
-        <div class="student_image"></div>
+        <div class="student_image_placeholder"></div>
           <div class="student_name">
             <b>Emma Capaldi</b>
           </div>
@@ -178,21 +156,21 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Hannah Chen</b>
-          </div>
+        <img class = "student_image" src="../public/hannah_headshot.png?raw=true">
+        <div class="student_name">
+          <b>Hannah Chen</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/hannah_fun.png?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Hannah Chen</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Hi, I’m Hannah, a three-year upper and day student from Andover, MA. On campus, I help lead the Flow Arts, Game Design, and Arts for Expression clubs, and in my free time you’ll find me making a mess with hot glue in Elson or building puzzles in the library! I have taken several Compsci courses at Andover, including Machine Learning, Game Development, and the Applied Term Project courses— outside of class, I also enjoy participating in game jams and hackathons with my friends :)
                 </p>
               </div>
             </div>
@@ -200,7 +178,7 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
+        <div class="student_image_placeholder"></div>
           <div class="student_name">
             <b>Kyle Chen</b>
           </div>
@@ -222,21 +200,21 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Amber Chou</b>
-          </div>
+        <img class = "student_image" src="../public/amber_headshot.jpg?raw=true">
+        <div class="student_name">
+          <b>Amber Chou</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/amber_fun.jpeg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Amber Chou</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Amber, class of 2024, is a four-year senior from Bozeman, Montana. On campus, she lives in Whitney. Amber has taken several computer science courses at Phillips Academy, including AP Computer Science, Machine Learning, Discrete Mathematics, Computer Science Research and Development, and most recently, Applied Term Project in Computer Science. In her free time, Amber enjoys watching films, rock climbing, and going to Boston with her friends. 
                 </p>
               </div>
             </div>
@@ -244,21 +222,21 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Peter Elliott</b>
-          </div>
+        <img class = "student_image" src="../public/peter_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Peter Elliott</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/peter_fun.jpeg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Peter Elliott</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Hi! I’m Peter, a four-year senior from Wallingford, Connecticut. On campus, I live in Bishop Hall, where I serve as a dorm proctor. I’m a captain on the Boys’ Varsity Lacrosse team and a member of the Boys’ Varsity Soccer team, and I serve as a community engagement coordinator for Andover’s ARC program. In my free time, I enjoy spending time with friends, backpacking, skiing, and completing New York Times crosswords!
                 </p>
               </div>
             </div>
@@ -266,10 +244,10 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Magnus Julin</b>
-          </div>
+        <div class="student_image_placeholder"></div>
+        <div class="student_name">
+          <b>Magnus Julin</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
@@ -288,21 +266,22 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Leticia (Tisha) Nhaule</b>
-          </div>
+        <img class = "student_image" src="../public/Tisha_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Leticia (Tisha) Nhaule</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/Tisha_fun.jpeg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Leticia (Tisha) Nhaule</b></h2>
                 <p class="info__text">
-                  [sample bio]
+                  Hi y’all! I’m Tisha, a two-year Upper from Maputo, Mozambique. On campus, I prefect in Paul Revere House, tutor at the Writing Center and head the International Club (iClub) and African Student Association (ASA). In my free time, I love watching African dramas and I just picked up dancing as a hobby. So far, I have taken Intro to Python, Web Dev, Object-oriented Programming in Java and the Term Contained Project within the Andover CS program.
+
                 </p>
               </div>
             </div>
@@ -310,21 +289,21 @@
       </div>
       
       <div class="student_profile">
-        <div class="student_image"></div>
-          <div class="student_name">
-            <b>Karen Wang</b>
-          </div>
+        <img class = "student_image" src="../public/karen_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Karen Wang</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="../public/karen_fun.jpeg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Karen Wang</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Karen, class of 2024, is a four-year senior from Andover, MA. On campus, she plays violin in the school orchestras and was the Executive Digital Editor of The Phillipian. Karen has taken a few computer science courses at Andover, such as Scientific Computing and Object-Oriented Programming in Java, and she has enjoyed learning various coding languages. In her free time, she enjoys baking, playing piano, and grabbing a meal with her friends downtown.
                 </p>
               </div>
             </div>
