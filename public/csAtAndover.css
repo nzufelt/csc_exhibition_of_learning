@@ -83,7 +83,7 @@ h1, button{
   border-left: solid darkgrey;
 }
 
-.throughline button { 
+.skill button { 
   height: 100%;
   font-family: 'Sintony', sans-serif;
   font-size: 17px;
@@ -110,10 +110,10 @@ h1, button{
 
 .hidden_text p {
   font-family: "Sintony", sans-serif;
-  padding: .5em 4em 1em 3em;
 }
 
 .skill_description {
+  padding: .5em 4em 1em 3em;
   color: hsl(var(--color-light));
 }
 
@@ -129,25 +129,16 @@ h1, button{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: flex-start;
+  margin-bottom: 5%;
 }
 
-.courses_left_column {
-  background-color: hsl(var(--color-blue));
+.courses_column {
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 5px;
   width: 32em;
-  margin: 2em;
-}
-
-.courses_right_column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 5px;
-  width: 32em;
-  margin: 2em;
 }
 
 .course_group {
@@ -155,50 +146,41 @@ h1, button{
   border-radius: 5px;
   padding: 1em;
   text-align: left;
+  background-color: hsl(var(--color-blue));
+  color: hsl(var(--color-light));
 }
 
 .course_group h3 {
   font-size: 24px;
   font-family: "Prociono", serif;
 }
+
+.prerequisites {
+  padding: 0.2em 0em;
+}
+
 .course_group p {
   font-family: 'Sintony', sans-serif;
   font-size: 15px;
-
-}
-.intro_courses {
-  background-color: white;
-}
-
-.intermediate_courses {
-  background-color: white;
-}
-
-.advanced_courses {
-
-}
-
-.research_courses {
-
 }
 
 .course_description {
-  color: hsl(var(--color-dark));
   font-size: 14px;
+  padding: .5em 2em 1em 1em;
 }
 
 .course_list {
   list-style-type: none;
-  margin-left: 1em;
+  margin-left: 0.5em;
 }
 
 .course_list li{
   font-family: 'Sintony', sans-serif;
   font-size: 17px;
-  align-self: left;
-  margin: 0.1em;
+  padding: 0.3em;
+  text-align: left;
+  color: hsl(var(--color-light));
 }
-
 
 /* adjusting display for smaller viewing screen */
 @media(max-width: 800px){
