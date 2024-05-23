@@ -62,9 +62,11 @@ const createCourse = async(course_number, course_name, course_description, cours
 }
 
 // IN PROGRESS
-const editCourse = async() => {
+const editCourse = async(course_id, course_number, course_name, course_description, course_level) => {
     console.log("creating course!")
-    await db('courses').insert({
+    await db('courses')
+    .where("course_id", course_id)
+    .update({
         course_number,
         course_name,
         course_description,
