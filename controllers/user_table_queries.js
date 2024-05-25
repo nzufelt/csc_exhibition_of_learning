@@ -31,6 +31,15 @@ const getStudentNames = async(req, res) => {
     }
 }
 
+const getUserByEmail = async(email) => {
+    try {
+        const user = await db.select("user_id").where("email", email).from("users");
+        return user;
+    } catch (error) {
+        return [];
+    }
+}
+
 //CRUD OPERATIONS
 const createUser = async(email, first_name, last_name, graduation_year, bio) => {
     await db('skills').insert({
@@ -65,5 +74,7 @@ const deleteUser = async(user_id) => {
 module.exports = {
     getAllUsers,
     getStudentNames,
-    getAllUsersJSON
+    getAllUsersJSON,
+    getUserByEmail,
+    createUser
 };

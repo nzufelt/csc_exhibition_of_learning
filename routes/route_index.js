@@ -28,7 +28,7 @@ module.exports = router;
 
 // test routers for submitting course information -------------
 router.get('/course-form', async function(req, res){
-    res.render("submit_course");
+    res.render("admin_creation_forms/create_course_form");
 });
 
 router.post('/submit-course', async function(req, res){
@@ -40,6 +40,53 @@ router.post('/submit-course', async function(req, res){
     await courseController.createCourse(course_number, course_name, course_description, course_level);
 
     res.send("Course Submitted Successfully!" + course_number + course_name + course_description + course_level);
+});
+// --------------------------
+
+// test routers for editing course information -------------
+router.get('/edit-course-form', async function(req, res){
+    // PULL THE DATA OR RECEIVE THE DATA HERE (this will likely be subheader in another form so it's all good)
+    const exampleData = {
+        course_id : "101",
+        course_number : "CSC501",
+        course_name : "Machine Learning",
+        course_description : "In this course ...",
+        course_level : "Advanced"
+    }
+    res.render("admin_edit_forms/edit_course_form", 
+    {
+        course : exampleData
+    });
+});
+
+// IN PROGRESS WILL BE FIXED
+router.post('/edit-course', async function(req, res){
+    const course_number = req.body.course_number;
+    const course_name = req.body.course_name;
+    const course_description = req.body.course_description;
+    const course_level = req.body.course_level;
+    const course_id = req.body.formIdentifier;
+
+    // INSTEAD OF CREATING EDIT HERE PLEASE
+    //await courseController.createCourse(course_number, course_name, course_description, course_level);
+
+    res.send("Course Submitted Successfully!" + course_id + course_number + course_name + course_description + course_level);
+});
+// --------------------------
+
+// test routers for submitting course information -------------
+router.get('/skill-form', async function(req, res){
+    res.render("admin_creation_forms/create_skill_form");
+});
+
+router.post('/submit-skill', async function(req, res){
+    const skill_name = req.body.skill_name;
+    const skill_description = req.body.skill_description;
+    const throughline = req.body.throughline;
+
+    await skillController.createSkill(skill_name, skill_description, throughline);
+
+    res.send("Skill Submitted Successfully! (" + skill_name + skill_description + throughline + ")");
 });
 // --------------------------
 

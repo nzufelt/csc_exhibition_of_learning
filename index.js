@@ -1,6 +1,8 @@
 const express = require('express');
 var app = express();
 
+const middleware = require('./middleware');
+
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -42,7 +44,7 @@ app.use(session({
 app.use(passport.session())
 
 // transfer this all to route_index later!!
-const middleware = require('middleware');
+
 
 app.post("/api/upload", upload.single('file'), async (req, res) => {
     EoLs = await handler.parseData(req.file.buffer);
