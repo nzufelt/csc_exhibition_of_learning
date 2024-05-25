@@ -40,9 +40,22 @@ const getUserByEmail = async(email) => {
     }
 }
 
+const getBioById = async(user_id) => {
+    try {
+        const bio = await db
+        .select("bio")
+        .where("user_id", user_id)
+        .from("users");
+    } catch (error) {
+        return [];
+    }
+}
+
 //CRUD OPERATIONS
 const createUser = async(email, first_name, last_name, graduation_year, bio) => {
-    await db('skills').insert({
+    await db('skills')
+    .returning('*')
+    .insert({
         email,
         first_name,
         last_name,
@@ -76,5 +89,8 @@ module.exports = {
     getStudentNames,
     getAllUsersJSON,
     getUserByEmail,
-    createUser
+    createUser,
+    editUser,
+    deleteUser,
+    getBioById
 };

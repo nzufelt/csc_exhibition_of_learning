@@ -213,7 +213,9 @@ const getTagDisplay = async(search_parameters) => {
 
 //CRUD OPERATIONS
 const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, description, video_html_code) => {
-    await db('classes').insert({
+    await db('exhibitions')
+    .returning("*")
+    .insert({
         user_id_ref,
         class_id_ref,
         display_on_home_page,
@@ -247,5 +249,8 @@ module.exports = {
     getExhibitionsHomePage,
     getExhibitionsHomePageJSON,
     getExhibitionsSearchResults,
-    getTagDisplay
+    getTagDisplay,
+    createExhibition,
+    editExhibition,
+    deleteExhibition
 };

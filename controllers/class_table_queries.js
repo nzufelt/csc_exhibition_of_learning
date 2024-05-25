@@ -24,6 +24,21 @@ const getAcademicYears = async(req, res) => {
     }
 }
 
+const getClassId = async(course_id, admin_id, academic_year, term) => {
+    try {
+        const courses = await db.select("*")
+        .from("classes")
+        .where("course_id", course_id)
+        .where("admin_id", admin_id)
+        .where("academic_year", academic_year)
+        .where("term", term)
+        
+        return courses;
+    } catch (error) {
+        return [];
+    }
+}
+
 //CRUD OPERATIONS
 const createClass = async(course_id_ref, admin_id_ref, academic_year, term) => {
     await db('classes').insert({
@@ -55,5 +70,6 @@ const deleteClass = async(class_id) => {
 
 module.exports = {
     getAllClasses,
-    getAcademicYears
+    getAcademicYears,
+    getClassId
 };

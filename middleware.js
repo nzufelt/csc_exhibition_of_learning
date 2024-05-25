@@ -1,6 +1,8 @@
 const exhibitionController = require('./controllers/exhibition_table_queries');
+const exhibitionSkillPairController = require('./controllers/exhibitionSkillPairs_table_queries');
 const userController = require('./controllers/user_table_queries');
 const skillController = require('./controllers/skill_table_queries');
+const classController = require('./controllers/class_table_queries');
 const courseController = require('./controllers/course_table_queries');
 const adminController = require('./controllers/admin_table_queries');
 
@@ -35,40 +37,66 @@ const getParametersSearchPage = async(students, teachers, skills, courses, year,
    return search_parameters;
 }
 
+// NOTE TO SELF I THINK EVERYTHING IN THIS FUNCTION NEEDS TO BE ERROR-CHECKED
 const transferEoLsToDatabase = async(EoLs) => {
   for (const eol of EoLs) {
-    //make/update user
-    // make exhibition
-    user_id_ref_array =  await userController.findUserByEmail(eol.Email);
+    // UPDATE/CREATE USER
+    user_id_ref_array =  await userController.getUserByEmail(eol.Email);
+
+    const user_id = 0;
 
     if (user_id_ref_array.length > 0) {
-      const user_id = user_id_ref[0]
-    } else {
-      // make user
-
-      bio = ""
+      // EDIT USER
+      const user_id = user_id_ref[0];
       if (eol.bio_query) {
-        const bio = eol.student_bio
+        bio = eol.student_bio;
+      } else {
+        bio_array = await userController.getBioById(user_id);
+        bio = bio_array[0];
       }
-      await userController.createUser(eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
+      await userController.editUser(user_id, eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
+    } else {
+      // MAKE USER
+      const bio = ""
+      if (eol.bio_query) {
+        bio = eol.student_bio
+      }
+      user = await userController.createUser(eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
+      user_id = user.user_id;
     }
 
-    //const user_id_ref = 
-    //const class_id_ref = 
-    const display_on_home_page = eol.homepage_query;
-    const description = eol.description;
-    const video_html_code = eol.embed_code;
+    // GET COURSE 
+    // unwrap course name/number string
+    const course_number_name = eol.course;
+    const course_number_name_array = course_number_name.split("-");
+    // clean array
+    const course_number_name_array_cleaned = course_number_name_array.map(term => term.replace(/\s+(?=\b)|\b\s+/g, ''));
+    // get course id
+    const course_id_array = await courseController.getCourseIdFromCourseNumberName(course_number_name_array_cleaned[0], course_number_name_array_cleaned[1]);
+    const course_id = course_id_array[0];
 
-    const user_info = []
-    const exhibition_skill_pairs = []
-    //const admin_info = []
-    
+    // GET ADMIN 
+    const admin_id_array = await adminController.GetAdminByEmail(eol.Email);
+    const admin_id = admin_id_array[0];
 
-    // make exhibition skill pairs
+    // GET/CREATE ClASS
+    const class_id_array = await classController.getClassId(course_id, admin_id, eol.academic_year, eol.term);
+    const class_id = class_id_array[0];
 
-    // second: make classes/users that don't exist yet
-    console.log(eol);
-  });
+    // MAKE EXHIBITION
+
+    const exhibition = await exhibitionController.createExhibition(user_id, class_id, eol.homepage_query, eol.description, eol.video_html_code);
+    exhibition_id = exhibition.exhibition_id;
+
+    // MAKE EXHIBITION_SKILL PAIRS
+    skill_name_1 = eol.skill1.replace(/\s+(?=\b)|\b\s+/g, '');
+    skill_id_1 = await skillController.getIdFromName(eol.skill1);
+    await exhibitionSkillPairController.createExhibitionSkillPair(exhibition_id, skill_id_1);
+
+    skill_name_2 = eol.skill1.replace(/\s+(?=\b)|\b\s+/g, '');
+    skill_id_2 = await skillController.getIdFromName(eol.skill2);
+    await exhibitionSkillPairController.createExhibitionSkillPair(exhibition_id, skill_id_2);
+  };
 }
 
 module.exports = {

@@ -51,6 +51,21 @@ const getCourseIdFromCourseName = async(req, res) => {
 }
 // ---------
 
+const getCourseIdFromCourseNumberName = async(course_number, course_name) => {
+
+    try {
+        const courses = await db
+        .select("course_id")
+        .from("courses")
+        .where("course_name", course_name)
+        .where("course_number", course_number);
+
+        return courses;
+    } catch (error) {
+        return [];
+    }
+}
+
 //CRUD OPERATIONS
 const createCourse = async(course_number, course_name, course_description, course_level) => {
     console.log("creating course!")
@@ -88,5 +103,6 @@ module.exports = {
     getAllCoursesJSON,
     createCourse,
     editCourse,
-    deleteCourse
+    deleteCourse,
+    getCourseIdFromCourseNumberName
 };

@@ -26,3 +26,9 @@ const deleteExhibitionSkillPair = async(exhibition_id_ref_original, skill_id_ref
     .where("skill_id_ref", skill_id_ref_original)
     .del();
 }
+
+module.exports = {
+    createExhibitionSkillPair,
+    editExhibitionSkillPair,
+    deleteExhibitionSkillPair
+};
