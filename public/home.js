@@ -61,6 +61,7 @@ function generateYearTagsAll() {
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
+  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -96,11 +97,11 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('skill')){
-    skills.push(tagText)
+    skills.push(tagIdentifier)
   }
   
   if (tag.classList.contains('course')){
-    courses.push(tagText)
+    courses.push(tagIdentifier)
   }
   
   if (tag.classList.contains('level')){
