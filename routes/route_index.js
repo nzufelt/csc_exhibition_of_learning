@@ -47,7 +47,7 @@ router.post('/submit-course', async function(req, res){
 router.get('/edit-course-form', async function(req, res){
     // PULL THE DATA OR RECEIVE THE DATA HERE (this will likely be subheader in another form so it's all good)
     const exampleData = {
-        course_id : "101",
+        course_id : "10001",
         course_number : "CSC501",
         course_name : "Machine Learning",
         course_description : "In this course ...",
@@ -65,10 +65,9 @@ router.post('/edit-course', async function(req, res){
     const course_name = req.body.course_name;
     const course_description = req.body.course_description;
     const course_level = req.body.course_level;
-    const course_id = req.body.formIdentifier;
+    const course_id = req.body.course_id;
 
-    // INSTEAD OF CREATING EDIT HERE PLEASE
-    //await courseController.createCourse(course_number, course_name, course_description, course_level);
+    await courseController.editCourse(course_id, course_number, course_name, course_description, course_level);
 
     res.send("Course Submitted Successfully!" + course_id + course_number + course_name + course_description + course_level);
 });

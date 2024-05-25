@@ -86,5 +86,7 @@ module.exports = {
     getUniqueCourseNames,
     getCourseIdFromCourseName,
     getAllCoursesJSON,
-    createCourse
+    createCourse,
+    editCourse,
+    deleteCourse
 };

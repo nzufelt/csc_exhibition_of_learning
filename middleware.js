@@ -36,10 +36,10 @@ const getParametersSearchPage = async(students, teachers, skills, courses, year,
 }
 
 const transferEoLsToDatabase = async(EoLs) => {
-  EoLs.forEach(eol => {
+  for (const eol of EoLs) {
     //make/update user
     // make exhibition
-    user_id_ref_array =  userController.findUserByEmail(eol.Email); //await
+    user_id_ref_array =  await userController.findUserByEmail(eol.Email);
 
     if (user_id_ref_array.length > 0) {
       const user_id = user_id_ref[0]
@@ -50,7 +50,7 @@ const transferEoLsToDatabase = async(EoLs) => {
       if (eol.bio_query) {
         const bio = eol.student_bio
       }
-       userController.createUser(eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio); //await
+      await userController.createUser(eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
     }
 
     //const user_id_ref = 

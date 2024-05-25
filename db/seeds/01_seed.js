@@ -5,6 +5,7 @@ exports.seed = async function(knex) {
   await knex('users').del()
   await knex('admins').del()
   await knex('courses').del()
+  await knex('classes').del()
   await knex('exhibitions').del()
   await knex('skills').del()
   await knex('exhibitionSkillPairs').del()
@@ -22,7 +23,7 @@ exports.seed = async function(knex) {
 
   await knex('courses').insert([
     {course_id: 10001, course_number: "CSC573", course_name: 'Project-Based Term of CS', course_description: "In this class ... ", course_level:'Advanced'},
-    {course_id: 10002, course_number: "CSC401", course_name: 'Web Dev', course_description: "In this class ... ", course_level:'Advanced'},
+    {course_id: 10002, course_number: "CSC402", course_name: 'Web Dev', course_description: "In this class ... ", course_level:'Advanced'},
   ]);
 
   await knex('classes').insert([
