@@ -127,7 +127,7 @@ that growth here.
           skills.forEach(function(skill) {
             %>
               <button 
-                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                class="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill"
                 data-identifier="<%= skill.skill_id %>"
                 >
                 <%-skill.skill_name%>
@@ -200,14 +200,14 @@ that growth here.
           <div class="video">
           <div class="video_thumbnail"><%-exhibition.video_html_code%>
           </div>
-          <div class="video_tags">
-            <div class="course_info">
+          <div class="video_tag_group">
+            <div class="video_tag course_tag">
               <%=exhibition.course_number%>: <%=exhibition.course_name%>
             </div>
             <%
               exhibition.skills.forEach(function(skill) {
                 %>
-                <div class="skill_tag <%=skill.throughline%>_video">
+                <div class="video_tag <%=String(skill.throughline).toLowerCase().replaceAll(' ', '_')%>_video">
                   <%=skill%>
                 </div>
                 <%
