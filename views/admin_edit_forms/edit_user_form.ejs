@@ -1,0 +1,27 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>EDIT USER</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  </head>
+
+<body>
+    <form action="/submit-skill" method="post" data-identifier="<%= skill.skill_id %>">
+        <div class="form-group">
+            <label for="skill_name">Skill Name:</label>
+            <input type="text" id="skill_name" name="skill_name" value="<%= skill.skill_name %>" required>
+        </div>
+        <div class="form-group">
+            <label for="skill_description">Skill Description:</label>
+            <textarea id="skill_description" name="skill_description" rows = "6" required><%= skill.skill_description%></textarea>
+        </div>
+        <div class="form-group">
+            <label for="throughline">Throughline:</label>
+            <input type="text" id="throughline" name="throughline" value="<%= skill.skill_throughline %>" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
