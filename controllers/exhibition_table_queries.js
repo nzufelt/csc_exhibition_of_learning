@@ -213,7 +213,7 @@ const getTagDisplay = async(search_parameters) => {
 
 //CRUD OPERATIONS
 const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, description, video_html_code) => {
-    await db('exhibitions')
+    const exhibition = await db('exhibitions')
     .returning("*")
     .insert({
         user_id_ref,
@@ -222,6 +222,8 @@ const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, 
         description,
         video_html_code
     });
+
+    return exhibition;
 }
 
 // IN PROGRESS

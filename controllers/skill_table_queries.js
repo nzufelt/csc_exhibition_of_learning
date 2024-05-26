@@ -63,6 +63,7 @@ const deleteSkill = async(skill_id) => {
 module.exports = {
     getAllSkills,
     getAllSkillsJSON,
+    getIdFromName,
     createSkill,
     editSkill,
     deleteSkill

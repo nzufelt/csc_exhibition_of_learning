@@ -45,8 +45,8 @@ exports.seed = async function(knex) {
 
   await knex('skills').insert([
     {skill_id: 101, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
-    {skill_id: 102, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Writing Code"},
-  ]);
+    {skill_id: 102, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Working With Code"},
+  ]); 
   
   await knex('exhibitionSkillPairs').insert([
     {exhibition_id_ref: 1001, skill_id_ref: 101},

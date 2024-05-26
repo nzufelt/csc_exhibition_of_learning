@@ -41,60 +41,85 @@ const getParametersSearchPage = async(students, teachers, skills, courses, year,
 const transferEoLsToDatabase = async(EoLs) => {
   for (const eol of EoLs) {
     // UPDATE/CREATE USER
-    user_id_ref_array =  await userController.getUserByEmail(eol.Email);
+    // if user already exists, get (from unique email identifier)
+    user_ref_array =  await userController.getUserByEmail(eol.Email);
 
-    const user_id = 0;
+    user_id = 0; 
 
-    if (user_id_ref_array.length > 0) {
+    if (user_ref_array.length > 0) {
       // EDIT USER
-      const user_id = user_id_ref[0];
+      user_id = user_ref_array[0].user_id; // returns the first JSON object
+
+      // update bio if necessary
       if (eol.bio_query) {
         bio = eol.student_bio;
+        await userController.editUser(user_id, eol.Email, eol.first_Name, eol.last_Name, parseInt(eol.graduation_year), bio);
       } else {
-        bio_array = await userController.getBioById(user_id);
-        bio = bio_array[0];
+        await userController.editUserNoBio(user_id, eol.Email, eol.first_Name, eol.last_Name, parseInt(eol.graduation_year));
+        // edit user without bio
       }
-      await userController.editUser(user_id, eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
     } else {
       // MAKE USER
-      const bio = ""
+      bio = ""
       if (eol.bio_query) {
         bio = eol.student_bio
       }
       user = await userController.createUser(eol.Email, eol.first_Name, eol.last_Name, eol.graduation_year, bio);
-      user_id = user.user_id;
+      user_id = user[0].user_id;
     }
 
     // GET COURSE 
     // unwrap course name/number string
-    const course_number_name = eol.course;
-    const course_number_name_array = course_number_name.split("-");
+    course_number_name = eol.course;
+    course_number_name_array = course_number_name.split("-");
     // clean array
-    const course_number_name_array_cleaned = course_number_name_array.map(term => term.replace(/\s+(?=\b)|\b\s+/g, ''));
+    course_number_name_array_cleaned = course_number_name_array.map(term => term.trim());
+
     // get course id
-    const course_id_array = await courseController.getCourseIdFromCourseNumberName(course_number_name_array_cleaned[0], course_number_name_array_cleaned[1]);
-    const course_id = course_id_array[0];
+    course_array = await courseController.getCourseIdFromCourseNumberName(course_number_name_array_cleaned[0], course_number_name_array_cleaned[1]);
+    course_id = course_array[0].course_id;
 
     // GET ADMIN 
-    const admin_id_array = await adminController.GetAdminByEmail(eol.Email);
-    const admin_id = admin_id_array[0];
+    admin_array = await adminController.GetAdminByEmail(eol.teacher_email); // TEACHER EMAIL CHANGE
+    admin_id = admin_array[0].admin_id;
 
-    // GET/CREATE ClASS
-    const class_id_array = await classController.getClassId(course_id, admin_id, eol.academic_year, eol.term);
-    const class_id = class_id_array[0];
+    // GET/CREATE CLASS
+    // turn term into number
+    const term_string = eol.term;
+    term_number = 0;
+    if (term_string == "Fall"){
+      term_number = 0
+    } else if (term_string == "Winter"){
+      term_number = 1
+    } else if (term_string == "Spring"){
+      term_number = 2
+    }
+
+    class_array = await classController.getClassId(course_id, admin_id, parseInt(eol.academic_year), term_number);
+
+    if (class_array.length > 0) {
+      // set class
+      class_id = class_array[0].class_id;
+    } else {
+      // make class
+      class_obj = await classController.createClass(course_id, admin_id, parseInt(eol.academic_year), term_number);
+      class_id = class_obj[0].class_id;
+    }
 
     // MAKE EXHIBITION
-
-    const exhibition = await exhibitionController.createExhibition(user_id, class_id, eol.homepage_query, eol.description, eol.video_html_code);
-    exhibition_id = exhibition.exhibition_id;
+    exhibition = await exhibitionController.createExhibition(user_id, class_id, eol.homepage_query, eol.description, eol.embed_code);
+    exhibition_id = exhibition[0].exhibition_id;
 
     // MAKE EXHIBITION_SKILL PAIRS
-    skill_name_1 = eol.skill1.replace(/\s+(?=\b)|\b\s+/g, '');
-    skill_id_1 = await skillController.getIdFromName(eol.skill1);
+    skill_name_1 = eol.skill1.trim();
+    skill_1 = await skillController.getIdFromName(skill_name_1);
+    skill_id_1 = skill_1[0].skill_id;
     await exhibitionSkillPairController.createExhibitionSkillPair(exhibition_id, skill_id_1);
 
-    skill_name_2 = eol.skill1.replace(/\s+(?=\b)|\b\s+/g, '');
-    skill_id_2 = await skillController.getIdFromName(eol.skill2);
+
+    skill_name_2 = eol.skill1.trim();
+    skill_2 = await skillController.getIdFromName(skill_name_2);
+    skill_id_2 = skill_2[0].skill_id;
     await exhibitionSkillPairController.createExhibitionSkillPair(exhibition_id, skill_id_2);
   };
 }

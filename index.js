@@ -47,7 +47,10 @@ app.use(passport.session())
 //the api call for uploading files
 app.post("/api/upload", upload.single('file'), async (req, res) => {
     //calls the handler function, which parses the uploaded file and returns a json or -99 as an error
+    
     EoLs = await handler.parseData(req.file.buffer);
+    
+
     //checks for an error in parsing the file 
     if (EoLs != -99) {
         await middleware.transferEoLsToDatabase(EoLs);

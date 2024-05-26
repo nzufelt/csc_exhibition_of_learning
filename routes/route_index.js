@@ -26,6 +26,38 @@ const router = express.Router();
 
 module.exports = router;
 
+// FOR TESTING OF EOL TO DATABASE PROCESS
+router.get("/testing", async(req, res) => {
+     EoLs = [
+         {
+             Email: 'tmarnoto24@andover.edu',
+             first_Name: 'Tristan',
+             last_Name: 'Marnoto',
+             graduation_year: '2024',
+             course: 'CSC402 - Web Dev ',
+             description: 'My EoL talks about the two skills that I have learned in Game Development, both Writing Code and Speaking in Translations. In this course, rather than having step-by-step instructions on how to code, we got much more experience with developed code. Watching videos, doing code alongs, and using ChatGPT to explain code, all contributed towards my learning.',
+             bio_query: false,
+             student_bio: 'My name is Tristan Marnoto, and I have never had any experience with computer science or coding before this course. I signed up for this course because I was hoping to get a taste of computer science before college. While at the beginning I struggled to understand code and oftentimes found writing code impossible, I have become much more confident as the term has progressed. I would certainly recommend a course such as this one to anyone interested in computer science!',
+             skill1: 'Refactoring Code ',
+             skill2: 'Speaking in Translations ',
+             embed_code: '<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_6ms5mb1m&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_go8h4eia" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Tristan Marnoto Exhibition of Learning"></iframe>',
+             homepage_query: true,
+             teacher_email: 'nzufelt@andover.edu',
+             academic_year: 2024,
+             term: 'Spring',
+         }
+     ]
+     
+     if (EoLs != -99) {
+         await middleware.transferEoLsToDatabase(EoLs);
+ 
+         // don't redirect but maybe display something like a "everything submitted" popup?
+         res.send(EoLs);
+     } else {
+         console.log("uploading did not work");
+     }
+ })
+
 router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();

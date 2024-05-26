@@ -41,12 +41,16 @@ const getClassId = async(course_id, admin_id, academic_year, term) => {
 
 //CRUD OPERATIONS
 const createClass = async(course_id_ref, admin_id_ref, academic_year, term) => {
-    await db('classes').insert({
+    const class_obj = await db('classes')
+    .returning("*")
+    .insert({
         course_id_ref,
         admin_id_ref,
         academic_year,
         term
     });
+
+    return class_obj;
 }
 
 // IN PROGRESS
@@ -71,5 +75,8 @@ const deleteClass = async(class_id) => {
 module.exports = {
     getAllClasses,
     getAcademicYears,
-    getClassId
+    getClassId,
+    createClass,
+    editClass,
+    deleteClass
 };

@@ -53,7 +53,7 @@ const getBioById = async(user_id) => {
 
 //CRUD OPERATIONS
 const createUser = async(email, first_name, last_name, graduation_year, bio) => {
-    await db('skills')
+    const user = await db('users')
     .returning('*')
     .insert({
         email,
@@ -62,6 +62,8 @@ const createUser = async(email, first_name, last_name, graduation_year, bio) => 
         graduation_year,
         bio
     });
+
+    return user;
 }
 
 // IN PROGRESS 
@@ -74,6 +76,17 @@ const editUser = async(user_id, email, first_name, last_name, graduation_year, b
         last_name,
         graduation_year,
         bio
+    });
+}
+
+const editUserNoBio = async(user_id, email, first_name, last_name, graduation_year) => {
+    await db('users')
+    .where("user_id", user_id)
+    .update({
+        email,
+        first_name,
+        last_name,
+        graduation_year
     });
 }
 
@@ -91,6 +104,7 @@ module.exports = {
     getUserByEmail,
     createUser,
     editUser,
+    editUserNoBio,
     deleteUser,
     getBioById
 };
