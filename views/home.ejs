@@ -207,7 +207,7 @@ that growth here.
             <%
               exhibition.skills.forEach(function(skill) {
                 %>
-                <div class="<%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                <div class="skill_tag <%=skill.throughline%>_video">
                   <%=skill%>
                 </div>
                 <%
