@@ -17,8 +17,8 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('admins').insert([
-    {admin_id: 103, email: 'nzufelt@andover.edu', password: "password", name: "Nick Zufelt", bio: "I love to teach..."},
-    {admin_id: 104, email: 'mclarke@andover.edu', password: "password", name: "Mrs. Clarke", bio: "I love to teach..."},
+    {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2a$12$VvnJbkxgor1ktfpHvQD0g.k6bKAh7ZTZOoQky1k9TggsgxVo9ahIi", name: "Nick Zufelt", bio: "I love to teach..."},
+    {admin_id: 104, email: 'mclarke@andover.edu', password: "$2a$12$VvnJbkxgor1ktfpHvQD0g.k6bKAh7ZTZOoQky1k9TggsgxVo9ahIi", name: "Mrs. Clarke", bio: "I love to teach..."},
   ]);
 
   await knex('courses').insert([
