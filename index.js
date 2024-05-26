@@ -2,7 +2,6 @@ const express = require('express');
 var app = express();
 
 const middleware = require('./middleware');
-
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -20,7 +19,9 @@ const session = require('express-session')
 
 const handler = require('./handler/handler');
 
+//multer is the npm package responsible for taking files from the user
 const multer = require("multer");
+//assigns the upload location for files to memory for the purposes of security
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -43,12 +44,11 @@ app.use(session({
 //manages session data
 app.use(passport.session())
 
-// transfer this all to route_index later!!
-
-
+//the api call for uploading files
 app.post("/api/upload", upload.single('file'), async (req, res) => {
+    //calls the handler function, which parses the uploaded file and returns a json or -99 as an error
     EoLs = await handler.parseData(req.file.buffer);
-
+    //checks for an error in parsing the file 
     if (EoLs != -99) {
         await middleware.transferEoLsToDatabase(EoLs);
 
@@ -57,7 +57,6 @@ app.post("/api/upload", upload.single('file'), async (req, res) => {
     } else {
         console.log("uploading did not work");
     }
-    console.log(EoLs);
 })
 
 app.listen(process.env.PORT || 3000, () => console.log('server listening'));
