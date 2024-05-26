@@ -273,7 +273,8 @@ function displayArrays() {
 
 function handleButtonClick() {
   // create url based on search parameters
-  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel)
+  //example search for reference: search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
+  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel) + "&years=" + JSON.stringify(years) + "&students=" + JSON.stringify(students) + "&teachers=" + JSON.stringify(teachers)
 
   // redirect to new url
   window.location.href = url_string; 
