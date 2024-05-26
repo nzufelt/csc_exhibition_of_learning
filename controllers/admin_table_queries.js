@@ -45,6 +45,36 @@ const GetAdminById = async(id) => {
     }
 }
 
+//CRUD OPERATIONS
+const createAdmin = async(email, password, name, bio) => {
+    console.log("creating admin!")
+    await db('admins').insert({
+        email,
+        password,
+        name,
+        bio
+    });
+}
+
+// IN PROGRESS
+const editAdmin = async(admin_id, email, password, name, bio) => {
+    await db('admins')
+    .where("admin_id", admin_id)
+    .update({
+        email, 
+        password, 
+        name, 
+        bio
+    });
+}
+
+// IN PROGRESS
+const deleteAdmin = async(admin_id) => {
+    await db('admins')
+    .where("admin_id", admin_id)
+    .del();
+}
+
 module.exports = {
     getAllAdmins,
     GetAdminByEmail,

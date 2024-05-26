@@ -3,8 +3,6 @@ let years = [];
 let skills = [];
 let courseLevel=[];
 let courses = [];
-let teachers = [];
-let students = [];
 
 function toggleTagPopUp(tag_panel) {
     // hide all pop-ups
@@ -63,6 +61,7 @@ function generateYearTagsAll() {
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
+  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -75,7 +74,6 @@ function insertTagIntoTagBox(tag) {
   const tagButton = document.createElement('button');
   tagButton.textContent = tagText;
   tagButton.classList.add('tag');
-  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that original tag has specific classes, add them to the new tag button
   if (tag.classList.contains('human_communication')) {
@@ -110,14 +108,6 @@ function insertTagIntoTagBox(tag) {
     courseLevel.push(tagText)
   }
   
-  if (tag.classList.contains('teacher')){
-    teachers.push(tagIdentifier)
-  }
-  
-  if (tag.classList.contains('student')){
-    student.push(tagIdentifier)
-  }
-  
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
   this.remove();
@@ -136,14 +126,6 @@ function insertTagIntoTagBox(tag) {
     
    if (tag.classList.contains('level')){
      courseLevel.splice(courseLevel.indexOf(tagText), 1);
-   }
-    
-   if (tag.classList.contains('teacher')){
-     teachers.splice(courseLevel.indexOf(tagText), 1);
-   }
-   
-   if (tag.classList.contains('student')){
-     students.splice(courseLevel.indexOf(tagText), 1);
    }
   
   displayArrays();
@@ -263,26 +245,4 @@ function displayArrays() {
   
   // Display course levels
   document.getElementById("courseLevels").textContent = JSON.stringify(courseLevel);
-  
-  // Display teachers
-  document.getElementById("teachers").textContent = JSON.stringify(teachers);
-  
-  // Display students
-  document.getElementById("students").textContent = JSON.stringify(students);
 }
-
-function handleButtonClick() {
-  // create url based on search parameters
-  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel)
-
-  // redirect to new url
-  window.location.href = url_string; 
-}
-
-// handle clicking search button
-document.addEventListener('DOMContentLoaded', function() {
-  const button = document.querySelector('#submit');
-  if (button) {
-      button.onclick = handleButtonClick;
-  }
-});

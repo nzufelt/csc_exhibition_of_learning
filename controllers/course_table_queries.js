@@ -51,6 +51,22 @@ const getCourseIdFromCourseName = async(req, res) => {
 }
 // ---------
 
+const getCourseIdFromCourseNumberName = async(course_number, course_name) => {
+
+    try {
+        const courses = await db
+        .select("course_id")
+        .from("courses")
+        .where("course_name", course_name)
+        .where("course_number", course_number);
+
+        return courses;
+    } catch (error) {
+        return [];
+    }
+}
+
+//CRUD OPERATIONS
 const createCourse = async(course_number, course_name, course_description, course_level) => {
     console.log("creating course!")
     await db('courses').insert({
@@ -63,7 +79,6 @@ const createCourse = async(course_number, course_name, course_description, cours
 
 // IN PROGRESS
 const editCourse = async(course_id, course_number, course_name, course_description, course_level) => {
-    console.log("creating course!")
     await db('courses')
     .where("course_id", course_id)
     .update({
@@ -74,10 +89,20 @@ const editCourse = async(course_id, course_number, course_name, course_descripti
     });
 }
 
+// IN PROGRESS
+const deleteCourse = async(course_id) => {
+    await db('courses')
+    .where("course_id", course_id)
+    .del();
+}
+
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,
     getCourseIdFromCourseName,
     getAllCoursesJSON,
-    createCourse
+    createCourse,
+    editCourse,
+    deleteCourse,
+    getCourseIdFromCourseNumberName
 };

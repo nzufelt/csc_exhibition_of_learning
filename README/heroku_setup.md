@@ -16,7 +16,7 @@
     3. Submit Order Form (it will take some time for the order to take effect)
 ![Postgress Order Form](Images/heroku_setup/postgres_order_form.png)
 
-## Initialize Configuration Variables UPDATE THIS IN THE FUTURE 
+## Initialize Configuration Variables
 1. Set up Configuration Variables
     1. Go to "Settings" header
     2. Check that DATABASE_URL config var exists
@@ -24,7 +24,6 @@
     3. Add new config vars
         1. DB_PRODUCTION = production
         2. SESSION_SECRET = secret
-        3. UPDATE THIS IN THE FUTURE
 ![Final Config Vars](Images/heroku_setup/final_config_vars.png)
 
 ## Migrate Database to Heroku

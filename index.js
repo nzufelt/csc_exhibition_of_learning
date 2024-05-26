@@ -1,5 +1,7 @@
 const express = require('express');
 var app = express();
+
+const middleware = require('./middleware');
 const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -46,9 +48,11 @@ app.use(passport.session())
 app.post("/api/upload", upload.single('file'), async (req, res) => {
     //calls the handler function, which parses the uploaded file and returns a json or -99 as an error
     EoLs = await handler.parseData(req.file.buffer);
-    
     //checks for an error in parsing the file 
     if (EoLs != -99) {
+        await middleware.transferEoLsToDatabase(EoLs);
+
+        // don't redirect but maybe display something like a "everything submitted" popup?
         res.send(EoLs);
     } else {
         console.log("error thrown");
