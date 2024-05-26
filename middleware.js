@@ -100,5 +100,6 @@ const transferEoLsToDatabase = async(EoLs) => {
 }
 
 module.exports = {
-    getParametersSearchPage,
+  getParametersSearchPage,
+  transferEoLsToDatabase
 }

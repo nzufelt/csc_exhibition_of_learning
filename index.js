@@ -54,9 +54,8 @@ app.post("/api/upload", upload.single('file'), async (req, res) => {
 
         // don't redirect but maybe display something like a "everything submitted" popup?
         res.send(EoLs);
-        console.log("wrong thingy");
     } else {
-        console.log("error thrown");
+        console.log("uploading did not work");
     }
     console.log(EoLs);
 })
