@@ -344,3 +344,40 @@ body{
   font-family: "Sintony", sans-serif;
   color: hsl(var(--color-blue-dark));
 }
+
+.video_tag {
+  margin: 3px;
+  color: hsl(var(--color-light));
+  border: none;
+  border-radius: 10px;
+  font-family: "Sintony", sans-serif;
+  font-size: 12px;
+  padding: .5rem;
+  width: auto;
+  display: inline-block;
+}
+
+.course_tag {
+  background-color: hsl(var(--color-blue));
+}
+
+.working_with_code_video {
+  background-color: hsl(var(--color-purple))
+}
+
+.human_communication_video {
+  background-color: hsl(var(--color-green))
+}
+
+.research_and_design_video {
+  background-color: hsl(var(--color-red))
+}
+
+.asking_questions_video {
+  background-color: hsl(var(--color-yellow))
+}
+
+.working_with_systems_video {
+  background-color: hsl(var(--color-pink))
+}
+

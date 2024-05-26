@@ -205,13 +205,13 @@ that growth here.
               <%=exhibition.course_number%>: <%=exhibition.course_name%>
             </div>
             <%
-              exhibition.skills.forEach(function(skill) {
+              for (i=0; i < exhibition.skills.length; i++) {
                 %>
-                <div class="video_tag <%=String(skill.throughline).toLowerCase().replaceAll(' ', '_')%>_video">
-                  <%=skill%>
+                <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                  <%=exhibition.skills[i]%>
                 </div>
                 <%
-              })
+              }
             %>
           </div>
           <div class="video_text">

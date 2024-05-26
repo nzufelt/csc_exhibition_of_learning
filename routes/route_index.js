@@ -95,6 +95,7 @@ router.get('/', async function(req, res){
     courses = await courseController.getAllCoursesJSON();
     students = await userController.getAllUsersJSON();
     teachers = await adminController.getAllAdminsJSON();
+    console.log(exhibitions)
 
     res.render("home", 
        {exhibitions,
