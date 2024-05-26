@@ -115,7 +115,7 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('student')){
-    student.push(tagIdentifier)
+    students.push(tagIdentifier)
   }
   
   // remove the tag when the button is clicked
@@ -139,11 +139,11 @@ function insertTagIntoTagBox(tag) {
    }
     
    if (tag.classList.contains('teacher')){
-     teachers.splice(courseLevel.indexOf(tagIdentifier), 1);
+     teachers.splice(teachers.indexOf(tagIdentifier), 1);
    }
    
    if (tag.classList.contains('student')){
-     students.splice(courseLevel.indexOf(tagIdentifier), 1);
+     students.splice(students.indexOf(tagIdentifier), 1);
    }
   
   displayArrays();
