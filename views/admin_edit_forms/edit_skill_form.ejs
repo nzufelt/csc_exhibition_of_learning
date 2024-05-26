@@ -7,7 +7,7 @@
   </head>
 
 <body>
-    <form action="/submit-skill" method="post" data-identifier="<%= skill.skill_id %>">
+    <form action="/edit-skill" method="post">
         <div class="form-group">
             <label for="skill_name">Skill Name:</label>
             <input type="text" id="skill_name" name="skill_name" value="<%= skill.skill_name %>" required>
@@ -18,7 +18,10 @@
         </div>
         <div class="form-group">
             <label for="throughline">Throughline:</label>
-            <input type="text" id="throughline" name="throughline" value="<%= skill.skill_throughline %>" required>
+            <input type="text" id="throughline" name="throughline" value="<%= skill.throughline %>" required>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="skill_id" value="<%= skill.skill_id %>" required>
         </div>
         <div class="form-group">
             <input type="submit" value="Submit">

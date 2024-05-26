@@ -26,69 +26,6 @@ const router = express.Router();
 
 module.exports = router;
 
-// test routers for submitting course information -------------
-router.get('/course-form', async function(req, res){
-    res.render("admin_creation_forms/create_course_form");
-});
-
-router.post('/submit-course', async function(req, res){
-    const course_number = req.body.course_number;
-    const course_name = req.body.course_name;
-    const course_description = req.body.course_description;
-    const course_level = req.body.course_level;
-
-    await courseController.createCourse(course_number, course_name, course_description, course_level);
-
-    res.send("Course Submitted Successfully!" + course_number + course_name + course_description + course_level);
-});
-// --------------------------
-
-// test routers for editing course information -------------
-router.get('/edit-course-form', async function(req, res){
-    // PULL THE DATA OR RECEIVE THE DATA HERE (this will likely be subheader in another form so it's all good)
-    const exampleData = {
-        course_id : "10001",
-        course_number : "CSC501",
-        course_name : "Machine Learning",
-        course_description : "In this course ...",
-        course_level : "Advanced"
-    }
-    res.render("admin_edit_forms/edit_course_form", 
-    {
-        course : exampleData
-    });
-});
-
-// IN PROGRESS WILL BE FIXED
-router.post('/edit-course', async function(req, res){
-    const course_number = req.body.course_number;
-    const course_name = req.body.course_name;
-    const course_description = req.body.course_description;
-    const course_level = req.body.course_level;
-    const course_id = req.body.course_id;
-
-    await courseController.editCourse(course_id, course_number, course_name, course_description, course_level);
-
-    res.send("Course Submitted Successfully!" + course_id + course_number + course_name + course_description + course_level);
-});
-// --------------------------
-
-// test routers for submitting course information -------------
-router.get('/skill-form', async function(req, res){
-    res.render("admin_creation_forms/create_skill_form");
-});
-
-router.post('/submit-skill', async function(req, res){
-    const skill_name = req.body.skill_name;
-    const skill_description = req.body.skill_description;
-    const throughline = req.body.throughline;
-
-    await skillController.createSkill(skill_name, skill_description, throughline);
-
-    res.send("Skill Submitted Successfully! (" + skill_name + skill_description + throughline + ")");
-});
-// --------------------------
-
 router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();
@@ -148,4 +85,96 @@ router.get("/admin-home", checkAuthentication.checkAuthenticated, function (req,
 
 router.get('/health', async(req, res) => {
     res.send("hello world!");
+});
+
+// POSTs FOR ADMIN CREATING/EDITING
+
+// CREATING ------
+
+// COURSES
+router.get('/course-form', async function(req, res){
+    res.render("admin_creation_forms/create_course_form");
+});
+
+router.post('/submit-course', async function(req, res){
+    const course_number = req.body.course_number;
+    const course_name = req.body.course_name;
+    const course_description = req.body.course_description;
+    const course_level = req.body.course_level;
+
+    await courseController.createCourse(course_number, course_name, course_description, course_level);
+
+    res.send("Course Submitted Successfully!" + course_number + course_name + course_description + course_level);
+});
+
+// SKILLS
+router.get('/skill-form', async function(req, res){
+    res.render("admin_creation_forms/create_skill_form");
+});
+
+router.post('/submit-skill', async function(req, res){
+    const skill_name = req.body.skill_name;
+    const skill_description = req.body.skill_description;
+    const throughline = req.body.throughline;
+
+    await skillController.createSkill(skill_name, skill_description, throughline);
+
+    res.send("Skill Submitted Successfully! (" + skill_name + skill_description + throughline + ")");
+});
+// ----------------
+
+// EDITING --------------
+// COURSES
+router.get('/edit-course-form', async function(req, res){
+    // PULL THE DATA OR RECEIVE THE DATA HERE (this will likely be subheader in another form so it's all good)
+    const exampleData = {
+        course_id : "10001",
+        course_number : "CSC501",
+        course_name : "Machine Learning",
+        course_description : "In this course ...",
+        course_level : "Advanced"
+    }
+    res.render("admin_edit_forms/edit_course_form", 
+    {
+        course : exampleData
+    });
+});
+
+router.post('/edit-course', async function(req, res){
+    const course_number = req.body.course_number;
+    const course_name = req.body.course_name;
+    const course_description = req.body.course_description;
+    const course_level = req.body.course_level;
+    const course_id = req.body.course_id;
+
+    await courseController.editCourse(course_id, course_number, course_name, course_description, course_level);
+
+    res.send("Course Edited Successfully!" + course_id + course_number + course_name + course_description + course_level);
+});
+
+// SKILLS
+router.get('/edit-skill-form', async function(req, res){
+    const exampleData = {
+        skill_id : "102",
+        skill_name : "Refactoring Code",
+        skill_description : "This skill ...",
+        throughline : "Working With Code"
+    }
+
+    res.render("admin_edit_forms/edit_skill_form", {
+        skill : exampleData
+    });
+});
+
+router.post('/edit-skill', async function(req, res){
+    const skill_id = req.body.skill_id;
+    const skill_name = req.body.skill_name;
+    const skill_description = req.body.skill_description;
+    const throughline = req.body.throughline;
+
+    console.log(skill_id + skill_name + skill_description + throughline)
+
+    await skillController.editSkill(skill_id, skill_name, skill_description, throughline);
+
+    res.send("Skill Edited Successfully! (" + skill_id + skill_name + skill_description + throughline + ")");
 });
