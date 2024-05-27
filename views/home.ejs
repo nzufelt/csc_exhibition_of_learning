@@ -3,16 +3,13 @@
   <title>Andover Exhibition of Learning</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="home.js"></script>
+  <script src="popup.js"></script>
   <link rel="stylesheet" href="home.css"/>
+  <link rel="stylesheet" href="popup.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sintony:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Caslon+Display&family=Prociono&family=Quicksand:wght@300..700&family=Sintony:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    .home {
-      font-weight: bold;
-    }
-  </style>
 </head>
 
 <%- include('nav') %> 
@@ -26,6 +23,7 @@
 <div>Students: <span id="students"></span></div>
 
 <body>
+<div class="overlay"></div>
 
 <div class="intro_section" id="intro_image">
   <div class="intro_content">
@@ -231,6 +229,49 @@ that growth here.
                 <%
               }%>
               <%= exhibition.academic_year%> 
+            </div>
+          </div>
+          <button class ="details" onclick="openPopup(this)"><u>Details...</u></button>
+          <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class = "expanded_video">
+                <div class="video_thumbnail"><iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_rexqzqzr&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_0rati2sc" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Peter Elliott EoL TEST"></iframe>
+                </div>
+                <div class="video_tag_group">
+                  <div class="video_tag course_tag">
+                    <%=exhibition.course_number%>: <%=exhibition.course_name%>
+                  </div>
+                  <%
+                    for (i=0; i < exhibition.skills.length; i++) {
+                   %>
+                      <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                        <%=exhibition.skills[i]%>
+                      </div>
+                  <% } %>
+              </div>  
+              <div class="expanded_info">
+                <h2 class="popup_student_name"><b><%= exhibition.first_name %> <%= exhibition.last_name %></b></h2>
+                <h3 class="popup_upload_date">
+                  <% if (exhibition.term == 1) {
+                    %>
+                    Fall Term, 
+                    <%
+                  } else if (exhibition.term == 2) {
+                    %>
+                    Winter Term, 
+                    <%
+                  } else if (exhibition.term == 3) {
+                    %>
+                    Spring Term, 
+                    <%
+                  }%>
+                  <%= exhibition.academic_year%> 
+                </h3>
+                <p class="video_description">
+                  <%= exhibition.video_description%> 
+                </p>
+              </div>
             </div>
           </div>
         </div>
