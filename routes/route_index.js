@@ -170,7 +170,6 @@ router.get('/create-admin-form', async function(req, res){
 });
 
 router.post('/create-admin', async function(req, res){
-    const admin_id = req.body.admin_id;
     const email = req.body.email;
     const password_unencrypted = req.body.password;
     const password_encrypted = await bcrypt.hash(password_unencrypted, 10);
