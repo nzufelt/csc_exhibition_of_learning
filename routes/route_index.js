@@ -272,8 +272,9 @@ router.post('/edit-skill', async function(req, res){
 
 // ADMINS
 router.get('/edit-admin-form', async function(req, res){
-    const exampleData = {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2a$12$VvnJbkxgor1ktfpHvQD0g.k6bKAh7ZTZOoQky1k9TggsgxVo9ahIi", name: "Nick Zufelt", bio: "I love to teach..."}
 
+    const exampleData = {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2a$12$VvnJbkxgor1ktfpHvQD0g.k6bKAh7ZTZOoQky1k9TggsgxVo9ahIi", name: "Nick Zufelt", bio: "I love to teach..."}
+    
     res.render("admin_edit_forms/edit_admin_form", {
         admin : exampleData
     });
@@ -282,13 +283,14 @@ router.get('/edit-admin-form', async function(req, res){
 router.post('/edit-admin', async function(req, res){
     const admin_id = req.body.admin_id;
     const email = req.body.email;
-    const password = req.body.password; // UPDATE THIS FOR ENCRYPTION
+    const password_unencrypted = req.body.password;
+    const password_encrypted = await bcrypt.hash(password_unencrypted, 10);
     const name = req.body.name;
     const bio = req.body.bio;
 
-    await adminController.editAdmin(admin_id, email, password, name, bio);
+    await adminController.editAdmin(admin_id, email, password_encrypted, name, bio);
 
-    res.send("Admin Edited Successfully!", admin_id, email, password, name, bio);
+    res.send("Admin Edited Successfully!", admin_id, email, password_encrypted, name, bio);
 });
 
 // EXHIBTIONS
