@@ -1,0 +1,35 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>EDIT USER</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  </head>
+
+<body>
+    <form action="/edit-admin" method="post">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="<%= admin.email %>" required>
+        </div>
+        <div class="form-group">
+            <label for="first_name">Password:</label>
+            <!-- WILL HAVE TO UNENCRYPT PASSWORD HERE MAYBE? -->
+            <input type="text" id="password" name="password" value="<%= admin.password %>" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="<%= admin.name %>" required>
+        </div>
+        <div class="form-group">
+            <label for="bio">Bio:</label>
+            <textarea id="bio" name="bio" rows = "6" required><%= admin.bio%></textarea>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="admin_id" value="<%= admin.admin_id %>" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>

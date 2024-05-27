@@ -24,7 +24,59 @@ const getAcademicYears = async(req, res) => {
     }
 }
 
+const getClassId = async(course_id, admin_id, academic_year, term) => {
+    try {
+        const courses = await db.select("*")
+        .from("classes")
+        .where("course_id", course_id)
+        .where("admin_id", admin_id)
+        .where("academic_year", academic_year)
+        .where("term", term)
+        
+        return courses;
+    } catch (error) {
+        return [];
+    }
+}
+
+//CRUD OPERATIONS
+const createClass = async(course_id_ref, admin_id_ref, academic_year, term) => {
+    const class_obj = await db('classes')
+    .returning("*")
+    .insert({
+        course_id_ref,
+        admin_id_ref,
+        academic_year,
+        term
+    });
+
+    return class_obj;
+}
+
+// IN PROGRESS
+const editClass = async(class_id, course_id_ref, admin_id_ref, academic_year, term) => {
+    await db('classes')
+    .where("class_id", class_id)
+    .update({
+        course_id_ref,
+        admin_id_ref,
+        academic_year,
+        term
+    });
+}
+
+// IN PROGRESS
+const deleteClass = async(class_id) => {
+    await db('classes')
+    .where("class_id", class_id)
+    .del();
+}
+
 module.exports = {
     getAllClasses,
-    getAcademicYears
+    getAcademicYears,
+    getClassId,
+    createClass,
+    editClass,
+    deleteClass
 };

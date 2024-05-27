@@ -1,0 +1,78 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>EDIT EXHIBITION</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  </head>
+
+<body>
+    <form action="/edit-exhibition" method="post">
+        <div class="form-group">
+            <label for="email">NEED TO ADD skills, course?:</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Course:</label>
+            <input list="course" name="course">
+            <datalist id="course">
+                <%
+                courses.forEach(course => {
+                    %>
+                    <option value="<%= course.course_number %>: <%= course.course_name %>">
+                    <%
+                })
+                %>
+            </datalist>
+        </div>
+        
+        <!--SOMEHOW NEED TO GET ID FROM THIS -->
+        <div class="form-group">
+            <label for="skill_1">Skill 1:</label>
+            <input list="skill_1" name="skill_1">
+            <datalist id="skill_1">
+                <%
+                skills.forEach(skill => {
+                    %>
+                    <option value="<%= skill.skill_name %>">
+                    <%
+                })
+                %>
+            </datalist>
+        </div>
+
+        <div class="form-group">
+            <label for="skill_2">Skill 2:</label>
+            <input list="skill_2" name="skill_2">
+            <datalist id="skill_2">
+                <%
+                skills.forEach(skill => {
+                    %>
+                    <option value="<%= skill.skill_name %>">
+                    <%
+                })
+                %>
+            </datalist>
+        </div>
+
+        <div class="form-group">
+            <label for="display_on_home_page">Display on Home Page? &#40;please enter 'true' or 'false'&#41;</label>
+            <input type="text" id="display_on_home_page" name="display_on_home_page" value="<%= exhibition.display_on_home_page %>" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Video Description:</label>
+            <textarea id="description" name="description" rows = "6" required><%= exhibition.description%></textarea>
+        </div>
+        <div class="form-group">
+            <label for="video_html_code">Video HTML Embed Code:</label>
+            <textarea id="video_html_code" name="video_html_code" rows = "6" required><%= exhibition.video_html_code%></textarea>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="exhibition_id" value="<%= exhibition.exhibition_id %>" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>

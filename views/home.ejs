@@ -85,7 +85,7 @@ that growth here.
             %>
               <button 
                 class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
-                data-identifier="<%= skill.skill_id %>"
+                data-identifier="<%= skill.skill_id %>" 
                 >
                 <%-skill.skill_name%>
                 </button>
@@ -127,7 +127,7 @@ that growth here.
           skills.forEach(function(skill) {
             %>
               <button 
-                class="tag <%= skill.throughline.toString().toLowerCase().replaceAll(' ', '_')%> skill"
+                class="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill"
                 data-identifier="<%= skill.skill_id %>"
                 >
                 <%-skill.skill_name%>
@@ -181,14 +181,13 @@ that growth here.
 
       </div>
 
-      <div class="tag_box">
-        <!-- Content for tag_box -->
+      <div class="outer_tag_box">
+        <div class="tag_box">
+        </div>
+        <button class="submit_button" id="submit">Submit</button> 
       </div>
+
     </div>
-
-    <!-- SUBMIT BUTTON -->
-    <button class="submit-button" id="submit">Submit</button>
-
   </div>
         
 <!--   video section -->
@@ -201,13 +200,18 @@ that growth here.
           <div class="video">
           <div class="video_thumbnail"><%-exhibition.video_html_code%>
           </div>
-          <div class="video_tags"><%=exhibition.course_number%>: <%=exhibition.course_name%>
+          <div class="video_tag_group">
+            <div class="video_tag course_tag">
+              <%=exhibition.course_number%>: <%=exhibition.course_name%>
+            </div>
             <%
-              exhibition.skills.forEach(function(skill) {
+              for (i=0; i < exhibition.skills.length; i++) {
                 %>
-                | <%=skill%>
+                <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                  <%=exhibition.skills[i]%>
+                </div>
                 <%
-              })
+              }
             %>
           </div>
           <div class="video_text">

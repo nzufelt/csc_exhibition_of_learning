@@ -211,10 +211,48 @@ const getTagDisplay = async(search_parameters) => {
 
 }
 
+//CRUD OPERATIONS
+const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, description, video_html_code) => {
+    const exhibition = await db('exhibitions')
+    .returning("*")
+    .insert({
+        user_id_ref,
+        class_id_ref,
+        display_on_home_page,
+        description,
+        video_html_code
+    });
+
+    return exhibition;
+}
+
+// IN PROGRESS
+const editExhibition = async(exhibition_id, class_id, course_id_ref, admin_id_ref, academic_year, term) => {
+    await db('exhibitions')
+    .where("exhibition_id", exhibition_id)
+    .update({
+        user_id_ref,
+        class_id_ref,
+        display_on_home_page,
+        description,
+        video_html_code
+    });
+}
+
+// IN PROGRESS
+const deleteExhibition = async(exhibition_id) => {
+    await db('exhibitions')
+    .where("exhibition_id", exhibition_id)
+    .del();
+}
+
 module.exports = {
     getAllExhibitions,
     getExhibitionsHomePage,
     getExhibitionsHomePageJSON,
     getExhibitionsSearchResults,
-    getTagDisplay
+    getTagDisplay,
+    createExhibition,
+    editExhibition,
+    deleteExhibition
 };

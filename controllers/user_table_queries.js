@@ -31,8 +31,80 @@ const getStudentNames = async(req, res) => {
     }
 }
 
+const getUserByEmail = async(email) => {
+    try {
+        const user = await db.select("user_id").where("email", email).from("users");
+        return user;
+    } catch (error) {
+        return [];
+    }
+}
+
+const getBioById = async(user_id) => {
+    try {
+        const bio = await db
+        .select("bio")
+        .where("user_id", user_id)
+        .from("users");
+    } catch (error) {
+        return [];
+    }
+}
+
+//CRUD OPERATIONS
+const createUser = async(email, first_name, last_name, graduation_year, bio) => {
+    const user = await db('users')
+    .returning('*')
+    .insert({
+        email,
+        first_name,
+        last_name,
+        graduation_year,
+        bio
+    });
+
+    return user;
+}
+
+// IN PROGRESS 
+const editUser = async(user_id, email, first_name, last_name, graduation_year, bio) => {
+    await db('users')
+    .where("user_id", user_id)
+    .update({
+        email,
+        first_name,
+        last_name,
+        graduation_year,
+        bio
+    });
+}
+
+const editUserNoBio = async(user_id, email, first_name, last_name, graduation_year) => {
+    await db('users')
+    .where("user_id", user_id)
+    .update({
+        email,
+        first_name,
+        last_name,
+        graduation_year
+    });
+}
+
+// IN PROGRESS
+const deleteUser = async(user_id) => {
+    await db('users')
+    .where("user_id", user_id)
+    .del();
+}
+
 module.exports = {
     getAllUsers,
     getStudentNames,
-    getAllUsersJSON
+    getAllUsersJSON,
+    getUserByEmail,
+    createUser,
+    editUser,
+    editUserNoBio,
+    deleteUser,
+    getBioById
 };

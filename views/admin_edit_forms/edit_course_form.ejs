@@ -1,0 +1,34 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>CREATE NEW COURSE</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  </head>
+
+<body>
+    <form action="/edit-course" method="post">
+        <div class="form-group">
+            <label for="course_number">Course Number:</label>
+            <input type="text" id="course_number" name="course_number" value="<%= course.course_number %>" required>
+        </div>
+        <div class="form-group">
+            <label for="course_name">Course Name:</label>
+            <input type="text" id="course_name" name="course_name" value="<%= course.course_name %>" required>
+        </div>
+        <div class="form-group">
+            <label for="course_description">Course Description:</label>
+            <textarea id="course_description" name="course_description" rows="6" required><%= course.course_description %></textarea>
+        </div>
+        <div class="form-group">
+            <label for="course_level">Course Level:</label>
+            <input type="text" id="course_level" name="course_level" value="<%= course.course_level %>" required>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="course_id" value="<%= course.course_id %>" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>

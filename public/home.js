@@ -63,6 +63,7 @@ function generateYearTagsAll() {
 function insertTagIntoTagBox(tag) {
   const tagBox = document.querySelector('.tag_box');
   const tagText = tag.textContent.trim(); // tag text content and remove whitespace
+  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that tag is in the tag_box
   const existingTags = tagBox.querySelectorAll('.tag');
@@ -75,7 +76,6 @@ function insertTagIntoTagBox(tag) {
   const tagButton = document.createElement('button');
   tagButton.textContent = tagText;
   tagButton.classList.add('tag');
-  const tagIdentifier = tag.dataset.identifier; // get identifying data associated with tag | IMPORTANT PLEASE DO NOT OVERWRITE
 
   // check that original tag has specific classes, add them to the new tag button
   if (tag.classList.contains('human_communication')) {
@@ -95,7 +95,7 @@ function insertTagIntoTagBox(tag) {
   
   // add tag to appropriate tag array
   if (tag.classList.contains('year')){
-    years.push(tagText)
+    years.push(parseInt(tagText.substr(0,4)))
   }
   
   if (tag.classList.contains('skill')){
@@ -115,23 +115,23 @@ function insertTagIntoTagBox(tag) {
   }
   
   if (tag.classList.contains('student')){
-    student.push(tagIdentifier)
+    students.push(tagIdentifier)
   }
   
   // remove the tag when the button is clicked
   tagButton.addEventListener('click', function() {
   this.remove();
    if (tag.classList.contains('year')){
-     years.splice(years.indexOf(tagText), 1);
+     years.splice(years.indexOf(parseInt(tagText.substr(0,4))));
    }
    
    // remove tag from appropriate tag array
    if (tag.classList.contains('skill')){
-     skills.splice(skills.indexOf(tagText), 1);
+     skills.splice(skills.indexOf(tagIdentifier), 1);
    }
     
    if (tag.classList.contains('course')){
-     courses.splice(courses.indexOf(tagText), 1);
+     courses.splice(courses.indexOf(tagIdentifier), 1);
    }
     
    if (tag.classList.contains('level')){
@@ -139,11 +139,11 @@ function insertTagIntoTagBox(tag) {
    }
     
    if (tag.classList.contains('teacher')){
-     teachers.splice(courseLevel.indexOf(tagText), 1);
+     teachers.splice(teachers.indexOf(tagIdentifier), 1);
    }
    
    if (tag.classList.contains('student')){
-     students.splice(courseLevel.indexOf(tagText), 1);
+     students.splice(students.indexOf(tagIdentifier), 1);
    }
   
   displayArrays();
@@ -273,7 +273,8 @@ function displayArrays() {
 
 function handleButtonClick() {
   // create url based on search parameters
-  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel)
+  //example search for reference: search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
+  url_string = "/search?skills=" + JSON.stringify(skills) + "&courses=" + JSON.stringify(courses) + "&levels=" + JSON.stringify(courseLevel) + "&years=" + JSON.stringify(years) + "&students=" + JSON.stringify(students) + "&teachers=" + JSON.stringify(teachers)
 
   // redirect to new url
   window.location.href = url_string; 
