@@ -79,5 +79,8 @@ module.exports = {
     getAllAdmins,
     GetAdminByEmail,
     GetAdminById,
-    getAllAdminsJSON
+    getAllAdminsJSON,
+    createAdmin,
+    editAdmin,
+    deleteAdmin
 };

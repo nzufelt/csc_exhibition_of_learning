@@ -7,18 +7,29 @@
   </head>
 
 <body>
-    <form action="/submit-skill" method="post" data-identifier="<%= skill.skill_id %>">
+    <form action="/edit-user" method="post">
         <div class="form-group">
-            <label for="skill_name">Skill Name:</label>
-            <input type="text" id="skill_name" name="skill_name" value="<%= skill.skill_name %>" required>
+            <label for="email">Student Email:</label>
+            <input type="text" id="email" name="email" value="<%= user.email %>" required>
         </div>
         <div class="form-group">
-            <label for="skill_description">Skill Description:</label>
-            <textarea id="skill_description" name="skill_description" rows = "6" required><%= skill.skill_description%></textarea>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="<%= user.first_name %>" required>
         </div>
         <div class="form-group">
-            <label for="throughline">Throughline:</label>
-            <input type="text" id="throughline" name="throughline" value="<%= skill.skill_throughline %>" required>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="<%= user.last_name %>" required>
+        </div>
+        <div class="form-group">
+            <label for="graduation_year">Graduation Year:</label>
+            <input type="text" id="graduation_year" name="graduation_year" value="<%= user.graduation_year %>" required>
+        </div>
+        <div class="form-group">
+            <label for="bio">Student Bio:</label>
+            <textarea id="bio" name="bio" rows = "6" required><%= user.bio%></textarea>
+        </div>
+        <div class="form-group">
+            <input type="hidden" name="user_id" value="<%= user.user_id %>" required>
         </div>
         <div class="form-group">
             <input type="submit" value="Submit">
