@@ -12,14 +12,47 @@
             <label for="email">NEED TO ADD skills, course?:</label>
             <input type="text" id="email" name="email" required>
         </div>
+
+        <div class="form-group">
+            <label for="course">Course:</label>
+            <input list="course" name="course">
+            <datalist id="course">
+                <%
+                courses.forEach(course => {
+                    %>
+                    <option value="<%= course.course_number %>: <%= course.course_name %>">
+                    <%
+                })
+                %>
+            </datalist>
+        </div>
         
+        <!--SOMEHOW NEED TO GET ID FROM THIS -->
         <div class="form-group">
             <label for="skill_1">Skill 1:</label>
             <input list="skill_1" name="skill_1">
             <datalist id="skill_1">
-                skills.forEach(skill) {
+                <%
+                skills.forEach(skill => {
+                    %>
                     <option value="<%= skill.skill_name %>">
-                }
+                    <%
+                })
+                %>
+            </datalist>
+        </div>
+
+        <div class="form-group">
+            <label for="skill_2">Skill 2:</label>
+            <input list="skill_2" name="skill_2">
+            <datalist id="skill_2">
+                <%
+                skills.forEach(skill => {
+                    %>
+                    <option value="<%= skill.skill_name %>">
+                    <%
+                })
+                %>
             </datalist>
         </div>
 
