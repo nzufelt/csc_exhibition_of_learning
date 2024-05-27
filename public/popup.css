@@ -41,7 +41,6 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  font-family: "Prociono", sans-serif;
 }
 
 /* close button within popup*/
@@ -86,6 +85,7 @@ to display the popup and the overlay*/
 
 .info__name{
   margin: .5rem 0;
+  font-family: "Prociono", sans-serif;
 }
 
 .info__text{
@@ -93,3 +93,17 @@ to display the popup and the overlay*/
   font-family: "Sintony", sans-serif;
 }
 
+.popup_student_name {
+  margin: .5rem 0;
+  font-family: "Prociono", sans-serif;
+}
+
+.popup_upload_date {
+   margin: .5rem 0;
+  font-family: "Prociono", sans-serif;
+}
+
+.video_description {
+  margin: .5rem 0;
+  font-family: "Sintony", sans-serif;
+}
