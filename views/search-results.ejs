@@ -2,13 +2,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <title>EoL Search Results</title>
-  <link rel="stylesheet" href="search-results.css">
-  <link rel="stylesheet" href="style.css">
-  <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="search-results.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 
-<%- include('nav') %>
+<%- include('nav-clean') %>
 
 <body>
   <!--
@@ -17,68 +17,72 @@
     <button>Presentable View</button>
   </div>
   -->
-  
-  <div class="tag-description">
+
+  <div class="descriptions">
+    <div class="tag-description">
+    <h2 class="tag-description__title">Exhibitions of Learning</h2>
 
     <% if (tag_display.length > 0) {
       tag_display.forEach(function(tag) {
         %>
-        <h2 class="tag-description__title"><%-tag.tag_name%></h2>
-        <p class="tag-description__info"><%-tag.tag_description%></p>
+          <h2 class="tag-description__title"><%-tag.tag_name%></h2>
+          <p class="tag-description__info"><%-tag.tag_description%></p>
+
         <%
       })
-    } else {
+    }
     %>
-    <h2 class="tag-description__title">Exhibitions of Learning</h2>
-    <%
-    } 
-    %>
+  </div>
+
+    <p class="tag-descriptions__note">
+      Please visit the <a class="link" href="/cs-at-andover">Cs@Andover</a> page to learn more about tags.
+    </p>
+    
   </div>
   
   <!--   video section -->
-  <div class="highlights">
-    <h1 class = "highlights_text">Recent Exhibition of Learning</h1>
-      <div class="video_highlights">
-        <% if (exhibitions.length > 0) {
-          exhibitions.forEach(function(exhibition) {
-            %>
-            <div class="video">
-            <div class="video_thumbnail"><%-exhibition.video_html_code%>
-            </div>
-            <div class="video_tags"><%=exhibition.course_number%>: <%=exhibition.course_name%>
-              <%
-                exhibition.skills.forEach(function(skill) {
+  <div class="eols">
+    <% if (exhibitions.length > 0) {
+      exhibitions.forEach(function(exhibition) {
+        %>
+        <div class="exhibition">
+          <div class="exhibition__video"></div>
+            <%-exhibition.video_html_code%>
+          <div class="exhibition__tags">
+            <%
+                for (i=0; i < exhibition.skills.length; i++) {
                   %>
-                  | <%=skill%>
+                    <p class="exhibition__tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                      <%=exhibition.skills[i]%></p>
                   <%
-                })
+                }
               %>
-            </div>
-            <div class="video_text">
-              <div class="student_name"><%= exhibition.first_name %> <%= exhibition.last_name %></div>
-              <div class="upload_date">
-                <% if (exhibition.term == 1) {
-                  %>
-                  Fall Term, 
-                  <%
-                } else if (exhibition.term == 2) {
-                  %>
-                  Winter Term, 
-                  <%
-                } else if (exhibition.term == 3) {
-                  %>
-                  Spring Term, 
-                  <%
-                }%>
-                <%= exhibition.academic_year%> 
-              </div>
-            </div>
           </div>
-          <%
-        })
-      }
-      %>
-    </div>
+          <p class="exhibition__info"><%= exhibition.first_name %> <%= exhibition.last_name %>
+            <% if (exhibition.term == 1) {
+              %>
+              Fall Term, 
+              <%
+            } else if (exhibition.term == 2) {
+              %>
+              Winter Term, 
+              <%
+            } else if (exhibition.term == 3) {
+              %>
+              Spring Term, 
+              <%
+            }%>
+            <%= exhibition.academic_year%> 
+            </p>
+          <p class="exhibition__description">
+            <%= exhibition.description%> 
+          </p>
+        </div>
+      </div>
+      <%
+    })
+  }
+  %>
   </div>
 </body>
   

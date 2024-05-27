@@ -1,15 +1,13 @@
 body {
-  --border-radius: 5px;
+  --border-radius: 15px;
   
   margin: 5rem;
   height: 100vh;
   font-size: 18px;
 }
 
-.change-page{
-display: flex;
-justify-content: space-around;
-margin: 0 5rem;
+.link{
+color: hsl(var(--color-light));
 }
 
 button{
@@ -18,40 +16,59 @@ color: white;
 border: none;
 padding: 1rem 3rem;
 font-size: 18px;
-font-family: 'Open Sans', sans-serif;
+font-family: 'Sintony', sans-serif;
 border-radius: var(--border-radius);
 }
 
+.descriptions{
+background-color: hsl(var(--color-blue));
+padding: 1rem 0;
+padding-bottom: 3rem;
+}
+
 .tag-description{
-margin: 1rem;
+margin-top: 3rem;
+margin-left: 4rem;
+margin-right: 4rem;
+color: hsl(var(--color-light));
+
 }
 
 .tag-description__title{
 margin: 4rem 0 0 0;
-font-size: 36px;
-font-family: 'EB Garamond', sans-serif;
+font-size: 34px;
+font-family: 'Sintony', sans-serif;
 font-weight: bold;
 }
 
 .tag-description__info{
-font-size: 20px;
-font-family: 'EB Garamond', serif;
-margin: 1rem 0;
+font-size: 18px;
+font-family: 'Prociono', serif;
+margin: .5rem 0;
+line-height: 200%;
 }
 
-
-.eols__title{
-margin: 3rem 0;
-font-size: 48px;
-display: flex;
-justify-content: center;
-font-family: 'Open Sans', sans-serif;
+.tag-descriptions__note{
+font-size: 18px;
+font-family: 'Sintony', sans-serif;
+color: hsl(var(--color-light));
+margin: .5rem 0;
+line-height: 200%;
+margin-left: 4rem;
+margin-right: 4rem;
+margin-top: 2rem;
 }
 
-.exhibition__video{
-width: 400px;
-height: 285px;
-background-color: black;
+.eols{
+margin: 2rem;
+align-items: center;
+}
+
+.exhibition{
+display: block;
+width: 600px;
+margin: 2rem auto;
+padding: 1rem;
 }
 
 .exhibition__tags{
@@ -59,15 +76,46 @@ display: flex;
 }
 
 .exhibition__tag{
-margin: 1rem 1rem 0 0;
+margin: 1rem .5rem 0 0;
 border: solid;
 padding: .5rem;
 font-size: 16px;
 border-radius: var(--border-radius);
-font-family: 'EB Garamond', serif;
+font-family: 'Sintony', sans-serif;
+color: hsl(var(--color-light));
 }
 
 .exhibition__info{
-margin: .5rem 0;
-font-family: 'EB Garamond', serif;
+margin: 1rem 0;
+font-size: 18px;
+font-family: 'Prociono', serif;
+}
+
+.exhibition__description{
+font-family: 'Sintony', sans-serif;
+font-size: 16px;
+}
+
+.course_tag {
+background-color: hsl(var(--color-blue));
+}
+
+.working_with_code_video {
+background-color: hsl(var(--color-purple))
+}
+
+.human_communication_video {
+background-color: hsl(var(--color-green))
+}
+
+.research_and_design_video {
+background-color: hsl(var(--color-red))
+}
+
+.asking_questions_video {
+background-color: hsl(var(--color-orange))
+}
+
+.working_with_systems_video {
+background-color: hsl(var(--color-teal))
 }

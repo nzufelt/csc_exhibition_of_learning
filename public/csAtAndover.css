@@ -45,24 +45,28 @@ h1, button{
   margin: 0 auto;
 }
 
-.human_communication {
-  background-color: hsl(var(--color-green));
+.course_tag {
+  background-color: hsl(var(--color-blue));
 }
 
 .working_with_code {
-  background-color: hsl(var(--color-purple));
+  background-color: hsl(var(--color-purple))
+}
+
+.human_communication {
+  background-color: hsl(var(--color-green))
 }
 
 .research_and_design {
-  background-color: hsl(var(--color-red));
+  background-color: hsl(var(--color-red))
 }
 
-.asking_questions {
-  background-color: hsl(var(--color-yellow));
+.asking_questions{
+  background-color: hsl(var(--color-orange))
 }
 
 .working_with_systems {
-  background-color: hsl(var(--color-pink));
+  background-color: hsl(var(--color-teal))
 }
 
 .throughline_title {
