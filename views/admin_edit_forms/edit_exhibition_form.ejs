@@ -1,7 +1,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>EDIT USER</title>
+    <title>EDIT EXHIBITION</title>
     <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
   </head>
@@ -12,6 +12,17 @@
             <label for="email">NEED TO ADD skills, course?:</label>
             <input type="text" id="email" name="email" required>
         </div>
+        
+        <div class="form-group">
+            <label for="skill_1">Skill 1:</label>
+            <input list="skill_1" name="skill_1">
+            <datalist id="skill_1">
+                skills.forEach(skill) {
+                    <option value="<%= skill.skill_name %>">
+                }
+            </datalist>
+        </div>
+
         <div class="form-group">
             <label for="display_on_home_page">Display on Home Page? &#40;please enter 'true' or 'false'&#41;</label>
             <input type="text" id="display_on_home_page" name="display_on_home_page" value="<%= exhibition.display_on_home_page %>" required>
