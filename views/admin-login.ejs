@@ -11,6 +11,11 @@
   
   <body>
     <div class="container">
+
+      <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+
         <form class="form" id="login" action = '/admin-login' method = 'POST'>
             <h1 class="form__title">Login</h1>
             <div class="form__input-group">
@@ -20,9 +25,6 @@
                 <input type="password" id = "password" name = "password" class="form__input" autofocus placeholder="Password" required>
             </div>
             <button class="form__button" type="submit">Continue</button>
-            <p class="form__text">
-                <a href="#" class="form__link">Forgot your password?</a>
-            </p>
         </form>
     </div>
     
