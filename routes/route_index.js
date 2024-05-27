@@ -13,21 +13,21 @@ const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
 
 //for testing
-const users = []
-users.push({
-            admin_id: 103,
-            email: 'nzufelt@andover.edu',
-            name: "Nick Zufelt",
-            password: '$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu',
-            bio: "I love to teach..."
-            })
+// const users = []
+// users.push({
+//             admin_id: 103,
+//             email: 'nzufelt@andover.edu',
+//             name: "Nick Zufelt",
+//             password: '$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu',
+//             bio: "I love to teach..."
+//             })
 
 initializePassport(
     passport,
-    email => users.find(user => user.email === email),
-    admin_id => users.find(user => user.admin_id === admin_id)
-    // email => adminController.GetAdminByEmail(email),
-    // admin_id => adminController.GetAdminById(admin_id)
+    // email => users.find(user => user.email === email),
+    // admin_id => users.find(user => user.admin_id === admin_id)
+    email => adminController.GetAdminByEmail(email),
+    admin_id => adminController.GetAdminById(admin_id)
 )
 
 const middleware = require('../middleware')
