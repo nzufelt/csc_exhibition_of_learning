@@ -152,39 +152,38 @@ body{
   cursor: pointer;
 }
 
-.submit_button {
-  position: relative;
-  float: right;
-  width: 5em;
-  height: 5em;
-  top: -25%;
+.search_exhibition {
+  position: sticky;
+  top: 80%;
+  width: 4em;
+  height: 4em;
+  padding: 0;
   background-color: #00319C;
   color: white;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   font-family: "Sintony", sans-serif;
-  z-index: 100;
-  
-  margin-right: 1.7em;
 }
 
-.submit_button:hover {
-  background-color: #00247A;  
+.search_exhibition:hover {
+  background-color: #00247A;
 }
 
-.tag_box {
-  position: relative;
-  width: 100%;
-  background-color: #D9D9D9;
-  z-index: 5;
-  overflow-y: scroll;
-  height: 100%;
-}
-
-.outer_tag_box {
+.tag_box{
   width: 45%;
-  background-color: #D9D9D9;
+  background-color: hsl(var(--color-grey));
+  z-index: 5;
+  padding: .5em;
+  overflow-y: scroll;
+}
+
+.submit-button{
+  background-color: hsl(var(--color-blue));
+  color: hsl(var(--color-light));
+  padding: .5em;
+  font-family: "Sintony", sans-serif;
+  border-radius: 5px;
 }
 
 .tag {
@@ -212,11 +211,11 @@ body{
 }
 
 .tag.working_with_code {
-  background-color: hsl(var(--color-blue));
+  background-color: hsl(var(--color-purple));
 }
 
 .tag.working_with_code:hover {
-  background-color: hsl(var(--color-blue-dark));
+  background-color: hsl(var(--color-purple-dark));
 }
 
 .tag.research_and_design {
@@ -228,18 +227,18 @@ body{
 }
 
 .tag.working_with_systems {
-  background-color: hsl(var(--color-purple));
+  background-color: hsl(var(--color-teal));
 }
 
 .tag.working_with_systems:hover {
-  background-color: hsl(var(--color-purple-dark));
+  background-color: hsl(var(--color-teal-dark));
 }
 
 .tag.asking_questions {
-  background-color: hsl(var(--color-yellow));
+  background-color: hsl(var(--color-orange));
 }
 .tag.asking_questions:hover {
-  background-color: hsl(var(--color-yellow-dark));
+  background-color: hsl(var(--color-orange-dark));
 }
 
 #course_pop_up {
@@ -340,9 +339,7 @@ body{
 
 .video_text {
   align-self: start;
-  margin-bottom: 3%;
   font-family: "Sintony", sans-serif;
-  color: hsl(var(--color-blue-dark));
 }
 
 .video_tag {
@@ -374,10 +371,18 @@ body{
 }
 
 .asking_questions_video {
-  background-color: hsl(var(--color-yellow))
+  background-color: hsl(var(--color-orange))
 }
 
 .working_with_systems_video {
-  background-color: hsl(var(--color-pink))
+  background-color: hsl(var(--color-teal))
 }
 
+
+.details {
+  font-family: "Sintony", sans-serif;
+  color: hsl(var(--color-dark));
+  align-self: start;
+  margin: 0;
+  padding: 0;
+}
