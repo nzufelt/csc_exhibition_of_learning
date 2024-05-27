@@ -5,7 +5,8 @@ function initialize(passport, getUserByEmail, getUserById) {
     //async function that authenticates user
     const authenticateUser =  async (email, password, done) => {
         //return user by email
-        const user = await getUserByEmail(email)
+        const user_array = await getUserByEmail(email)
+        const user = user_array[0]
         console.log(user)
         if (user == null){
             //'done' is a callback function provided by Passport.js that takes three arguments:
