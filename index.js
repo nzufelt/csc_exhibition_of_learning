@@ -16,12 +16,15 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 
+//ensuring that all sensitive information is not accessible in a non-proudction environment
+if (process.env.NODE_ENV !== 'production'){
+    //dotenv is a module that loads environment variables from an .env file
+    require('dotenv').config()
+}
+
 app.use(express.urlencoded({extended: false}))
 //initializing passport and adding its middleware
 app.use(passport.initialize())
-
-const router = require("./routes/route_index.js");
-app.use(router);
 
 app.use(flash())
 app.use(session({
@@ -29,13 +32,15 @@ app.use(session({
     //asking if we should resave our session variables if nothing has changed
     resave: false,
     //asking if we want to save an empty value in the session if there is no value
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { secure: false }
  }))
 
 //manages session data
 app.use(passport.session())
 
-
+const router = require("./routes/route_index.js");
+app.use(router);
 // IN PROGRESS: Uploading, parsing, and saving excel files -----------
 
 // a lot of this will go into middleware!
