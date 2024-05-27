@@ -1,5 +1,5 @@
 // index file for website pages
-
+const passport = require('passport')
 const express = require('express');
 
 const exhibitionController = require('../controllers/exhibition_table_queries');
@@ -11,13 +11,23 @@ const adminController = require('../controllers/admin_table_queries');
 const bcrypt = require('bcrypt')
 const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
-const passport = require('passport')
 
-/* NEED TO CREATE FUNCTIONS: GetUserByEmail and GetUserById => CHANGED TO "GetAdminByEmail" AND "GetAdminById" */
+//for testing
+// const users = []
+// users.push({
+//             admin_id: 103,
+//             email: 'nzufelt@andover.edu',
+//             name: "Nick Zufelt",
+//             password: '$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu',
+//             bio: "I love to teach..."
+//             })
+
 initializePassport(
     passport,
+    // email => users.find(user => user.email === email),
+    // admin_id => users.find(user => user.admin_id === admin_id)
     email => adminController.GetAdminByEmail(email),
-    id => adminController.GetAdminById(id),
+    admin_id => adminController.GetAdminById(admin_id)
 )
 
 const middleware = require('../middleware')
