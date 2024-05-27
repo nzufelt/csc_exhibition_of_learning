@@ -134,11 +134,11 @@ router.get('/health', async(req, res) => {
 // CREATING ------
 
 // COURSES
-router.get('/course-form', async function(req, res){
+router.get('/create-course-form', async function(req, res){
     res.render("admin_creation_forms/create_course_form");
 });
 
-router.post('/submit-course', async function(req, res){
+router.post('/create-course', async function(req, res){
     const course_number = req.body.course_number;
     const course_name = req.body.course_name;
     const course_description = req.body.course_description;
@@ -150,11 +150,11 @@ router.post('/submit-course', async function(req, res){
 });
 
 // SKILLS
-router.get('/skill-form', async function(req, res){
+router.get('/create-skill-form', async function(req, res){
     res.render("admin_creation_forms/create_skill_form");
 });
 
-router.post('/submit-skill', async function(req, res){
+router.post('/create-skill', async function(req, res){
     const skill_name = req.body.skill_name;
     const skill_description = req.body.skill_description;
     const throughline = req.body.throughline;
@@ -162,6 +162,24 @@ router.post('/submit-skill', async function(req, res){
     await skillController.createSkill(skill_name, skill_description, throughline);
 
     res.send("Skill Submitted Successfully! (" + skill_name + skill_description + throughline + ")");
+});
+
+// ADMINS
+router.get('/create-admin-form', async function(req, res){
+    res.render("admin_creation_forms/create_admin_form");
+});
+
+router.post('/create-admin', async function(req, res){
+    const admin_id = req.body.admin_id;
+    const email = req.body.email;
+    const password_unencrypted = req.body.password;
+    const password_encrypted = await bcrypt.hash(password_unencrypted, 10);
+    const name = req.body.name;
+    const bio = req.body.bio;
+
+    await adminController.createAdmin(email, password_encrypted, name, bio);
+
+    res.send("Admin Created Successfully!", email, password_encrypted, name, bio);
 });
 // ----------------
 

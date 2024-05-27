@@ -1,16 +1,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>EDIT USER</title>
+    <title>CREATE ADMIN</title>
     <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
   </head>
 
 <body>
-    <form action="/edit-admin" method="post">
+    <form action="/create-admin" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" id="email" name="email" value="<%= admin.email %>" required>
+            <input type="text" id="email" name="email" required>
         </div>
         <div class="form-group">
             <label for="first_name">Password:</label>
@@ -18,14 +18,11 @@
         </div>
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<%= admin.name %>" required>
+            <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" rows = "6" required><%= admin.bio%></textarea>
-        </div>
-        <div class="form-group">
-            <input type="hidden" name="admin_id" value="<%= admin.admin_id %>" required>
+            <textarea id="bio" name="bio" rows = "6" required></textarea>
         </div>
         <div class="form-group">
             <input type="submit" value="Submit">
