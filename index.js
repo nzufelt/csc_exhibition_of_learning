@@ -17,6 +17,18 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 
+const multer = require('multer')
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, '/uploads')
+    },
+    filename: function (req, file, cb) {
+        //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.originalname)
+      }
+})
+const upload = multer({ storage })
+
 //ensuring that all sensitive information is not accessible in a non-proudction environment
 if (process.env.NODE_ENV !== 'production'){
     //dotenv is a module that loads environment variables from an .env file
@@ -24,11 +36,11 @@ if (process.env.NODE_ENV !== 'production'){
 }
 const handler = require('./handler/handler');
 
-//multer is the npm package responsible for taking files from the user
-const multer = require("multer");
-//assigns the upload location for files to memory for the purposes of security
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+// multer is the npm package responsible for taking files from the user
+// const multer = require("multer");
+// assigns the upload location for files to memory for the purposes of security
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage });
 
 app.use(express.urlencoded({extended: false}))
 //initializing passport and adding its middleware

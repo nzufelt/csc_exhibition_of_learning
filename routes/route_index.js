@@ -133,6 +133,12 @@ router.get("/admin-home", checkAuthentication.checkAuthenticated, async function
     });
 });
 
+router.post("/admin-home", upload.single('file'), (req, res) => {
+    res.json(req.file)
+    res.send('File Uploaded successfully!')
+    res.redirect('/admin-home')
+})
+
 router.get('/health', async(req, res) => {
     res.send("hello world!");
 });
