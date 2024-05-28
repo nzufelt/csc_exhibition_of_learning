@@ -227,16 +227,32 @@ const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, 
 }
 
 // IN PROGRESS
-const editExhibition = async(exhibition_id, class_id, course_id_ref, admin_id_ref, academic_year, term) => {
+const editExhibition = async(exhibition_id, display_on_home_page, description, video_html_code, skill_id_1, skill_id_2) => {
     await db('exhibitions')
     .where("exhibition_id", exhibition_id)
     .update({
-        user_id_ref,
-        class_id_ref,
+        //user_id_ref,
+        //class_id_ref,
         display_on_home_page,
         description,
         video_html_code
     });
+
+    await db("exhibitionSkillPairs")
+    .where("exhibition_id_ref", exhibition_id)
+    .del();
+
+    await db("exhibitionSkillPairs")
+    .insert(
+        [{
+            exhibition_id_ref : exhibition_id, 
+            skill_id_ref: skill_id_1
+        },
+        {
+            exhibition_id_ref: exhibition_id, 
+            skill_id_ref: skill_id_2
+        }]
+    )
 }
 
 // IN PROGRESS

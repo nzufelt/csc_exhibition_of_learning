@@ -8,24 +8,6 @@
 
 <body>
     <form action="/edit-exhibition" method="post">
-        <div class="form-group">
-            <label for="email">NEED TO ADD skills, course?:</label>
-            <input type="text" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="course">Course:</label>
-            <input list="course" name="course">
-            <datalist id="course">
-                <%
-                courses.forEach(course => {
-                    %>
-                    <option value="<%= course.course_number %>: <%= course.course_name %>" data-course_id="<%= course.course_id %>">
-                    <%
-                })
-                %>
-            </datalist>
-        </div>
         
         <!--SOMEHOW NEED TO GET ID FROM THIS -->
         <div class="form-group">
@@ -35,7 +17,7 @@
                 <%
                 skills.forEach(skill => {
                     %>
-                    <option value="<%= skill.skill_name %>" data-skill_1_id="<%= skill.skill_id %>">
+                    <option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
                     <%
                 })
                 %>
@@ -49,7 +31,7 @@
                 <%
                 skills.forEach(skill => {
                     %>
-                    <option value="<%= skill.skill_name %>" data-skill_2_id="<%= skill.skill_id %>">
+                    <option value="<%= skill.skill_id %>"><%= skill.skill_name %></option>
                     <%
                 })
                 %>

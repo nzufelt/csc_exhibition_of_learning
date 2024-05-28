@@ -313,6 +313,8 @@ router.post('/edit-admin', async function(req, res){
 // EXHIBTIONS
 router.get('/edit-exhibition-form', async function(req, res){
     const exampleData = {exhibition_id: 1001, user_id_ref: 102, class_id_ref: 101, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'}
+    // need exhibitions coming in to get different kinds of data, specifically need skill & course ids instead of names & need display_on_homepage
+    
     const skillExampleData = [
         {skill_id: 101, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
         {skill_id: 102, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Working With Code"},
@@ -330,14 +332,17 @@ router.get('/edit-exhibition-form', async function(req, res){
 });
 
 router.post('/edit-exhibition', async function(req, res){
+    console.log(req.body)
     const exhibition_id = req.body.exhibition_id;
-    const email = req.body.email;
-    const password = req.body.password; 
-    const name = req.body.name;
-    const bio = req.body.bio;
+    //const course = req.body.course;
+    const skill_1 = req.body.skill_1; 
+    const skill_2 = req.body.skill_2;
+    const display_on_home_page = req.body.display_on_home_page;
+    const description = req.body.description;
+    const video_html_code = req.body.video_html_code;
 
     // NEED SPECIFIC EDIT EXHIBITION FORM FOR THIS SENARIO
-    //await exhibitionController.editExhibition(exhibition_id, email, password, name, bio);
+    await exhibitionController.editExhibition(exhibition_id, display_on_home_page, description, video_html_code, skill_1, skill_2);
 
-    res.send("Admin Edited Successfully!", admin_id, email, password, name, bio);
+    res.send("Exhibition Edited Successfully!");
 });
