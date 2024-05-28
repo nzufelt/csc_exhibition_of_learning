@@ -316,19 +316,18 @@ body{
 }
 
 .video_highlights{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 0px;
-  margin: 2rem;
-  margin-bottom: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.video{
-  margin: 1rem;
-  width: 300px;
-  max-width: 320px;
+.video {
+  display: flex;
+  margin: 2rem;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+/*   border: 3px solid black; */
 }
 
 .video_thumbnail{
