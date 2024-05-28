@@ -201,89 +201,93 @@ that growth here.
         exhibitions.forEach(function(exhibition) {
           %>
           <div class="video">
-          <div class="video_thumbnail"><%-exhibition.video_html_code%>
-          </div>
-          <div class="video_tag_group">
-            <div class="video_tag course_tag">
-              <%=exhibition.course_number%>: <%=exhibition.course_name%>
-            </div>
-            <%
-              for (i=0; i < exhibition.skills.length; i++) {
-                %>
-                <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
-                  <%=exhibition.skills[i]%>
-                </div>
-                <%
-              }
-            %>
-          </div>
-          <div class="video_text">
-            <div class="student_name"><%= exhibition.first_name %> <%= exhibition.last_name %></div>
-            <div class="upload_date">
-              <% if (exhibition.term == 1) {
-                %>
-                Fall Term, 
-                <%
-              } else if (exhibition.term == 2) {
-                %>
-                Winter Term, 
-                <%
-              } else if (exhibition.term == 3) {
-                %>
-                Spring Term, 
-                <%
-              }%>
-              <%= exhibition.academic_year%> 
-            </div>
-          </div>
-          <button class ="details" onclick="openPopup(this)"><u>Details...</u></button>
-          <div class = "popup">
-            <div class="popup_content">
-              <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class = "expanded_video">
-                <div class="video_thumbnail"><%-exhibition.video_html_code%>
-                </div>
-                <div class="video_tag_group">
-                  <div class="video_tag course_tag">
-                    <%=exhibition.course_number%>: <%=exhibition.course_name%>
+            <div class="video_thumbnail"><%-exhibition.video_html_code%></div>
+            <div class="video_tag_group">
+              <div class="video_tag course_tag">
+                <%=exhibition.course_number%>: <%=exhibition.course_name%>
+              </div>
+              <%
+                for (i=0; i < exhibition.skills.length; i++) {
+                  %>
+                  <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                    <%=exhibition.skills[i]%>
                   </div>
                   <%
-                    for (i=0; i < exhibition.skills.length; i++) {
-                   %>
-                      <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
-                        <%=exhibition.skills[i]%>
-                      </div>
-                  <% } %>
-              </div>  
-              <div class="expanded_info">
-                <h2 class="popup_student_name"><b><%= exhibition.first_name %> <%= exhibition.last_name %></b></h2>
-                <h3 class="popup_upload_date">
-                  <% if (exhibition.term == 1) {
-                    %>
-                    Fall Term, 
+                }
+              %>
+            </div>
+
+            <div class="video_text">
+              <div class="student_name"><%= exhibition.first_name %> <%= exhibition.last_name %></div>
+              <div class="upload_date">
+                <% if (exhibition.term == 1) {
+                  %>
+                  Fall Term, 
+                  <%
+                } else if (exhibition.term == 2) {
+                  %>
+                  Winter Term, 
+                  <%
+                } else if (exhibition.term == 3) {
+                  %>
+                  Spring Term, 
+                  <%
+                }%>
+                <%= exhibition.academic_year%> 
+              </div>
+            </div>
+
+            <button class ="details" onclick="openPopup(this)"><u>Details...</u></button>
+            <div class = "popup">
+              <div class="popup_content">
+                <span class="close_button" onclick="closePopup(this)">x</span>
+                <div class = "expanded_video">
+                  <div class="video_thumbnail"><%-exhibition.video_html_code%>
+                  </div>
+                  <div class="video_tag_group">
+                    <div class="video_tag course_tag">
+                      <%=exhibition.course_number%>: <%=exhibition.course_name%>
+                    </div>
                     <%
-                  } else if (exhibition.term == 2) {
+                      for (i=0; i < exhibition.skills.length; i++) {
                     %>
-                    Winter Term, 
-                    <%
-                  } else if (exhibition.term == 3) {
-                    %>
-                    Spring Term, 
-                    <%
-                  }%>
-                  <%= exhibition.academic_year%> 
-                </h3>
-                <p class="video_description">
-                  <%= exhibition.description%> 
-                </p>
+                        <div class="video_tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                          <%=exhibition.skills[i]%>
+                        </div>
+                    <% } %>
+                </div>  
+                <div class="expanded_info">
+                  <h2 class="popup_student_name"><b><%= exhibition.first_name %> <%= exhibition.last_name %></b></h2>
+                  <h3 class="popup_upload_date">
+                    <% if (exhibition.term == 1) {
+                      %>
+                      Fall Term, 
+                      <%
+                    } else if (exhibition.term == 2) {
+                      %>
+                      Winter Term, 
+                      <%
+                    } else if (exhibition.term == 3) {
+                      %>
+                      Spring Term, 
+                      <%
+                    }%>
+                    <%= exhibition.academic_year%> 
+                  </h3>
+                  <p class="video_description">
+                    <%= exhibition.description%> 
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
         <%
       })
     }
     %>
+    </div>
+    
   </div>
 </div>
 
