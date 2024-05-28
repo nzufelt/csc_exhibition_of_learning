@@ -31,7 +31,6 @@ margin-top: 3rem;
 margin-left: 4rem;
 margin-right: 4rem;
 color: hsl(var(--color-light));
-
 }
 
 .tag-description__title{
@@ -39,7 +38,7 @@ margin: 4rem 0 0 0;
 font-size: 34px;
 font-family: 'Sintony', sans-serif;
 font-weight: bold;
-}
+} 
 
 .tag-description__info{
 font-size: 18px;
@@ -118,4 +117,9 @@ background-color: hsl(var(--color-orange))
 
 .working_with_systems_video {
 background-color: hsl(var(--color-teal))
+}
+
+#kaltura_player {
+  width: 600px;
+  height: 427.5px
 }
