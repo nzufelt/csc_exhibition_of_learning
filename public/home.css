@@ -301,6 +301,7 @@ body{
   overflow-y: scroll;
 }
 
+
 .highlights{
   margin-top: 5em;
 }
@@ -340,9 +341,11 @@ body{
 
 .video_text {
   align-self: start;
-  margin-bottom: 3%;
   font-family: "Sintony", sans-serif;
-  color: hsl(var(--color-blue-dark));
+}
+
+.video_tag_group {
+  max-width: 350px;
 }
 
 .video_tag {
@@ -374,10 +377,17 @@ body{
 }
 
 .asking_questions_video {
-  background-color: hsl(var(--color-yellow))
+  background-color: hsl(var(--color-orange))
 }
 
 .working_with_systems_video {
-  background-color: hsl(var(--color-pink))
+  background-color: hsl(var(--color-teal))
 }
 
+.details {
+  font-family: "Sintony", sans-serif;
+  color: hsl(var(--color-dark));
+  align-self: start;
+  margin: 0;
+  padding: 0;
+}

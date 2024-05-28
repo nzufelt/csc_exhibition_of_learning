@@ -49,6 +49,7 @@
           <div class="exhibition__video"></div>
             <%-exhibition.video_html_code%>
           <div class="exhibition__tags">
+            <p class="exhibition__tag course_tag"><%=exhibition.course_number%>: <%=exhibition.course_name%></p>
             <%
                 for (i=0; i < exhibition.skills.length; i++) {
                   %>
