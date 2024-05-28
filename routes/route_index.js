@@ -121,8 +121,16 @@ router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.
     failureFlash: true
 }))
 
-router.get("/admin-home", checkAuthentication.checkAuthenticated, function (req, res) {
-    res.render("admin-home");
+router.get("/admin-home", checkAuthentication.checkAuthenticated, async function (req, res) {
+    exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
+    courses = await courseController.getAllCoursesJSON();
+    skills = await skillController.getAllSkillsJSON();
+    
+    res.render("admin-home", {
+        exhibitions,
+        courses,
+        skills
+    });
 });
 
 router.get('/health', async(req, res) => {
@@ -310,10 +318,9 @@ router.post('/edit-admin', async function(req, res){
     res.send("Admin Edited Successfully!", admin_id, email, password_encrypted, name, bio);
 });
 
-// EXHIBTIONS
+// EXHIBITIONS
 router.get('/edit-exhibition-form', async function(req, res){
     const exampleData = {exhibition_id: 1001, user_id_ref: 102, class_id_ref: 101, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'}
-    // need exhibitions coming in to get different kinds of data, specifically need skill & course ids instead of names & need display_on_homepage
     
     const skillExampleData = [
         {skill_id: 101, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
