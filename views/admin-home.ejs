@@ -1,11 +1,12 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>Admin Page</title>
-  <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-  <link rel="stylesheet" href="admin-home.css">
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="utf-8">
+    <title>Admin Page</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="admin-home.css">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="admin-home.js" defer></script>
 </head>
 
 <body>
@@ -25,12 +26,85 @@
         </div>
   </div>
 
-  <div class="tags">
-    <h1 class="tags__header">Edit Tags:</h1>
+    <div class="tags">
+      <h1 class="tags__header">Manage Tags:</h1>
+      <div class="tag_continer">
+      <button id="search_button" class="tags__button">Manage Existing Tag</button>
+
+      <div class="search_pop_up">
+          <div class="search_section">
+              <div class="search_bar_container">
+                  <div class="search_bar">
+                      <input type="text" id="tag_search_bar" placeholder="Tag Search ... " onkeyup="tag_search()">
+                  </div>
+              </div>
+          </div>
+
+          <div class="all_tags">
+              <button class="tag human_communication skill">Speaking in Translation</button>
+              <button class="tag human_communication skill">Writing</button>
+              <button class="tag human_communication skill">Collaboration</button>
+              <button class="tag working_with_code skill">Writing Code</button>
+              <button class="tag working_with_code skill">(Re)Factoring Code</button>
+              <button class="tag working_with_code skill">Testing Code</button>
+              <button class="tag research_and_design skill">Experimental Design and Observation</button>
+              <button class="tag research_and_design skill">Intentional Design</button>
+              <button class="tag research_and_design skill">Citizenship in the Open Source Community</button>
+              <button class="tag asking_questions skill">Exploration and Research</button>
+              <button class="tag asking_questions skill">Curiosity</button>
+              <button class="tag asking_questions skill">Questioning Impact</button>
+              <button class="tag working_with_systems skill">Understanding Systems</button>
+              <button class="tag working_with_systems skill">Designing Systems</button>
+              <button class="tag working_with_systems skill">Tooling</button>
+              <button class="tag course">CSC401</button>
+              <button class="tag course">CSC402</button>
+              <button class="tag course">CSC403</button>
+              <button class="tag course">CSC411</button>
+              <button class="tag course">CSC412</button>
+              <button class="tag course">CSC413</button>
+              <button class="tag course">CSC451</button>
+              <button class="tag course">CSC453</button>
+              <button class="tag course">CSC461</button>
+              <button class="tag course">CSC471</button>
+              <button class="tag course">CSC551</button>
+              <button class="tag course">CSC552</button>
+              <button class="tag course">CSC561</button>
+              <button class="tag course">CSC571</button>
+              <button class="tag course">CSC572</button>
+              <button class="tag course">CSC573</button>
+              <button class="tag course">CSC600</button>
+              <button class="tag level">Introductory</button>
+              <button class="tag level">Intermediate</button>
+              <button class="tag level">Advanced</button>
+              <button class="tag level">Independent Research</button>
+              <button class="tag teacher">Dr. Z</button>
+              <button class="tag teacher">Mr. E</button>
+          </div>
+      </div>
+      <button id="make_new_tag_button" class="tags__button">Make New Tag</button>
+  </div>
+    </div>
+
+  <!-- Tag Information Panel -->
+  <div class="tag_info_panel" id="tag_info_panel">
+      <div class="tag_info_content">
+          <span class="close_button" id="close_button">&times;</span>
+          <h2 id="tag_info_title"></h2>
+          
+          <!-- form info should go here -->
+          <form id="tag_form"></form>
+      </div>
   </div>
 
-  <div class="eols">
-    <h1 class="eols__header">Manage Exhibitions:</h1>
+  <!-- Make New Tag Panel -->
+  <div class="new_tag_panel" id="new_tag_panel">
+      <div class="new_tag_content">
+          <span class="close_button" id="new_tag_close_button">&times;</span>
+          <h2>Make New Tag</h2>
+        
+          <!-- form info should go here -->
+          <form id="new_tag_form"></form>
+      </div>
   </div>
 
   <script src="./public/home.js"></script>
