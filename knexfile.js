@@ -1,4 +1,4 @@
-// Update with your config settings.
+// Update development with your config settings as necessary (production will not need to be edited)
 const path = require('path');
 
 module.exports = {

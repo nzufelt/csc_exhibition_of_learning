@@ -1,3 +1,4 @@
+// check if authenticated, if not redirect to admin login
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()){
         return next()
@@ -5,6 +6,7 @@ function checkAuthenticated(req, res, next) {
     res.redirect('/admin-login')
 }
 
+// check if authenticated, if yes redirect to admin home
 function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()){
         return res.redirect('/admin-home')
