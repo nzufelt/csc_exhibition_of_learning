@@ -16,8 +16,8 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('admins').insert([
-    {admin_id: 103, email: 'nzufelt@andover.edu', password: "password", name: "Nick Zufelt", bio: "I love to teach..."},
-    {admin_id: 104, email: 'mclarke@andover.edu', password: "password", name: "Mrs. Clarke", bio: "I love to teach..."},
+    {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Nick Zufelt", bio: "I love to teach..."},
+    {admin_id: 104, email: 'mclarke@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Mrs. Clarke", bio: "I love to teach..."},
   ]);
 
   await knex('courses').insert([
@@ -63,6 +63,20 @@ exports.seed = async function(knex) {
   await knex('skills').insert([
     {skill_id: 1, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
     {skill_id: 2, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Writing Code"},
+    
+    {skill_name: "Writing Code", skill_description: "Students can write whatever code they can envision — the only limitations are their time, their theoretical content knowledge, and their imagination. When stuck, they employ a variety of tools to explore their confusion and solve their problems.", throughline: "Working with Code"},
+    {skill_name: "(Re)Factoring Code", skill_description: "Students have their own processes to ensure their code is properly factored, and can argue in favor of their factoring choices.", throughline: "Working with Code"},
+    {skill_name: "Testing Code", skill_description: "Without prompting, students use tools for testing their code to ensure they fully understand the capabilities and limitations of their code. They can use testing tools to gain understanding of the code of others.", throughline: "Working with Code"},
+    {skill_name: "Experimental Design and Observation", skill_description: "Students can use the outputs of code, whether theirs or that of others, to situate their understanding of the current functionality of the code and to identify next steps in continuing to build upon it. They can articulate the shortcomings of these technical outputs and can improve upon the tools that generate them. Without prompting, students can identify and execute experiments that isolate the desired functionality and allow them to learn and incorporate this knowledge into their regular practice.", throughline: "Research and Design"},
+    {skill_name: "Intentional Design", skill_description: "Students can perform deep research to design solutions to problems that exist in the real world. They have a design process that intentionally centers the appropriate audience for their work. They demonstrate care and attention for these external audiences and dependencies, and seek to know the ways to make their work accessible to all members of this audience.", throughline: "Research and Design"},
+    {skill_name: "Citizenship in the Open Source Community", skill_description: "In addition to being able to effectively locate, understand, incorporate, and honor the work of others, students seek to improve upon the established literature and technology available in the greater Open Source Community in ways that are inclusive of others and their work. Their documentation meets industry standards.", throughline: "Research and Design"},
+    {skill_name: "Exploration and Research", skill_description: "Students have individualized research interests in the field of computer science, can articulate the beauty behind those interests, and can pursue research paths to deepen their understanding of them.", throughline: "Asking Questions"},
+    {skill_name: "Curiosity", skill_description: "Students consistently cultivate an attitude of curiosity throughout their work in computer science and find opportunities to share their newfound learning with others.", throughline: "Asking Questions"},
+    {skill_name: "Questioning Impact", skill_description: "Students can function as independent thinkers in interpreting the tasks placed before them. They work alongside the teacher and can offer feedback to the stated design process. They make carefully-reasoned arguments to challenge the potentially harmful impacts of their work and the technology sector at large. They acknowledge without prompting the identities present and absent in the rooms in which they work, and can identify strategies to mitigate these inequities.", throughline: "Asking Questions"},
+    {skill_name: "Understanding Systems", skill_description: "Students leverage their understanding of the systems at play in their work to build upon the work of others, and they have established their own tools and practices for learning and understanding a system that is new to them.", throughline: "Working with Systems"},
+    {skill_name: "Designing Systems", skill_description: "The systems that students design, and the tools students use to share them with the world, meet industry standards.", throughline: "Working with Systems"},
+    {skill_name: "Tooling", skill_description: "Students use their technical devices with authority and ease, building alongside their chosen technological “stacks” (instead of “against” or “in spite of” them). They inhabit a playful tinkering process to familiarize themselves with new tools. They are willing and excited to experiment with processes to streamline elements of their device usage. They seek to create pathways to automate those elements of their work that do not need careful attention and can identify moments to interupt this automation when needed. They use this attitude and knowledge to help others become more familiar with the technical tools they use, serving as teachers and ambassidors of technology.", throughline: "Working with Systems"},
+  
   ]);
   
   await knex('exhibitionSkillPairs').insert([
