@@ -88,6 +88,14 @@ max-width: 40em;
 overflow-y: scroll;
 }
 
+.all_admins {
+  border: 5px gray solid;
+  max-height: 10em;
+  max-width: 40em;
+  overflow-y: scroll;
+  }
+  
+
 .tag {
 margin: 5px;
 padding: 8px 16px;
@@ -98,6 +106,17 @@ border-radius: 20px;
 cursor: pointer;
 font-family: "Sintony", sans-serif;
 }
+
+.admin {
+  margin: 5px;
+  padding: 8px 16px;
+  background-color: #00319C;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Sintony", sans-serif;
+  }
 
 .tag:hover {
 background-color: #00247A;
