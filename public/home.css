@@ -236,10 +236,10 @@ body{
 }
 
 .tag.asking_questions {
-  background-color: hsl(var(--color-yellow));
+  background-color: hsl(var(--color-orange));
 }
 .tag.asking_questions:hover {
-  background-color: hsl(var(--color-yellow-dark));
+  background-color: hsl(var(--color-orange-dark));
 }
 
 #course_pop_up {
