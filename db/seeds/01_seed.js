@@ -62,7 +62,7 @@ exports.seed = async function(knex) {
 
   await knex('skills').insert([
     {skill_id: 1, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
-    {skill_id: 2, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Writing Code"},
+    {skill_id: 2, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Working with Code"},
     
     {skill_name: "Writing Code", skill_description: "Students can write whatever code they can envision — the only limitations are their time, their theoretical content knowledge, and their imagination. When stuck, they employ a variety of tools to explore their confusion and solve their problems.", throughline: "Working with Code"},
     {skill_name: "(Re)Factoring Code", skill_description: "Students have their own processes to ensure their code is properly factored, and can argue in favor of their factoring choices.", throughline: "Working with Code"},
