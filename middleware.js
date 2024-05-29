@@ -1,3 +1,4 @@
+// import controllers for communicating with database
 const exhibitionController = require('./controllers/exhibition_table_queries');
 const exhibitionSkillPairController = require('./controllers/exhibitionSkillPairs_table_queries');
 const userController = require('./controllers/user_table_queries');
@@ -6,24 +7,27 @@ const classController = require('./controllers/class_table_queries');
 const courseController = require('./controllers/course_table_queries');
 const adminController = require('./controllers/admin_table_queries');
 
+// get correctly formatted parameters for search results page from imported json files
 const getParametersSearchPage = async(students, teachers, skills, courses, year, term, level) => {
-  // REFACTORING CHECK: ERROR CHECKING BEFORE SETTING, WHAT IF SOMEONE DOESN'T PUT ANYTHING/PUTS A LETTER INSTEAD OF A NUMBER
- 
+  // course levels
   var course_level = "[]"
   if (typeof level !== 'undefined') {
     course_level = level.replaceAll("%22", '"')
   }
 
+  // skill ids
   var skills_array = "[]"
   if (typeof skills !== 'undefined') {
     skills_array = skills.replaceAll("%22", '"')
   }
 
+  // course ids
   var course_array = "[]"
    if (typeof courses !== 'undefined') {
     course_array = courses.replaceAll("%22", '"')
   }
  
+  // final json of search parameters
    var search_parameters = {
      user_id : JSON.parse(students || "[]"),
      admin_id : JSON.parse(teachers || "[]"),
@@ -31,13 +35,13 @@ const getParametersSearchPage = async(students, teachers, skills, courses, year,
      course_id : JSON.parse(course_array),
      academic_year : JSON.parse(year || "[]"),
      term : JSON.parse(term || "[]"),
-     course_level : JSON.parse(course_level), // MAY HAVE TO REPLACE THIS IN THE FUTURE
+     course_level : JSON.parse(course_level),
    };
 
    return search_parameters;
 }
 
-// NOTE TO SELF I THINK EVERYTHING IN THIS FUNCTION NEEDS TO BE ERROR-CHECKED
+// transfer eol json from excel template to the database
 const transferEoLsToDatabase = async(EoLs) => {
   for (const eol of EoLs) {
     // UPDATE/CREATE USER
@@ -111,12 +115,13 @@ const transferEoLsToDatabase = async(EoLs) => {
     exhibition_id = exhibition[0].exhibition_id;
 
     // MAKE EXHIBITION_SKILL PAIRS
+    // skill 1
     skill_name_1 = eol.skill1.trim();
     skill_1 = await skillController.getIdFromName(skill_name_1);
     skill_id_1 = skill_1[0].skill_id;
     await exhibitionSkillPairController.createExhibitionSkillPair(exhibition_id, skill_id_1);
 
-
+    // skill 2
     skill_name_2 = eol.skill1.trim();
     skill_2 = await skillController.getIdFromName(skill_name_2);
     skill_id_2 = skill_2[0].skill_id;
@@ -124,6 +129,7 @@ const transferEoLsToDatabase = async(EoLs) => {
   };
 }
 
+// export all functions
 module.exports = {
   getParametersSearchPage,
   transferEoLsToDatabase
