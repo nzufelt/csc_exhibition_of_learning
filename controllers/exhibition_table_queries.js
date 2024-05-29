@@ -2,6 +2,7 @@
 const { query } = require("express");
 const db = require("../db/db")
 
+// get and send all exhibitions
 const getAllExhibitions = async(req, res) => {
     try {
         const exhibitions = await db.select("*").from("exhibitions");
@@ -12,7 +13,7 @@ const getAllExhibitions = async(req, res) => {
     }
 }
 
-// get the exhibitions that can be displayed on the home page
+// get and send exhibitions that can be displayed on the home page
 const getExhibitionsHomePage = async(req, res) => {
     try {
         const exhibitions = await db.select("*").from("exhibitions")
@@ -52,7 +53,7 @@ const getExhibitionsHomePageJSON = async() => {
     }
 }
 
-// SEARCH RESUlTS FOR PAGE
+// get exhibitions by search parameters
 const getExhibitionsSearchResults = async(search_parameters) => {
     var user_id = search_parameters.user_id;
     var course_id = search_parameters.course_id;
@@ -131,6 +132,7 @@ const getExhibitionsSearchResults = async(search_parameters) => {
 
 }
 
+// get tags to be displayed on search results page
 const getTagDisplay = async(search_parameters) => {
     var user_id_array = search_parameters.user_id;
     var course_id_array = search_parameters.course_id;
@@ -206,7 +208,6 @@ const getTagDisplay = async(search_parameters) => {
 }
 
 //CRUD OPERATIONS
-
 //create
 const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, description, video_html_code) => {
     const exhibition = await db('exhibitions')

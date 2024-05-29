@@ -1,6 +1,7 @@
 // functions associated with getting data from the user table
 const db = require("../db/db")
 
+// get and send all users
 const getAllUsers = async(req, res) => {
     try {
         const users = await db.select("*").from("users");
@@ -11,6 +12,7 @@ const getAllUsers = async(req, res) => {
     }
 }
 
+// get all users (json)
 const getAllUsersJSON = async() => {
     try {
         const users = await db.select("*").from("users");
@@ -21,6 +23,7 @@ const getAllUsersJSON = async() => {
     }
 }
 
+// get and send all student names
 const getStudentNames = async(req, res) => {
     try {
         const users = await db.select(["first_name", "last_name"]).from("users");
@@ -31,6 +34,7 @@ const getStudentNames = async(req, res) => {
     }
 }
 
+// get user_id given user's email
 const getUserByEmail = async(email) => {
     try {
         const user = await db.select("user_id").where("email", email).from("users");
@@ -40,6 +44,7 @@ const getUserByEmail = async(email) => {
     }
 }
 
+// get student bio given user_id
 const getBioById = async(user_id) => {
     try {
         const bio = await db
@@ -52,6 +57,7 @@ const getBioById = async(user_id) => {
 }
 
 //CRUD OPERATIONS
+// create
 const createUser = async(email, first_name, last_name, graduation_year, bio) => {
     const user = await db('users')
     .returning('*')
@@ -66,7 +72,7 @@ const createUser = async(email, first_name, last_name, graduation_year, bio) => 
     return user;
 }
 
-// IN PROGRESS 
+// edit
 const editUser = async(user_id, email, first_name, last_name, graduation_year, bio) => {
     await db('users')
     .where("user_id", user_id)
@@ -79,6 +85,7 @@ const editUser = async(user_id, email, first_name, last_name, graduation_year, b
     });
 }
 
+// edit user without editing their bio
 const editUserNoBio = async(user_id, email, first_name, last_name, graduation_year) => {
     await db('users')
     .where("user_id", user_id)
@@ -90,13 +97,14 @@ const editUserNoBio = async(user_id, email, first_name, last_name, graduation_ye
     });
 }
 
-// IN PROGRESS
+// delete
 const deleteUser = async(user_id) => {
     await db('users')
     .where("user_id", user_id)
     .del();
 }
 
+// export all functions
 module.exports = {
     getAllUsers,
     getStudentNames,

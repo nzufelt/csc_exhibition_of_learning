@@ -1,6 +1,7 @@
 // functions associated with getting data from the skill table
 const db = require("../db/db")
 
+// get and send all skills
 const getAllSkills = async(req, res) => {
     try {
         const skills = await db.select("*").from("skills");
@@ -11,6 +12,7 @@ const getAllSkills = async(req, res) => {
     }
 }
 
+// get all skills (json)
 const getAllSkillsJSON = async() => {
     try {
         const skills = await db.select("*").from("skills");
@@ -21,6 +23,7 @@ const getAllSkillsJSON = async() => {
     }
 }
 
+// get skill_id given name
 const getIdFromName = async(skill_name) => {
     try {
         const skills = await db.select("skill_id")
@@ -34,6 +37,7 @@ const getIdFromName = async(skill_name) => {
 }
 
 //CRUD OPERATIONS
+// create
 const createSkill = async(skill_name, skill_description, throughline) => {
     await db('skills').insert({
         skill_name,
@@ -42,7 +46,7 @@ const createSkill = async(skill_name, skill_description, throughline) => {
     });
 }
 
-// IN PROGRESS 
+// edit
 const editSkill = async(skill_id, skill_name, skill_description, throughline) => {
     await db('skills')
     .where("skill_id", skill_id)
@@ -53,13 +57,14 @@ const editSkill = async(skill_id, skill_name, skill_description, throughline) =>
     });
 }
 
-// IN PROGRESS
+// delete
 const deleteSkill = async(skill_id) => {
     await db('skills')
     .where("skill_id", skill_id)
     .del();
 }
 
+// export all functions
 module.exports = {
     getAllSkills,
     getAllSkillsJSON,

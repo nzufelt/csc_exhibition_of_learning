@@ -36,23 +36,7 @@ const getUniqueCourseNames = async(req, res) => {
     }
 }
 
-// IN PROGRESS: get course id given the course name from an api call -------
-// FIX: account for spaces in course name when passed into api call
-const getCourseIdFromCourseName = async(req, res) => {
-    const course_name = parseInt(req.params.course_name);
-
-    try {
-        const courses = await db.select("course_id").from("courses")
-            .where("course_name", course_name)
-
-        res.send(courses);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({error: error.message})
-    }
-}
-// ---------
-
+// get course_id given number and name
 const getCourseIdFromCourseNumberName = async(course_number, course_name) => {
 
     try {
@@ -69,6 +53,7 @@ const getCourseIdFromCourseNumberName = async(course_number, course_name) => {
 }
 
 //CRUD OPERATIONS
+// create
 const createCourse = async(course_number, course_name, course_description, course_level) => {
     console.log("creating course!")
     await db('courses').insert({
@@ -79,7 +64,7 @@ const createCourse = async(course_number, course_name, course_description, cours
     });
 }
 
-// IN PROGRESS
+// edit
 const editCourse = async(course_id, course_number, course_name, course_description, course_level) => {
     await db('courses')
     .where("course_id", course_id)
@@ -91,17 +76,17 @@ const editCourse = async(course_id, course_number, course_name, course_descripti
     });
 }
 
-// IN PROGRESS
+// delete
 const deleteCourse = async(course_id) => {
     await db('courses')
     .where("course_id", course_id)
     .del();
 }
 
+//export all functions
 module.exports = {
     getAllCourses,
     getUniqueCourseNames,
-    getCourseIdFromCourseName,
     getAllCoursesJSON,
     createCourse,
     editCourse,
