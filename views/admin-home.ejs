@@ -15,21 +15,24 @@
 
 <body>
   <div class="top">
-        <h1 class="top__welcome">
-          Welcome!
-        </h1>
-        <p class="top__desc">
-          hello. this will give admins instructions and stuff like that i guess. end.
+    <h1 class="top__welcome">Welcome!</h1>
+    <p class="top__desc">
+          &emsp; Download an Exhibition of Learning excel template from the Download Form button, and fill it out with exhibitions from the microsoft form each student filled out. Don't forget to add your email, the academic year (please use the year of your fall term, so if this class is in 2022-2023 please enter 2022), and the current term (Fall, Winter, or Spring), and make sure to drag that information down so that it is filled out for every exhibition!
         </p>
-        <div class="top__buttons">
-          <a href = "https://docs.google.com/spreadsheets/d/1aa_OA5dHOu7ps5N8lpN580LpyOZo2NbgJCFGNTN51bY/copy">
-            <button class="top__button">Download Form</button>
-          </a>
-          <form action="/admin-home" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file"/>
-            <button type = "submit" class="top__button">Upload Form</button>
-          </form>
-        </div>
+    <p class="top__desc">
+          &emsp; Then upload your filled out excel form as an .xlsx file by selecting "choose file", picking your file, and then clicking "Submit Above Form."
+    </p>
+
+    <div class="top__buttons">
+      <button class="top__button">Download Form</button>
+
+      <form class="upload" action="/admin-home" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <button type = "submit" class="top__button">Submit Above Form</button>
+      </form>
+
+    </div>
+    
   </div>
 
     <div class="tags">
@@ -256,38 +259,6 @@
               
               </div>
             </div>
-
-            <h1 class="tags__header">Create Tags:</h1>
-            
-                   <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Admin</button>
-                <div class = "popup">
-                  <div class="popup_content">
-                    <span class="close_button" onclick="closePopup(this)">x</span>
-                    <!-- CREATE ADMIN FORM -->
-                      <form action="/create-admin" method="post">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="first_name">Password:</label>
-                            <input type="text" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bio">Bio:</label>
-                            <textarea id="bio" name="bio" rows = "6" required></textarea>
-                        </div>
-                        <div class="form-group">
-                          <input type="submit" value="Submit">
-                          <p class="log"><p>
-                      </div>
-                    </form>
-                  </div>
-                </div>
                 
                 <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Course</button>
                 <div class = "popup">
@@ -342,6 +313,44 @@
                           <p class="log"><p>
                       </div>
                   </form>
+                </div>
+              </div>
+
+              <div class="top">
+                <h1 class="tags__header">
+                  Manage Admins:</h1>
+                
+                
+                <div class="tag__container">
+                     <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Admin</button>
+                  <div class = "popup">
+                    <div class="popup_content">
+                      <span class="close_button" onclick="closePopup(this)">x</span>
+                      <!-- CREATE ADMIN FORM -->
+                        <form action="/create-admin" method="post">
+                          <div class="form-group">
+                              <label for="email">Email:</label>
+                              <input type="text" id="email" name="email" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="first_name">Password:</label>
+                              <input type="text" id="password" name="password" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="name">Name:</label>
+                              <input type="text" id="name" name="name" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="bio">Bio:</label>
+                              <textarea id="bio" name="bio" rows = "6" required></textarea>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="Submit">
+                            <p class="log"><p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
         </div>
