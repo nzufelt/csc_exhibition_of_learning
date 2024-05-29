@@ -1,4 +1,4 @@
-// seeds some preliminary data
+// seeds some preliminary data for skills and courses
 
 exports.seed = async function(knex) {
   // Deletes all existing entries

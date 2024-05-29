@@ -2,85 +2,39 @@
 const passport = require('passport')
 const express = require('express');
 
+// import controllers for communicating with database
 const exhibitionController = require('../controllers/exhibition_table_queries');
 const userController = require('../controllers/user_table_queries');
 const skillController = require('../controllers/skill_table_queries');
 const courseController = require('../controllers/course_table_queries');
 const adminController = require('../controllers/admin_table_queries');
 
+// import packages for login
 const bcrypt = require('bcrypt')
 const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
 
+// import packages for eol excel uploading
 const multer = require('multer')
-// const storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, '/uploads')
-//     },
-//     filename: function (req, file, cb) {
-//         //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-//         cb(null, file.originalname)
-//       }
-// })
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const handler = require('../handler/handler');
 
-//for testing
-// const users = []
-// users.push({
-//             admin_id: 103,
-//             email: 'nzufelt@andover.edu',
-//             name: "Nick Zufelt",
-//             password: '$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu',
-//             bio: "I love to teach..."
-//             })
-
+// login
 initializePassport(
     passport,
     email => adminController.GetAdminByEmail(email),
     admin_id => adminController.GetAdminById(admin_id)
 )
 
+// import file that takes care of parsing correctly
 const middleware = require('../middleware')
 
 const router = express.Router();
 
 module.exports = router;
 
-// FOR TESTING OF EOL TO DATABASE PROCESS
-router.get("/testing", async(req, res) => {
-     EoLs = [
-         {
-             Email: 'tmarnoto24@andover.edu',
-             first_Name: 'Tristan',
-             last_Name: 'Marnoto',
-             graduation_year: '2024',
-             course: 'CSC402 - Web Dev ',
-             description: 'My EoL talks about the two skills that I have learned in Game Development, both Writing Code and Speaking in Translations. In this course, rather than having step-by-step instructions on how to code, we got much more experience with developed code. Watching videos, doing code alongs, and using ChatGPT to explain code, all contributed towards my learning.',
-             bio_query: false,
-             student_bio: 'My name is Tristan Marnoto, and I have never had any experience with computer science or coding before this course. I signed up for this course because I was hoping to get a taste of computer science before college. While at the beginning I struggled to understand code and oftentimes found writing code impossible, I have become much more confident as the term has progressed. I would certainly recommend a course such as this one to anyone interested in computer science!',
-             skill1: 'Refactoring Code ',
-             skill2: 'Speaking in Translations ',
-             embed_code: '<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_6ms5mb1m&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_go8h4eia" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Tristan Marnoto Exhibition of Learning"></iframe>',
-             homepage_query: true,
-             teacher_email: 'nzufelt@andover.edu',
-             academic_year: 2024,
-             term: 'Spring',
-         }
-     ]
-     
-     if (EoLs != -99) {
-         await middleware.transferEoLsToDatabase(EoLs);
- 
-         // don't redirect but maybe display something like a "everything submitted" popup?
-         res.send(EoLs);
-     } else {
-         console.log("uploading did not work");
-     }
- })
-
+// home page 
 router.get('/', async function(req, res){
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();
@@ -98,7 +52,8 @@ router.get('/', async function(req, res){
        })
  });
  
- // EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
+ // search results page 
+ // (for testing) EXAMPLE URL FOR TESTING: /search?students=[101,102]&teachers=[103,104]&skills=[1,2]&courses=[10001,10002]&years=[2022,2023]&terms=[1,2,3]&levels=["Advanced"]
  router.get('/search', async (req, res)=>{
     var search_parameters = await middleware.getParametersSearchPage(req.query.students, req.query.teachers, req.query.skills, req.query.courses, req.query.years, req.query.terms, req.query.levels);
     var exhibitions = await exhibitionController.getExhibitionsSearchResults(search_parameters);
@@ -111,6 +66,7 @@ router.get('/', async function(req, res){
         })
  });
  
+// cs @ andover page
 router.get("/cs-at-andover", async function (req, res) {
     courses = await courseController.getAllCoursesJSON();
 
@@ -119,14 +75,17 @@ router.get("/cs-at-andover", async function (req, res) {
        });
 });
 
+// about us page
 router.get("/about-us", function (req, res) {
     res.render("about");
 });
 
+// login page
 router.get("/admin-login", checkAuthentication.checkNotAuthenticated, function (req, res) {
     res.render("admin-login");
 });
 
+// redirecting admins from home page to login page if not signed in
 router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.authenticate('local', {
     //options from passport.js
     successRedirect: "/admin-home",
@@ -134,6 +93,7 @@ router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.
     failureFlash: true
 }))
 
+// admin home page
 router.get("/admin-home", checkAuthentication.checkAuthenticated, async function (req, res) {
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
     skills = await skillController.getAllSkillsJSON();
@@ -150,6 +110,7 @@ router.get("/admin-home", checkAuthentication.checkAuthenticated, async function
        })
 });
 
+// post to admin home page for uploading excel file
 router.post("/admin-home", upload.single('file'), async (req, res) => {
     //calls the handler function, which parses the uploaded file and returns a json or -99 as an error
     
@@ -158,6 +119,7 @@ router.post("/admin-home", upload.single('file'), async (req, res) => {
     //checks for an error in parsing the file 
     if (EoLs != -99) {
         console.log('Started uploading!')
+        // transfer eols to database
         await middleware.transferEoLsToDatabase(EoLs);
         console.log('File Uploaded successfully!')
         res.redirect('/admin-home')
@@ -166,23 +128,6 @@ router.post("/admin-home", upload.single('file'), async (req, res) => {
         res.send("uploading did not work");
     }
 })
-
-router.get('/health', async(req, res) => {
-    res.send("hello world!");
-});
-
-// Posts for admin creating/editing/deleting data
-// post to create course
-router.post('/create-course', async function(req, res){
-    const course_number = req.body.course_number;
-    const course_name = req.body.course_name;
-    const course_description = req.body.course_description;
-    const course_level = req.body.course_level;
-
-    await courseController.createCourse(course_number, course_name, course_description, course_level);
-
-    res.send("Course Created Successfully!");
-});
 
 // post to create skill
 router.post('/create-skill', async function(req, res){
@@ -300,14 +245,12 @@ router.get('/edit-exhibition-form', async function(req, res){
 router.post('/edit-exhibition', async function(req, res){
     console.log(req.body)
     const exhibition_id = req.body.exhibition_id;
-    //const course = req.body.course;
     const skill_1 = req.body.skill_1; 
     const skill_2 = req.body.skill_2;
     const display_on_home_page = req.body.display_on_home_page;
     const description = req.body.description;
     const video_html_code = req.body.video_html_code;
 
-    // NEED SPECIFIC EDIT EXHIBITION FORM FOR THIS SENARIO
     await exhibitionController.editExhibition(exhibition_id, display_on_home_page, description, video_html_code, skill_1, skill_2);
 
     res.send("Exhibition Edited Successfully!");
@@ -347,4 +290,54 @@ router.post('/delete-admin', async function(req, res){
     await adminController.deleteAdmin(admin_id);
 
     res.send("Teacher Deleted Successfully!");
+});
+
+// route for testing eol submissions (ignore)
+router.get("/testing", async(req, res) => {
+    EoLs = [
+        {
+            Email: 'tmarnoto24@andover.edu',
+            first_Name: 'Tristan',
+            last_Name: 'Marnoto',
+            graduation_year: '2024',
+            course: 'CSC402 - Web Dev ',
+            description: 'My EoL talks about the two skills that I have learned in Game Development, both Writing Code and Speaking in Translations. In this course, rather than having step-by-step instructions on how to code, we got much more experience with developed code. Watching videos, doing code alongs, and using ChatGPT to explain code, all contributed towards my learning.',
+            bio_query: false,
+            student_bio: 'My name is Tristan Marnoto, and I have never had any experience with computer science or coding before this course. I signed up for this course because I was hoping to get a taste of computer science before college. While at the beginning I struggled to understand code and oftentimes found writing code impossible, I have become much more confident as the term has progressed. I would certainly recommend a course such as this one to anyone interested in computer science!',
+            skill1: 'Refactoring Code ',
+            skill2: 'Speaking in Translations ',
+            embed_code: '<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_6ms5mb1m&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_go8h4eia" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Tristan Marnoto Exhibition of Learning"></iframe>',
+            homepage_query: true,
+            teacher_email: 'nzufelt@andover.edu',
+            academic_year: 2024,
+            term: 'Spring',
+        }
+    ]
+    
+    if (EoLs != -99) {
+        await middleware.transferEoLsToDatabase(EoLs);
+
+        // don't redirect but maybe display something like a "everything submitted" popup?
+        res.send(EoLs);
+    } else {
+        console.log("uploading did not work");
+    }
+})
+
+// check that everything is working!
+router.get('/health', async(req, res) => {
+    res.send("hello world!");
+});
+
+// Posts for admin creating/editing/deleting data
+// post to create course
+router.post('/create-course', async function(req, res){
+    const course_number = req.body.course_number;
+    const course_name = req.body.course_name;
+    const course_description = req.body.course_description;
+    const course_level = req.body.course_level;
+
+    await courseController.createCourse(course_number, course_name, course_description, course_level);
+
+    res.send("Course Created Successfully!");
 });
