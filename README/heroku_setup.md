@@ -41,4 +41,4 @@ The output from github should look something like above
 ![Github script of above command](Images/heroku_setup/seed_heroku_cli.png)
 The output from github should look something like above
 
-## Go Read [Handling First Admin Account.md](first_admin_account.md) First
+## Go Read [Handling First Admin Account.md](first_admin_account.md)
