@@ -40,7 +40,7 @@ const parseData = async(file) => {
 
 }
 
-
+// export function
 module.exports = {
     parseData
 };

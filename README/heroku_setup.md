@@ -35,3 +35,9 @@
 ![Github script of above command](Images/heroku_setup/run_migrations_heroku_cli.png)
 The output from github should look something like above
 
+## Seed Initial Data to Database
+1. Check over 01_seed.js file (found in db/seeds) -- is this data (skill info and course info) correct? If not, update that code with the correct skill and course info
+2. In the terminal of this github repository, seed your migrated database using the following command: heroku run knex seed:run --app [APP_NAME_HERE]
+![Github script of above command](Images/heroku_setup/seed_heroku_cli.png)
+The output from github should look something like above
+
