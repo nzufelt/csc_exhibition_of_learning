@@ -6,6 +6,10 @@
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link rel="stylesheet" href="admin-home.css">
     <link rel="stylesheet" href="style.css"/>
+    
+    <link rel="stylesheet" href="popup.css"/>
+    <script src="popup.js"></script>
+
     <script src="admin-home.js" defer></script>
 </head>
 
@@ -41,6 +45,7 @@
           </div>
 
           <div class="all_tags">
+            <!--
               <button class="tag human_communication skill">Speaking in Translation</button>
               <button class="tag human_communication skill">Writing</button>
               <button class="tag human_communication skill">Collaboration</button>
@@ -79,22 +84,183 @@
               <button class="tag level">Independent Research</button>
               <button class="tag teacher">Dr. Z</button>
               <button class="tag teacher">Mr. E</button>
+              -->
+              <!-- SKILLS -->
+              <% if (skills.length > 0) {
+                skills.forEach(function(skill) {
+                  %>
+                  <button class ="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill" onclick="openPopup(this)"><u><%-skill.skill_name%></u></button>
+                    <div class = "popup">
+                      <div class="popup_content">
+                        <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- EDIT FORM -->
+                          <form action="/edit-skill" method="post">
+                            <div class="form-group">
+                                <label for="skill_name">Skill Name:</label>
+                                <input type="text" id="skill_name" name="skill_name" value="<%= skill.skill_name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="skill_description">Skill Description:</label>
+                                <textarea id="skill_description" name="skill_description" rows = "6" required><%= skill.skill_description%></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="throughline">Throughline:</label>
+                                <input type="text" id="throughline" name="throughline" value="<%= skill.throughline %>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="skill_id" value="<%= skill.skill_id %>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  <%
+                })
+              }
+              %>
+
+              <!-- COURSES -->
+              <% if (courses.length > 0) {
+                courses.forEach(function(course) {
+                  %>
+                  <button class ="tag course" onclick="openPopup(this)"><u><%-course.course_number%>: <%-course.course_name%></u></button>
+                    <div class = "popup">
+                      <div class="popup_content">
+                        <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- EDIT FORM -->
+                        <form action="/edit-course" method="post">
+                          <div class="form-group">
+                              <label for="course_number">Course Number:</label>
+                              <input type="text" id="course_number" name="course_number" value="<%= course.course_number %>" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_name">Course Name:</label>
+                              <input type="text" id="course_name" name="course_name" value="<%= course.course_name %>" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_description">Course Description:</label>
+                              <textarea id="course_description" name="course_description" rows="6" required><%= course.course_description %></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_level">Course Level:</label>
+                              <input type="text" id="course_level" name="course_level" value="<%= course.course_level %>" required>
+                          </div>
+                          <div class="form-group">
+                              <input type="hidden" name="course_id" value="<%= course.course_id %>" required>
+                          </div>
+                          <div class="form-group">
+                              <input type="submit" value="Submit">
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                <%
+              })
+            }
+            %>
+
+              <!-- STUDENTS -->
+              <% if (students.length > 0) {
+                students.forEach(function(student) {
+                  %>
+                  <button class ="tag student" onclick="openPopup(this)"><u><%-student.first_name%> <%-student.last_name%></u></button>
+                    <div class = "popup">
+                      <div class="popup_content">
+                        <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- EDIT FORM -->
+                          <form action="/edit-user" method="post">
+                            <div class="form-group">
+                                <label for="email">Student Email:</label>
+                                <input type="text" id="email" name="email" value="<%= student.email %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">First Name:</label>
+                                <input type="text" id="first_name" name="first_name" value="<%= student.first_name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name:</label>
+                                <input type="text" id="last_name" name="last_name" value="<%= student.last_name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="graduation_year">Graduation Year:</label>
+                                <input type="text" id="graduation_year" name="graduation_year" value="<%= student.graduation_year %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">Student Bio:</label>
+                                <textarea id="bio" name="bio" rows = "6" required><%= student.bio%></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Submit">
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  <%
+                })
+              }
+              %>
+
+              <!-- TEACHERS -->
+              <% if (teachers.length > 0) {
+                teachers.forEach(function(teacher) {
+                  %>
+                  <button class ="tag teacher" onclick="openPopup(this)"><u><%= teacher.name %></u></button>
+                  <div class = "popup">
+                    <div class="popup_content">
+                      <span class="close_button" onclick="closePopup(this)">x</span>
+                      <!-- EDIT FORM -->
+                      <form action="/edit-admin" method="post">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" value="<%= teacher.email %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">Password:</label>
+                            <input type="text" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" value="<%= teacher.name %>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio:</label>
+                            <textarea id="bio" name="bio" rows = "6" required><%= teacher.bio%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Submit">
+                        </div>
+                      </div>
+                    </div>
+                    <%
+                  })
+                }
+                %>
+              
           </div>
       </div>
       <button id="make_new_tag_button" class="tags__button">Make New Tag</button>
   </div>
     </div>
 
-  <!-- Tag Information Panel -->
+  <!-- Tag Information Panel 
   <div class="tag_info_panel" id="tag_info_panel">
       <div class="tag_info_content">
           <span class="close_button" id="close_button">&times;</span>
           <h2 id="tag_info_title"></h2>
-          
-          <!-- form info should go here -->
+          -->
+          <!-- form info should go here 
           <form id="tag_form"></form>
       </div>
   </div>
+  -->
 
   <!-- Make New Tag Panel -->
   <div class="new_tag_panel" id="new_tag_panel">
