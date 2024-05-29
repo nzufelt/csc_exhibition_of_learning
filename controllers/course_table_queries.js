@@ -1,6 +1,7 @@
 // functions associated with getting data from the course table
 const db = require("../db/db")
 
+// get and send all courses
 const getAllCourses = async(req, res) => {
     try {
         const courses = await db.select("*").from("courses")
@@ -11,6 +12,7 @@ const getAllCourses = async(req, res) => {
     }
 }
 
+// get all courses (json)
 const getAllCoursesJSON = async() => {
     try {
         const courses = await db.select("*").from("courses")
