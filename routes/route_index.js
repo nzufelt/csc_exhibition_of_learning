@@ -210,12 +210,15 @@ router.post('/edit-skill', async function(req, res){
 
 // post to edit admin/teacher
 router.post('/edit-admin', async function(req, res){
+    
     const admin_id = req.body.admin_id;
     const email = req.body.email;
     const password_unencrypted = req.body.password;
     const password_encrypted = await bcrypt.hash(password_unencrypted, 10);
     const name = req.body.name;
     const bio = req.body.bio;
+
+    console.log(admin_id + email + password_unencrypted + password_encrypted + name + bio)
 
     await adminController.editAdmin(admin_id, email, password_encrypted, name, bio);
 
