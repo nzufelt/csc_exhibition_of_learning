@@ -112,11 +112,11 @@ overflow-y: scroll;
     background-color: hsl(var(--color-blue));
   }
   
-  .tag.human_communication {
+  .human_communication {
     background-color: hsl(var(--color-green));
   }
   
-  .tag.human_communication:hover {
+  .human_communication:hover {
     background-color: hsl(var(--color-green-dark));
   }
   

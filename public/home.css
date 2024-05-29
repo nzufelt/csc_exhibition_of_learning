@@ -212,11 +212,11 @@ body{
 }
 
 .tag.working_with_code {
-  background-color: hsl(var(--color-blue));
+  background-color: hsl(var(--color-purple));
 }
 
 .tag.working_with_code:hover {
-  background-color: hsl(var(--color-blue-dark));
+  background-color: hsl(var(--color-purple-dark));
 }
 
 .tag.research_and_design {
@@ -228,11 +228,11 @@ body{
 }
 
 .tag.working_with_systems {
-  background-color: hsl(var(--color-purple));
+  background-color: hsl(var(--color-teal));
 }
 
 .tag.working_with_systems:hover {
-  background-color: hsl(var(--color-purple-dark));
+  background-color: hsl(var(--color-teal-dark));
 }
 
 .tag.asking_questions {
