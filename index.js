@@ -18,16 +18,8 @@ const flash = require('express-flash')
 const session = require('express-session')
 
 const multer = require('multer')
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, '/uploads')
-    },
-    filename: function (req, file, cb) {
-        //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.originalname)
-      }
-})
-const upload = multer({ storage })
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 //ensuring that all sensitive information is not accessible in a non-proudction environment
 if (process.env.NODE_ENV !== 'production'){
