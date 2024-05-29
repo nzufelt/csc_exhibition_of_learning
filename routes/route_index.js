@@ -25,6 +25,7 @@ const multer = require('multer')
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+const handler = require('../handler/handler');
 
 //for testing
 // const users = []
@@ -158,10 +159,11 @@ router.post("/admin-home", upload.single('file'), async (req, res) => {
     
     //checks for an error in parsing the file 
     if (EoLs != -99) {
+        console.log('Started uploading!')
         await middleware.transferEoLsToDatabase(EoLs);
-        res.send('File Uploaded successfully!')
+        console.log('File Uploaded successfully!')
         res.redirect('/admin-home')
-        res.send(EoLs);
+        //res.send(EoLs);
     } else {
         res.send("uploading did not work");
     }

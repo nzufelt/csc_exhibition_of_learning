@@ -80,7 +80,7 @@ const transferEoLsToDatabase = async(EoLs) => {
     course_id = course_array[0].course_id;
 
     // GET ADMIN 
-    admin_array = await adminController.GetAdminByEmail(eol.teacher_email); // TEACHER EMAIL CHANGE
+    admin_array = await adminController.GetAdminByEmail(eol.teacher_email);
     admin_id = admin_array[0].admin_id;
 
     // GET/CREATE CLASS
