@@ -45,46 +45,6 @@
           </div>
 
           <div class="all_tags">
-            <!--
-              <button class="tag human_communication skill">Speaking in Translation</button>
-              <button class="tag human_communication skill">Writing</button>
-              <button class="tag human_communication skill">Collaboration</button>
-              <button class="tag working_with_code skill">Writing Code</button>
-              <button class="tag working_with_code skill">(Re)Factoring Code</button>
-              <button class="tag working_with_code skill">Testing Code</button>
-              <button class="tag research_and_design skill">Experimental Design and Observation</button>
-              <button class="tag research_and_design skill">Intentional Design</button>
-              <button class="tag research_and_design skill">Citizenship in the Open Source Community</button>
-              <button class="tag asking_questions skill">Exploration and Research</button>
-              <button class="tag asking_questions skill">Curiosity</button>
-              <button class="tag asking_questions skill">Questioning Impact</button>
-              <button class="tag working_with_systems skill">Understanding Systems</button>
-              <button class="tag working_with_systems skill">Designing Systems</button>
-              <button class="tag working_with_systems skill">Tooling</button>
-              <button class="tag course">CSC401</button>
-              <button class="tag course">CSC402</button>
-              <button class="tag course">CSC403</button>
-              <button class="tag course">CSC411</button>
-              <button class="tag course">CSC412</button>
-              <button class="tag course">CSC413</button>
-              <button class="tag course">CSC451</button>
-              <button class="tag course">CSC453</button>
-              <button class="tag course">CSC461</button>
-              <button class="tag course">CSC471</button>
-              <button class="tag course">CSC551</button>
-              <button class="tag course">CSC552</button>
-              <button class="tag course">CSC561</button>
-              <button class="tag course">CSC571</button>
-              <button class="tag course">CSC572</button>
-              <button class="tag course">CSC573</button>
-              <button class="tag course">CSC600</button>
-              <button class="tag level">Introductory</button>
-              <button class="tag level">Intermediate</button>
-              <button class="tag level">Advanced</button>
-              <button class="tag level">Independent Research</button>
-              <button class="tag teacher">Dr. Z</button>
-              <button class="tag teacher">Mr. E</button>
-              -->
               <!-- SKILLS -->
               <% if (skills.length > 0) {
                 skills.forEach(function(skill) {
@@ -93,7 +53,7 @@
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
-                        <!-- EDIT FORM -->
+                        <!-- EDIT SKILL FORM -->
                           <form action="/edit-skill" method="post">
                             <div class="form-group">
                                 <label for="skill_name">Skill Name:</label>
@@ -129,7 +89,7 @@
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
-                        <!-- EDIT FORM -->
+                        <!-- EDIT COURSE FORM -->
                         <form action="/edit-course" method="post">
                           <div class="form-group">
                               <label for="course_number">Course Number:</label>
@@ -169,7 +129,7 @@
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
-                        <!-- EDIT FORM -->
+                        <!-- EDIT USER FORM -->
                           <form action="/edit-user" method="post">
                             <div class="form-group">
                                 <label for="email">Student Email:</label>
@@ -213,7 +173,7 @@
                   <div class = "popup">
                     <div class="popup_content">
                       <span class="close_button" onclick="closePopup(this)">x</span>
-                      <!-- EDIT FORM -->
+                      <!-- EDIT ADMIN FORM -->
                       <form action="/edit-admin" method="post">
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -244,34 +204,92 @@
                 }
                 %>
               
+              </div>
+            </div>
+                   <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Admin</u></button>
+                <div class = "popup">
+                  <div class="popup_content">
+                    <span class="close_button" onclick="closePopup(this)">x</span>
+                    <!-- CREATE ADMIN FORM -->
+                      <form action="/create-admin" method="post">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">Password:</label>
+                            <input type="text" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio:</label>
+                            <textarea id="bio" name="bio" rows = "6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                  </div>
+                </div>
+                
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Course</u></button>
+                <div class = "popup">
+                  <div class="popup_content">
+                    <span class="close_button" onclick="closePopup(this)">x</span>
+                    <!-- CREATE COURSE FORM -->
+                    <form action="/create-course" method="post">
+                        <div class="form-group">
+                            <label for="course_number">Course Number:</label>
+                            <input type="text" id="course_number" name="course_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_name">Course Name:</label>
+                            <input type="text" id="course_name" name="course_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_description">Course Description:</label>
+                            <textarea id="course_description" name="course_description" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_level">Course Level:</label>
+                            <input type="text" id="course_level" name="course_level" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                  </div>
+                </div>
+      
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Skill</u></button>
+                <div class = "popup">
+                  <div class="popup_content">
+                    <span class="close_button" onclick="closePopup(this)">x</span>
+                    <!-- CREATE SKILL FORM -->
+                    <form action="/create-skill" method="post">
+                      <div class="form-group">
+                          <label for="skill_name">Skill Name:</label>
+                          <input type="text" id="skill_name" name="skill_name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="skill_description">Skill Description:</label>
+                          <textarea id="skill_description" name="skill_description" rows = "6" required></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="throughline">Throughline:</label>
+                          <input type="text" id="throughline" name="throughline" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="submit" value="Submit">
+                      </div>
+                  </form>
+                </div>
+              </div>
+        </div>
           </div>
-      </div>
-      <button id="make_new_tag_button" class="tags__button">Make New Tag</button>
-  </div>
-    </div>
-
-  <!-- Tag Information Panel 
-  <div class="tag_info_panel" id="tag_info_panel">
-      <div class="tag_info_content">
-          <span class="close_button" id="close_button">&times;</span>
-          <h2 id="tag_info_title"></h2>
-          -->
-          <!-- form info should go here 
-          <form id="tag_form"></form>
-      </div>
-  </div>
-  -->
-
-  <!-- Make New Tag Panel -->
-  <div class="new_tag_panel" id="new_tag_panel">
-      <div class="new_tag_content">
-          <span class="close_button" id="new_tag_close_button">&times;</span>
-          <h2>Make New Tag</h2>
-        
-          <!-- form info should go here -->
-          <form id="new_tag_form"></form>
-      </div>
-  </div>
-
+          
   <script src="./public/home.js"></script>
 </body>
