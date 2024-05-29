@@ -13,16 +13,18 @@ const checkAuthentication = require('../authentication')
 const initializePassport = require('../passport-config')
 
 const multer = require('multer')
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, '/uploads')
-    },
-    filename: function (req, file, cb) {
-        //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.originalname)
-      }
-})
-const upload = multer({ storage })
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, '/uploads')
+//     },
+//     filename: function (req, file, cb) {
+//         //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+//         cb(null, file.originalname)
+//       }
+// })
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 //for testing
 // const users = []
@@ -149,10 +151,20 @@ router.get("/admin-home", checkAuthentication.checkAuthenticated, async function
        })
 });
 
-router.post("/admin-home", upload.single('file'), (req, res) => {
-    res.json(req.file)
-    //res.send('File Uploaded successfully!')
-    res.send('/admin-home')
+router.post("/admin-home", upload.single('file'), async (req, res) => {
+    //calls the handler function, which parses the uploaded file and returns a json or -99 as an error
+    
+    EoLs = await handler.parseData(req.file.buffer);
+    
+    //checks for an error in parsing the file 
+    if (EoLs != -99) {
+        await middleware.transferEoLsToDatabase(EoLs);
+        res.send('File Uploaded successfully!')
+        res.redirect('/admin-home')
+        res.send(EoLs);
+    } else {
+        res.send("uploading did not work");
+    }
 })
 
 router.get('/health', async(req, res) => {
