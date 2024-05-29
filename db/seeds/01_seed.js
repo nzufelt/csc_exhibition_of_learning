@@ -11,19 +11,25 @@ exports.seed = async function(knex) {
 
   // inserts seed entries into data tables 
   await knex('users').insert([
+    // testing code ---
       {user_id: 101, email: 'ecapaldi@andover.edu', first_name: "Emma", last_name: "Capaldi", graduation_year: 2025, bio: "In my free time ..."},
       {user_id: 102, email: 'hchen@andover.edu', first_name: "Hannah", last_name: "Chen", graduation_year: 2025, bio: "Super cool"},
+    // -----
   ]);
 
   await knex('admins').insert([
+    // testing code ---
     {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Nick Zufelt", bio: "I love to teach..."},
     {admin_id: 104, email: 'mclarke@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Mrs. Clarke", bio: "I love to teach..."},
+    // -----
   ]);
 
   await knex('courses').insert([
-    {course_id: 1, course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
-    {course_id: 2, course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
-    
+    // testing code ---
+    {course_id: 1001, course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
+    {course_id: 1002, course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
+    // -----
+
     {course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
     {course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
     {course_number: "CSC403", course_name: 'Discrete Mathematics', course_description: "This course introduces students to topics in computer science by way of studying the mathematics of discrete (finite or countable) objects in mathematics. Mathematical topics might include sets, graphs, combinatorics, logic, or groups. There will be a focus on both mathematical and computational thinking.", course_level:"Introductory"},
@@ -49,19 +55,25 @@ exports.seed = async function(knex) {
 
 
   await knex('classes').insert([
-    {class_id: 1, course_id_ref: 1, admin_id_ref: 103, academic_year: 2023, term: 1},
-    {class_id: 2, course_id_ref: 2, admin_id_ref: 104, academic_year: 2022, term: 2},
+    // testing code ---
+    {class_id: 1, course_id_ref: 1001, admin_id_ref: 103, academic_year: 2023, term: 1},
+    {class_id: 2, course_id_ref: 1002, admin_id_ref: 104, academic_year: 2022, term: 2},
+    // -----
   ]);
 
   await knex('exhibitions').insert([
+    // testing code ---
     {exhibition_id: 1001, user_id_ref: 102, class_id_ref: 1, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
     {exhibition_id: 1002, user_id_ref: 101, class_id_ref: 1, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
     {exhibition_id: 1003, user_id_ref: 101, class_id_ref: 2, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
+    // -----
   ]);
 
   await knex('skills').insert([
-    {skill_id: 1, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
-    {skill_id: 2, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Working with Code"},
+    // testing code ---
+    {skill_id: 1001, skill_name: "Example", skill_description: "This skill ...", throughline: "Human Communication"},
+    {skill_id: 1002, skill_name: "Example 2", skill_description: "This skill ...", throughline: "Working With Code"},
+    // -----
     
     {skill_name: "Writing Code", skill_description: "Students can write whatever code they can envision — the only limitations are their time, their theoretical content knowledge, and their imagination. When stuck, they employ a variety of tools to explore their confusion and solve their problems.", throughline: "Working with Code"},
     {skill_name: "(Re)Factoring Code", skill_description: "Students have their own processes to ensure their code is properly factored, and can argue in favor of their factoring choices.", throughline: "Working with Code"},
@@ -75,15 +87,20 @@ exports.seed = async function(knex) {
     {skill_name: "Understanding Systems", skill_description: "Students leverage their understanding of the systems at play in their work to build upon the work of others, and they have established their own tools and practices for learning and understanding a system that is new to them.", throughline: "Working with Systems"},
     {skill_name: "Designing Systems", skill_description: "The systems that students design, and the tools students use to share them with the world, meet industry standards.", throughline: "Working with Systems"},
     {skill_name: "Tooling", skill_description: "Students use their technical devices with authority and ease, building alongside their chosen technological “stacks” (instead of “against” or “in spite of” them). They inhabit a playful tinkering process to familiarize themselves with new tools. They are willing and excited to experiment with processes to streamline elements of their device usage. They seek to create pathways to automate those elements of their work that do not need careful attention and can identify moments to interupt this automation when needed. They use this attitude and knowledge to help others become more familiar with the technical tools they use, serving as teachers and ambassidors of technology.", throughline: "Working with Systems"},
+    {skill_name: "Speaking in Translations", skill_description: "Students can discuss their ideas equally well to a classmate, a young child, or an expert in the field, matching a level of complexity of speech to that of their audience’s technical understanding. They use this skill to build connections across social divides and to deepen their relationships to their peers, other people, and the world.", throughline: "Human Communication"},
+    {skill_name: "Writing", skill_description: "While developing a subdomain of content knowledge as part of their coursework, students become familiar with the established literature of the given field, identify the gaps in this literature, and seek to fill them with their public-facing writing.", throughline: "Human Communication"},
+    {skill_name: "Collaboration", skill_description: "Students make effective use of collaborative tools, and can understand and enact divisions of labor that allow for open, honest, and relationship-deepening communication. Every member of the group knows, understands, and can defend the work of others.", throughline: "Human Communication"},
   
   ]);
   
   await knex('exhibitionSkillPairs').insert([
-    {exhibition_id_ref: 1001, skill_id_ref: 1},
-    {exhibition_id_ref: 1001, skill_id_ref: 2},
-    {exhibition_id_ref: 1002, skill_id_ref: 1},
-    {exhibition_id_ref: 1002, skill_id_ref: 2},
-    {exhibition_id_ref: 1003, skill_id_ref: 1},
-    {exhibition_id_ref: 1003, skill_id_ref: 2},
+    // testing code ---
+    {exhibition_id_ref: 1001, skill_id_ref: 1001},
+    {exhibition_id_ref: 1001, skill_id_ref: 1002},
+    {exhibition_id_ref: 1002, skill_id_ref: 1001},
+    {exhibition_id_ref: 1002, skill_id_ref: 1002},
+    {exhibition_id_ref: 1003, skill_id_ref: 1001},
+    {exhibition_id_ref: 1003, skill_id_ref: 1002},
+    // -----
   ]);
 };

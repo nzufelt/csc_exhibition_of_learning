@@ -96,26 +96,72 @@ overflow-y: scroll;
   }
   
 
-.tag {
-margin: 5px;
-padding: 8px 16px;
-background-color: #00319C;
-color: white;
-border: none;
-border-radius: 20px;
-cursor: pointer;
-font-family: "Sintony", sans-serif;
-}
+  .tag {
+    margin: 5px;
+    padding: 8px 16px;
+    background-color: hsl(var(--color-blue));
+    color: hsl(var(--color-light));
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Sintony", sans-serif;
+    padding: .5rem;
+  }
+  
+  .tag:hover {
+    background-color: hsl(var(--color-blue));
+  }
+  
+  .tag.human_communication {
+    background-color: hsl(var(--color-green));
+  }
+  
+  .tag.human_communication:hover {
+    background-color: hsl(var(--color-green-dark));
+  }
+  
+  .tag.working_with_code {
+    background-color: hsl(var(--color-purple));
+  }
+  
+  .tag.working_with_code:hover {
+    background-color: hsl(var(--color-purple-dark));
+  }
+  
+  .tag.research_and_design {
+    background-color: hsl(var(--color-red));
+  }
+  
+  .tag.research_and_design:hover {
+    background-color: hsl(var(--color-red-dark));
+  }
+  
+  .tag.working_with_systems {
+    background-color: hsl(var(--color-teal));
+  }
+  
+  .tag.working_with_systems:hover {
+    background-color: hsl(var(--color-teal-dark));
+  }
+  
+  .tag.asking_questions {
+    background-color: hsl(var(--color-orange));
+  }
+  .tag.asking_questions:hover {
+    background-color: hsl(var(--color-orange-dark));
+  }
+  
 
-.admin {
-  margin: 5px;
-  padding: 8px 16px;
-  background-color: #00319C;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: "Sintony", sans-serif;
+  .admin {
+    margin: 5px;
+    padding: 8px 16px;
+    background-color: hsl(var(--color-blue));
+    color: hsl(var(--color-light));
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Sintony", sans-serif;
+    padding: .5rem;
   }
 
 .tag:hover {
