@@ -137,16 +137,19 @@ router.post('/admin-login', checkAuthentication.checkNotAuthenticated, passport.
 
 router.get("/admin-home", checkAuthentication.checkAuthenticated, async function (req, res) {
     exhibitions = await exhibitionController.getExhibitionsHomePageJSON();
-    courses = await courseController.getAllCoursesJSON();
     skills = await skillController.getAllSkillsJSON();
-    
-    res.render("admin-home", {
-        exhibitions,
-        courses,
-        skills
-    });
-});
+    courses = await courseController.getAllCoursesJSON();
+    students = await userController.getAllUsersJSON();
+    teachers = await adminController.getAllAdminsJSON();
 
+    res.render("admin-home", 
+       {exhibitions,
+        skills,
+        courses,
+        students,
+        teachers
+       })
+});
 
 router.post("/admin-home", upload.single('file'), async (req, res) => {
     //calls the handler function, which parses the uploaded file and returns a json or -99 as an error

@@ -199,3 +199,11 @@ cursor: pointer;
 #new_tag_form button:hover {
 background-color: #00247A;
 }
+
+.details {
+  font-family: "Sintony", sans-serif;
+  color: hsl(var(--color-dark));
+  align-self: start;
+  margin: 0;
+  padding: 0;
+}
