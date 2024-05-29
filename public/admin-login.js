@@ -9,14 +9,11 @@ function setFormMessage(formElement, type, message) {
   messageElement.classList.add(`form__message--${type}`);
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("#login");
   
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    // do login things ?? @karen
 
     setFormMessage(loginForm, "error", "Invalid username/password combination");
   });

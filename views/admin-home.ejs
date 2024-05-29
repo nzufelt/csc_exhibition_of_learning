@@ -49,10 +49,21 @@
               <% if (skills.length > 0) {
                 skills.forEach(function(skill) {
                   %>
-                  <button class ="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill" onclick="openPopup(this)"><u><%-skill.skill_name%></u></button>
+                  <button class ="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill" onclick="openPopup(this)"><%-skill.skill_name%></button>
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- DELETE SKILL FORM -->
+                        <form action="/delete-skill" method="post">
+                          <div class="form-group">
+                            <input type="hidden" name="skill_id" value="<%= skill.skill_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="DELETE THIS SKILL">
+                            <p class="log"><p>
+                          </div>
+                        </form>
+
                         <!-- EDIT SKILL FORM -->
                           <form action="/edit-skill" method="post">
                             <div class="form-group">
@@ -86,10 +97,21 @@
               <% if (courses.length > 0) {
                 courses.forEach(function(course) {
                   %>
-                  <button class ="tag course" onclick="openPopup(this)"><u><%-course.course_number%>: <%-course.course_name%></u></button>
+                  <button class ="tag course" onclick="openPopup(this)"><%-course.course_number%>: <%-course.course_name%></button>
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- DELETE COURSE FORM -->
+                        <form action="/delete-course" method="post">
+                          <div class="form-group">
+                            <input type="hidden" name="course_id" value="<%= course.course_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="DELETE THIS COURSE">
+                            <p class="log"><p>
+                          </div>
+                        </form>
+
                         <!-- EDIT COURSE FORM -->
                         <form action="/edit-course" method="post">
                           <div class="form-group">
@@ -127,10 +149,21 @@
               <% if (students.length > 0) {
                 students.forEach(function(student) {
                   %>
-                  <button class ="tag teacher" onclick="openPopup(this)"><u><%-student.first_name%> <%-student.last_name%></u></button>
+                  <button class ="tag teacher" onclick="openPopup(this)"><%-student.first_name%> <%-student.last_name%></button>
                     <div class = "popup">
                       <div class="popup_content">
                         <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- DELETE STUDENTS FORM -->
+                        <form action="/delete-user" method="post">
+                          <div class="form-group">
+                            <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="DELETE THIS STUDENT">
+                            <p class="log"><p>
+                          </div>
+                        </form>
+
                         <!-- EDIT USER FORM -->
                           <form action="/edit-user" method="post">
                             <div class="form-group">
@@ -172,10 +205,21 @@
               <% if (teachers.length > 0) {
                 teachers.forEach(function(teacher) {
                   %>
-                  <button class ="tag teacher" onclick="openPopup(this)"><u><%= teacher.name %></u></button>
+                  <button class ="tag teacher" onclick="openPopup(this)"><%= teacher.name %></button>
                   <div class = "popup">
                     <div class="popup_content">
                       <span class="close_button" onclick="closePopup(this)">x</span>
+                      <!-- DELETE TEACHERS FORM -->
+                      <form action="/delete-admin" method="post">
+                        <div class="form-group">
+                          <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" value="DELETE THIS TEACHER">
+                          <p class="log"><p>
+                        </div>
+                      </form>
+
                       <!-- EDIT ADMIN FORM -->
                       <form action="/edit-admin" method="post">
                         <div class="form-group">
@@ -210,7 +254,7 @@
               
               </div>
             </div>
-                   <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Admin</u></button>
+                   <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Admin</button>
                 <div class = "popup">
                   <div class="popup_content">
                     <span class="close_button" onclick="closePopup(this)">x</span>
@@ -240,7 +284,7 @@
                   </div>
                 </div>
                 
-                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Course</u></button>
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Course</button>
                 <div class = "popup">
                   <div class="popup_content">
                     <span class="close_button" onclick="closePopup(this)">x</span>
@@ -270,7 +314,7 @@
                   </div>
                 </div>
       
-                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)"><u>Make New Skill</u></button>
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Skill</button>
                 <div class = "popup">
                   <div class="popup_content">
                     <span class="close_button" onclick="closePopup(this)">x</span>

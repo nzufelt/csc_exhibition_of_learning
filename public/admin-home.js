@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // function that logs form submission message
-function logSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const log = form.querySelector(".log");
-  log.textContent = "Form Submitted!";
-}
+// function logSubmit(event) {
+//   event.preventDefault();
+//   const form = event.target;
+//   const log = form.querySelector(".log");
+//   log.textContent = "Form Submitted!";
+// }
 
 // select forms
 const forms = document.querySelectorAll("form");

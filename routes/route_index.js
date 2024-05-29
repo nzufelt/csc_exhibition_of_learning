@@ -314,3 +314,39 @@ router.post('/edit-exhibition', async function(req, res){
 
     res.send("Exhibition Edited Successfully!");
 });
+
+//post to delete skill
+router.post('/delete-skill', async function(req, res){
+    const skill_id = req.body.skill_id;
+
+    await skillController.deleteSkill(skill_id);
+
+    res.send("Skill Deleted Successfully!");
+});
+
+//post to delete course
+router.post('/delete-course', async function(req, res){
+    const course_id = req.body.course_id;
+
+    await courseController.deleteCourse(course_id);
+
+    res.send("Course Deleted Successfully!");
+});
+
+//post to delete student/user
+router.post('/delete-user', async function(req, res){
+    const user_id = req.body.user_id;
+
+    await userController.deleteUser(user_id);
+
+    res.send("Student Deleted Successfully!");
+});
+
+//post to delete admin/teacher
+router.post('/delete-admin', async function(req, res){
+    const admin_id = req.body.admin_id;
+
+    await adminController.deleteAdmin(admin_id);
+
+    res.send("Teacher Deleted Successfully!");
+});
