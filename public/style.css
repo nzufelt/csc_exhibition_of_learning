@@ -6,12 +6,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root{
-  --color-light: 253 26 93;
-  --color-light-dark: 260 12 91;
+  --color-light: 253, 26%, 93%;
+  --color-light-dark: 260, 12%, 91%;
   
-  --color-dark: 258 15 13;
+  --color-dark: 258, 15%, 13%;
   
-  --color-grey: 255 10 84;
+  --color-grey: 255, 10%, 84%;
   
   
   --color-red: 0, 46%, 48%;
