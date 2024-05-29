@@ -5,12 +5,6 @@
     <link rel="stylesheet" href="about.css"/>
     <link rel="stylesheet" href="popup.css"/>
     <script src="popup.js"></script>
-
-    <style>
-      .about {
-          font-weight: bold;
-      }
-    </style>
   </head>
   
   <%- include('nav') %>
@@ -28,9 +22,7 @@
           Computer Science Faculty
         </h2>
         <p class="blurb__text">
-          This is a sample bio for the Phillips Academy Computer Science 
-          department faculty. Excepteur sint occaecat cupidatat non proident, 
-          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Meet Andover's computer science instructors, the developers of Andover's current CS curriculum. 
         </p>
       </div>  
     </div>
@@ -104,7 +96,7 @@
           <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>    [REPLACE THIS LINE WITH IMG FOR "FUN" PHOTO]
+              <div class="expanded_image"></div>    [REPLACE THIS LINE WITH <IMG> FOR "FUN" PHOTO]
               <div class="expanded_info">
                 <h2 class="info__name"><b>[faculty name]</b></h2>
                 <p class="info__text">
@@ -124,9 +116,7 @@
           Makers of the EoL Website
         </h2>
         <p class="blurb__text">
-          This is a sample bio for the Phillips Academy Computer Science 
-          department faculty. Excepteur sint occaecat cupidatat non proident, 
-          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Meet the students who collaborated in making Andover's Exhibition of Learning Website as their project for CSC573: Applied Term Project in Computer Science
         </p>
       </div>
     </div>
@@ -134,21 +124,21 @@
     <div class="grid_container">
       
       <div class="student_profile">
-        <div class="student_image_placeholder"></div>
-          <div class="student_name">
-            <b>Emma Capaldi</b>
-          </div>
+       <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/emma_headshot.jpg?raw=true">
+        <div class="student_name">
+          <b>Emma Capaldi</b>
+        </div>
         <button class="expand" onclick="openPopup(this)">
             <b>+</b>
         </button>
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/emma_fun.jpg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Emma Capaldi</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Hi! I’m Emma, a three-year upper from Andover, MA. On campus, I help lead Computer Science club, Science Olympiad, and the Andover Science and Tech Review magazine, and I also tutor at the Science Study Center. I’ve taken a bunch of CS courses here at Andover, including the old three-term iOS App Dev class, Machine Learning, and of course the Applied Term Project in CS. In my free time, I enjoy playing New York Times games, hanging out with my friends, and reading anything I can get my hands on!
                 </p>
               </div>
             </div>
@@ -178,7 +168,7 @@ Hi, I’m Hannah, a three-year upper and day student from Andover, MA. On campus
       </div>
       
       <div class="student_profile">
-        <div class="student_image_placeholder"></div>
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/kyle_headshot.jpg?raw=true">
           <div class="student_name">
             <b>Kyle Chen</b>
           </div>
@@ -188,11 +178,11 @@ Hi, I’m Hannah, a three-year upper and day student from Andover, MA. On campus
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/kyle_fun.jpg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Kyle Chen</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Hello world! I'm Kyle. I’m part of the Class of 2024 and a four-year senior. At Andover, I’ve participated in the Data Structures and Algorithms, Research and Development, and Applied Term Project electives. I love using math and computer science to solve problems! My work is motivated by a constant curiosity about how the world works and a desire to make knowledge more accessible. I hope to engage others in the wonderfully wacky world of programming. Find me on GitHub at https://github.com/astral4.
                 </p>
               </div>
             </div>
@@ -244,7 +234,7 @@ Hi! I’m Peter, a four-year senior from Wallingford, Connecticut. On campus, I 
       </div>
       
       <div class="student_profile">
-        <div class="student_image_placeholder"></div>
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/magnus_headshot.jpg?raw=true">
         <div class="student_name">
           <b>Magnus Julin</b>
         </div>
@@ -254,11 +244,11 @@ Hi! I’m Peter, a four-year senior from Wallingford, Connecticut. On campus, I 
         <div class = "popup">
             <div class="popup_content">
               <span class="close_button" onclick="closePopup(this)">x</span>
-              <div class="expanded_image"></div>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/magnus_fun.jpg?raw=true">
               <div class="expanded_info">
                 <h2 class="info__name"><b>Magnus Julin</b></h2>
                 <p class="info__text">
-                  [sample bio]
+Hello, I’m Magnus. I am a three year upper from North Andover, Massachusetts. On Campus, I am a Day Student Mentor, a board member of Big Blue Boom Crew (rocketry), a member of the Relay for Life Planning Board and a member of varsity cross country, wrestling, and crew. Off-campus, I run a woodworking business called Magnus Woodsmith that I have been operating since first grade and in my free time, I love exploring, tinkering, and being outside. Currently, I have taken the Introduction to Computer Science, IOS App Development, Scientific Computing and Applied Term Project In Computer Science courses.
                 </p>
               </div>
             </div>
