@@ -10,26 +10,11 @@ exports.seed = async function(knex) {
   await knex('exhibitionSkillPairs').del()
 
   // inserts seed entries into data tables 
-  await knex('users').insert([
-    // testing code ---
-      {user_id: 101, email: 'ecapaldi@andover.edu', first_name: "Emma", last_name: "Capaldi", graduation_year: 2025, bio: "In my free time ..."},
-      {user_id: 102, email: 'hchen@andover.edu', first_name: "Hannah", last_name: "Chen", graduation_year: 2025, bio: "Super cool"},
-    // -----
-  ]);
-
   await knex('admins').insert([
-    // testing code ---
-    {admin_id: 103, email: 'nzufelt@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Nick Zufelt", bio: "I love to teach..."},
-    {admin_id: 104, email: 'mclarke@andover.edu', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "Mrs. Clarke", bio: "I love to teach..."},
-    // -----
+    {email: 'example@gmail.com', password: "$2b$10$rZa45zzzGkHATzK17MIAeeZvWFBImCTRVwgEajhU9vl/DsAEMwKEu", name: "(DELETE IMMEDIATELY) Example Admin", bio: "DELETE THIS ACCOUNT IMMEDIATELY"}
   ]);
 
   await knex('courses').insert([
-    // testing code ---
-    {course_id: 1001, course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
-    {course_id: 1002, course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
-    // -----
-
     {course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
     {course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
     {course_number: "CSC403", course_name: 'Discrete Mathematics', course_description: "This course introduces students to topics in computer science by way of studying the mathematics of discrete (finite or countable) objects in mathematics. Mathematical topics might include sets, graphs, combinatorics, logic, or groups. There will be a focus on both mathematical and computational thinking.", course_level:"Introductory"},
@@ -53,28 +38,7 @@ exports.seed = async function(knex) {
     {course_number: "CSC600", course_name: 'Computer Science Research and Development', course_description: "This course serves as an opportunity for students to explore their passion for the subject of computer science through research in the field and/or development of their own software projects. After learning the core tools and methodologies that are used in professional software development and research, students will apply them to a project of their own creation. This will include a chance to grow in many areas related to the profession in addition to the software creation process, such as maintaining open-source software, self-directed learning, presenting on one’s work and related topics, collaboratively developing and testing a codebase, and analyzing and critiquing the work of others. Students should expect to spend a significant amount of time reading articles from scientific journals, understanding others’ code and documentation, and/or performing market analysis. Students will regularly discuss the status of their project with classmates and present both on their work and on more general computer science topics learned for and leveraged in their projects. Some student work may be submitted for publication in a scientific journal or presentation at conferences.", course_level:"Research"},
   ]);
 
-
-  await knex('classes').insert([
-    // testing code ---
-    {class_id: 1, course_id_ref: 1001, admin_id_ref: 103, academic_year: 2023, term: 1},
-    {class_id: 2, course_id_ref: 1002, admin_id_ref: 104, academic_year: 2022, term: 2},
-    // -----
-  ]);
-
-  await knex('exhibitions').insert([
-    // testing code ---
-    {exhibition_id: 1001, user_id_ref: 102, class_id_ref: 1, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
-    {exhibition_id: 1002, user_id_ref: 101, class_id_ref: 1, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
-    {exhibition_id: 1003, user_id_ref: 101, class_id_ref: 2, display_on_home_page: true, description: "In this video...",video_html_code:'<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1188822/sp/118882200/embedIframeJs/uiconf_id/25697092/partner_id/1188822?iframeembed=true&playerId=kaltura_player&entry_id=1_ofiuys05&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[hotspots.plugin]=1&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4mlte2vv" width="400" height="285" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="Screen Recording 2024-04-23 at 2.18.06 PM"></iframe>'},
-    // -----
-  ]);
-
   await knex('skills').insert([
-    // testing code ---
-    {skill_id: 1001, skill_name: "Example", skill_description: "This skill ...", throughline: "Human Communication"},
-    {skill_id: 1002, skill_name: "Example 2", skill_description: "This skill ...", throughline: "Working With Code"},
-    // -----
-    
     {skill_name: "Writing Code", skill_description: "Students can write whatever code they can envision — the only limitations are their time, their theoretical content knowledge, and their imagination. When stuck, they employ a variety of tools to explore their confusion and solve their problems.", throughline: "Working with Code"},
     {skill_name: "(Re)Factoring Code", skill_description: "Students have their own processes to ensure their code is properly factored, and can argue in favor of their factoring choices.", throughline: "Working with Code"},
     {skill_name: "Testing Code", skill_description: "Without prompting, students use tools for testing their code to ensure they fully understand the capabilities and limitations of their code. They can use testing tools to gain understanding of the code of others.", throughline: "Working with Code"},
@@ -91,16 +55,5 @@ exports.seed = async function(knex) {
     {skill_name: "Writing", skill_description: "While developing a subdomain of content knowledge as part of their coursework, students become familiar with the established literature of the given field, identify the gaps in this literature, and seek to fill them with their public-facing writing.", throughline: "Human Communication"},
     {skill_name: "Collaboration", skill_description: "Students make effective use of collaborative tools, and can understand and enact divisions of labor that allow for open, honest, and relationship-deepening communication. Every member of the group knows, understands, and can defend the work of others.", throughline: "Human Communication"},
   
-  ]);
-  
-  await knex('exhibitionSkillPairs').insert([
-    // testing code ---
-    {exhibition_id_ref: 1001, skill_id_ref: 1001},
-    {exhibition_id_ref: 1001, skill_id_ref: 1002},
-    {exhibition_id_ref: 1002, skill_id_ref: 1001},
-    {exhibition_id_ref: 1002, skill_id_ref: 1002},
-    {exhibition_id_ref: 1003, skill_id_ref: 1001},
-    {exhibition_id_ref: 1003, skill_id_ref: 1002},
-    // -----
   ]);
 };
