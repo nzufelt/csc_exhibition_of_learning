@@ -1,0 +1,90 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>EoL Search Results</title>
+    <link rel="stylesheet" href="search-results.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+</head>
+
+<%- include('nav-clean') %>
+
+<body>
+  <!--
+  <div class="change-page">
+    <button>Edit Exhibition</button>
+    <button>Presentable View</button>
+  </div>
+  -->
+
+  <div class="descriptions">
+    <div class="tag-description">
+    <h2 class="tag-description__title">Exhibitions of Learning</h2>
+
+    <% if (tag_display.length > 0) {
+      tag_display.forEach(function(tag) {
+        %>
+          <h2 class="tag-description__title"><%-tag.tag_name%></h2>
+          <p class="tag-description__info"><%-tag.tag_description%></p>
+
+        <%
+      })
+    }
+    %>
+  </div>
+
+    <p class="tag-descriptions__note">
+      Please visit the <a class="link" href="/cs-at-andover">Cs@Andover</a> page to learn more about tags.
+    </p>
+    
+  </div>
+  
+  <!--   video section -->
+  <div class="eols">
+    <% if (exhibitions.length > 0) {
+      exhibitions.forEach(function(exhibition) {
+        %>
+        <div class="exhibition">
+          <div class="exhibition__video"></div>
+            <%-exhibition.video_html_code%>
+          <div class="exhibition__tags">
+            <p class="exhibition__tag course_tag"><%=exhibition.course_number%>: <%=exhibition.course_name%></p>
+            <%
+                for (i=0; i < exhibition.skills.length; i++) {
+                  %>
+                    <p class="exhibition__tag <%=exhibition.throughlines[i].toString().toLowerCase().replaceAll(' ', '_')%>_video">
+                      <%=exhibition.skills[i]%></p>
+                  <%
+                }
+              %>
+          </div>
+          <p class="exhibition__info"><%= exhibition.first_name %> <%= exhibition.last_name %> - 
+            <% if (exhibition.term == 1) {
+              %>
+              Fall Term, 
+              <%
+            } else if (exhibition.term == 2) {
+              %>
+              Winter Term, 
+              <%
+            } else if (exhibition.term == 3) {
+              %>
+              Spring Term, 
+              <%
+            }%>
+            <%= exhibition.academic_year%> 
+            </p>
+          <p class="exhibition__description">
+            <%= exhibition.description%> 
+          </p>
+        </div>
+      </div>
+      <%
+    })
+  }
+  %>
+  </div>
+</body>
+  
+<%- include('foot') %>

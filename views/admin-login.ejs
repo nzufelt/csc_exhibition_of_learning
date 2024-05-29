@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="stylesheet" href="admin-login.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+
+  
+  <body>
+    <div class="container">
+
+      <% if (messages.error) { %>
+        <%= messages.error %>
+      <% } %>
+
+        <form class="form" id="login" action = '/admin-login' method = 'POST'>
+            <h1 class="form__title">Login</h1>
+            <div class="form__input-group">
+                <input type="text" id = "email" name = "email" class="form__input" autofocus placeholder="Email" required>
+            </div>
+            <div class="form__input-group">
+                <input type="password" id = "password" name = "password" class="form__input" autofocus placeholder="Password" required>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+        </form>
+    </div>
+    
+    <script src="./public/admin-login.js"></script>
+    
+  </body>
+</html>
+  

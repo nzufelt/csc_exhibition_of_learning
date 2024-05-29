@@ -1,0 +1,126 @@
+/* styling for About Us page */
+
+body {
+  color: hsl(var(--color-dark));
+  background-color: hsl(var(--color-light));
+}
+
+h1 {
+  color: hsl(var(--color-dark));
+}
+
+.text_container {
+  margin: 5%;
+}
+
+.blurb {
+  width: 65em;
+  margin: 0 auto;
+  max-width: 90%;
+  font-family: "Sintony", sans-serif;
+  width: 80%;
+  line-height: 175%;
+}
+
+.blurb__header {
+  font-family: "Prociono", sans-serif;
+  font-size: 32px;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.blurb__text {
+  font-family: "Sintony", sans-serif;
+}
+
+.grid_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 5em;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: "Sintony", serif;
+}
+
+.teacher_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+
+/* placeholder for teacher images... coming soon */
+.teacher_image {
+  position: relative;
+  margin: 10px;
+  height: 375px;
+  width: 375px;
+  background-size: cover; /* This ensures the image covers the entire container without stretching */
+  background-position: center; /* This centers the image within the container */
+}
+
+.nick {
+  background-image: url('https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/nzufelt_headshot.jpg?raw=true');
+}
+
+.clarke {
+  background-image: url("https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/mclarke_headshot.jpg?raw=true");
+}
+
+/* 
+TO ADD A FACULTY MEMBER:
+.[INSERT FACULTY FIRST NAME] {
+  background-image: url("[INSERT URL TO IMAGE FILE ON REPOSITORY]");
+}
+ */
+
+.teacher_name {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 300px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 5;
+  left: 5;
+  padding-left: .5em;
+}
+
+.student_profile {
+  display: flex;
+  margin: 3%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* placeholder for real images... coming soon */
+.student_image_placeholder {
+  margin: 10px;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+}
+
+.student_image {
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.student_name {
+  width: 150px;
+  font-size: 16px;
+  text-align: center;
+  font-family: "Sintony", sans-serif;
+}
+
+.expand {
+  border: 0px;
+  background: none;
+  font-size: 3em;
+  color: hsl(var(--color-dark));
+  transition: transform 0.4s ease;
+}

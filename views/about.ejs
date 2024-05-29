@@ -1,0 +1,308 @@
+<html>
+  <head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="about.css"/>
+    <link rel="stylesheet" href="popup.css"/>
+    <script src="popup.js"></script>
+  </head>
+  
+  <%- include('nav') %>
+    
+  <body>
+    <div class="overlay"></div>
+    
+    <div class="text_container">
+      <h1>
+        Meet the Team
+      </h1>
+      
+      <div class="blurb">
+        <h2 class="blurb__header">
+          Computer Science Faculty
+        </h2>
+        <p class="blurb__text">
+          Meet Andover's computer science instructors, the developers of Andover's current CS curriculum. 
+        </p>
+      </div>  
+    </div>
+    
+
+    <div class="grid_container">
+        <div class="teacher_profile">
+          <div class="teacher_image nick">
+            <div class="teacher_name">
+              <b>Nick Zufelt</b>
+            </div>
+          </div>
+          <button class="expand" onclick="openPopup(this)">            
+            <b>+</b>
+          </button>
+          <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="../public/nzufelt_fun.jpeg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Nick Zufelt</b></h2>
+                <p class="info__text">
+                    Nick came to Computer Science after his formal education in Mathematics. He loves teaching CS because
+                    it keeps him learning — preparing students for a rapidly-changing field keeps him on his toes in ways that
+                    he finds deeply generative. He focuses his teaching practice on cultivating a workshop feel in his
+                    classroom, where each student spends their time passionately honing their work and in doing so, their
+                    craft. He is constantly experimenting with his courses to find effective new ways of teaching. In that way,
+                    and in his recent adventures learning 日本語 and homesteading, he’s very much still a student.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="teacher_profile">
+          <div class="teacher_image clarke">
+            <div class="teacher_name">
+             <b>Meghan Clarke</b>
+            </div>
+          </div>
+          <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+          </button>
+          <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="../public/mclarke_fun.jpg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Meghan Clarke</b></h2>
+                <p class="info__text">
+                    Meghan Clarke joined Phillips Academy in 2022, primarily as an instructor of Computer Science, after a
+                    decade of living abroad in the United Kingdom. She strives to create a classroom environment that is
+                    inclusive, collaborative, and engaging, and where all students feel empowered to challenge themselves
+                    and make mistakes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+<!--     USE THIS AS A TEMPLATE TO ADD NEW TEACHER:     -->
+<!--         <div class="teacher_profile">
+          <div class="teacher_image [INSERT FACULTY FIRST NAME]">
+            <div class="teacher_name">
+              <b>[INSERT FACULTY NAME]</b>
+            </div>
+          </div>
+          <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+          </button>
+          <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <div class="expanded_image"></div>    [REPLACE THIS LINE WITH <IMG> FOR "FUN" PHOTO]
+              <div class="expanded_info">
+                <h2 class="info__name"><b>[faculty name]</b></h2>
+                <p class="info__text">
+                  [INSERT FACULTY NAME]
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+    </div>
+
+    
+    <div class="text_container"> 
+      <div class="blurb">
+        <h2 class="blurb__header">
+          Makers of the EoL Website
+        </h2>
+        <p class="blurb__text">
+          Meet the students who collaborated in making Andover's Exhibition of Learning Website as their project for CSC573: Applied Term Project in Computer Science
+        </p>
+      </div>
+    </div>
+    
+    <div class="grid_container">
+      
+      <div class="student_profile">
+       <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/emma_headshot.jpg?raw=true">
+        <div class="student_name">
+          <b>Emma Capaldi</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/emma_fun.jpg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Emma Capaldi</b></h2>
+                <p class="info__text">
+Hi! I’m Emma, a three-year upper from Andover, MA. On campus, I help lead Computer Science club, Science Olympiad, and the Andover Science and Tech Review magazine, and I also tutor at the Science Study Center. I’ve taken a bunch of CS courses here at Andover, including the old three-term iOS App Dev class, Machine Learning, and of course the Applied Term Project in CS. In my free time, I enjoy playing New York Times games, hanging out with my friends, and reading anything I can get my hands on!
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/hannah_headshot.png?raw=true">
+        <div class="student_name">
+          <b>Hannah Chen</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/hannah_fun.png?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Hannah Chen</b></h2>
+                <p class="info__text">
+Hi, I’m Hannah, a three-year upper and day student from Andover, MA. On campus, I help lead the Flow Arts, Game Design, and Arts for Expression clubs, and in my free time you’ll find me making a mess with hot glue in Elson or building puzzles in the library! I have taken several Compsci courses at Andover, including Machine Learning, Game Development, and the Applied Term Project courses— outside of class, I also enjoy participating in game jams and hackathons with my friends :)
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/kyle_headshot.jpg?raw=true">
+          <div class="student_name">
+            <b>Kyle Chen</b>
+          </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/kyle_fun.jpg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Kyle Chen</b></h2>
+                <p class="info__text">
+Hello world! I'm Kyle. I’m part of the Class of 2024 and a four-year senior. At Andover, I’ve participated in the Data Structures and Algorithms, Research and Development, and Applied Term Project electives. I love using math and computer science to solve problems! My work is motivated by a constant curiosity about how the world works and a desire to make knowledge more accessible. I hope to engage others in the wonderfully wacky world of programming. Find me on GitHub at https://github.com/astral4.
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/amber_headshot.jpg?raw=true">
+        <div class="student_name">
+          <b>Amber Chou</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/amber_fun.jpeg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Amber Chou</b></h2>
+                <p class="info__text">
+Amber, class of 2024, is a four-year senior from Bozeman, Montana. On campus, she lives in Whitney. Amber has taken several computer science courses at Phillips Academy, including AP Computer Science, Machine Learning, Discrete Mathematics, Computer Science Research and Development, and most recently, Applied Term Project in Computer Science. In her free time, Amber enjoys watching films, rock climbing, and going to Boston with her friends. 
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/peter_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Peter Elliott</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/peter_fun.jpeg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Peter Elliott</b></h2>
+                <p class="info__text">
+Hi! I’m Peter, a four-year senior from Wallingford, Connecticut. On campus, I live in Bishop Hall, where I serve as a dorm proctor. I’m a captain on the Boys’ Varsity Lacrosse team and a member of the Boys’ Varsity Soccer team, and I serve as a community engagement coordinator for Andover’s ARC program. In my free time, I enjoy spending time with friends, backpacking, skiing, and completing New York Times crosswords!
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/magnus_headshot.jpg?raw=true">
+        <div class="student_name">
+          <b>Magnus Julin</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/magnus_fun.jpg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Magnus Julin</b></h2>
+                <p class="info__text">
+Hello, I’m Magnus. I am a three year upper from North Andover, Massachusetts. On Campus, I am a Day Student Mentor, a board member of Big Blue Boom Crew (rocketry), a member of the Relay for Life Planning Board and a member of varsity cross country, wrestling, and crew. Off-campus, I run a woodworking business called Magnus Woodsmith that I have been operating since first grade and in my free time, I love exploring, tinkering, and being outside. Currently, I have taken the Introduction to Computer Science, IOS App Development, Scientific Computing and Applied Term Project In Computer Science courses.
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/Tisha_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Leticia (Tisha) Nhaule</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/Tisha_fun.jpeg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Leticia (Tisha) Nhaule</b></h2>
+                <p class="info__text">
+                  Hi y’all! I’m Tisha, a two-year Upper from Maputo, Mozambique. On campus, I prefect in Paul Revere House, tutor at the Writing Center and head the International Club (iClub) and African Student Association (ASA). In my free time, I love watching African dramas and I just picked up dancing as a hobby. So far, I have taken Intro to Python, Web Dev, Object-oriented Programming in Java and the Term Contained Project within the Andover CS program.
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="student_profile">
+        <img class = "student_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/karen_headshot.jpeg?raw=true">
+        <div class="student_name">
+          <b>Karen Wang</b>
+        </div>
+        <button class="expand" onclick="openPopup(this)">
+            <b>+</b>
+        </button>
+        <div class = "popup">
+            <div class="popup_content">
+              <span class="close_button" onclick="closePopup(this)">x</span>
+              <img class = "expanded_image" src="https://github.com/emma2357/csc_exhibition_of_learning/blob/main/public/karen_fun.jpeg?raw=true">
+              <div class="expanded_info">
+                <h2 class="info__name"><b>Karen Wang</b></h2>
+                <p class="info__text">
+Karen, class of 2024, is a four-year senior from Andover, MA. On campus, she plays violin in the school orchestras and was the Executive Digital Editor of The Phillipian. Karen has taken a few computer science courses at Andover, such as Scientific Computing and Object-Oriented Programming in Java, and she has enjoyed learning various coding languages. In her free time, she enjoys baking, playing piano, and grabbing a meal with her friends downtown.
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div> 
+        
+  </body>
+        
+  <%- include('foot') %>
+
+    
+</html>

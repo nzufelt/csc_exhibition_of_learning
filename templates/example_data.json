@@ -1,0 +1,143 @@
+{
+    "users": [
+        {
+          "user_id": 103, 
+          "honorific": "Dr.", 
+          "first_name": "Nick", 
+          "last_name": "Zufelt", 
+          "graduation_year": 0, 
+          "bio": "I love to teach...", 
+          "user_type": "Teacher"
+        },
+        {
+          "user_id": 104, 
+          "honorific": "Mrs.", 
+          "first_name": "", 
+          "last_name": "Clarke", 
+          "graduation_year": 0, 
+          "bio": "I love to teach...", 
+          "user_type": "Teacher"
+        },
+        {
+          "user_id": 101, 
+          "honorific": "", 
+          "first_name": "Emma", 
+          "last_name": "Capaldi", 
+          "graduation_year": 2025, 
+          "bio": "In my free time ...", 
+          "user_type": "Student"
+        },
+        {
+          "user_id": 102, 
+          "honorific": "", 
+          "first_name": "Hannah", 
+          "last_name": "Chen", 
+          "graduation_year": 2025, 
+          "bio": "Super cool", 
+          "user_type": "Student"
+        }
+    ],
+
+    "courses": [
+      {
+        "course_id": 10001,
+        "course_number": "CSC573", 
+        "course_name": "Project-Based Term of CS", 
+        "course_description": "In this class ... ", 
+        "course_level": "Advanced"
+      },
+      {
+        "course_id": 10002, 
+        "course_number": "CSC401", 
+        "course_name": "Web Dev", 
+        "course_description": "In this class ... ", 
+        "course_level": "Advanced"
+      }
+    ],
+    
+    "classes": [
+      {
+        "class_id": 1, 
+        "course_id_ref": 10001, 
+        "user_id_ref": 103, 
+        "academic_year": 2023, 
+        "term": 1
+      },
+      {
+        "class_id": 2, 
+        "course_id_ref": 10002, 
+        "user_id_ref": 104, 
+        "academic_year": 2022, 
+        "term": 1
+      }
+    ],
+
+    "exhibitions": [
+      {
+        "exhibition_id": 1001, 
+        "user_id_ref": 102, 
+        "class_id_ref": 1, 
+        "display_on_home_page": true, 
+        "description": "In this video...", 
+        "video_html_code": "https://"
+      },
+      {
+        "exhibition_id": 1002, 
+        "user_id_ref": 101, 
+        "class_id_ref": 1, 
+        "display_on_home_page": false, 
+        "description": "In this video...",
+        "video_html_code": "https://"
+      },
+      {
+        "exhibition_id": 1003, 
+        "user_id_ref": 101, 
+        "class_id_ref": 2, 
+        "display_on_home_page": false, 
+        "description": "In this video...", 
+        "video_html_code": "https://"
+      }
+    ],
+
+    "skills": [
+      {
+        "skill_id": 1, 
+        "skill_name": "Speaking in Translations",
+        "skill_description": "This skill ...", 
+        "throughline": "Human Communication"
+      },
+      {
+        "skill_id": 2, 
+        "skill_name": "Refactoring Code", 
+        "skill_description": "This skill ...", 
+        "throughline": "Writing Code"
+      }
+    ],
+
+    "exhibitionSkillPairs": [
+      {
+        "exhibition_id_ref": 1001,
+        "skill_id_ref": 1
+      },
+      {
+        "exhibition_id_ref": 1001, 
+        "skill_id_ref": 2
+      },
+      {
+        "exhibition_id_ref": 1002, 
+        "skill_id_ref": 1
+      },
+      {
+        "exhibition_id_ref": 1002, 
+        "skill_id_ref": 2
+      },
+      {
+        "exhibition_id_ref": 1003, 
+        "skill_id_ref": 1
+      },
+      {
+        "exhibition_id_ref": 1003, 
+        "skill_id_ref": 2
+      }
+    ]
+}

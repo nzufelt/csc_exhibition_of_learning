@@ -1,0 +1,125 @@
+body {
+  --border-radius: 15px;
+  
+  margin: 5rem;
+  height: 100vh;
+  font-size: 18px;
+}
+
+.link{
+color: hsl(var(--color-light));
+}
+
+button{
+background-color: hsl(var(--color-light));
+color: white;
+border: none;
+padding: 1rem 3rem;
+font-size: 18px;
+font-family: 'Sintony', sans-serif;
+border-radius: var(--border-radius);
+}
+
+.descriptions{
+background-color: hsl(var(--color-blue));
+padding: 1rem 0;
+padding-bottom: 3rem;
+}
+
+.tag-description{
+margin-top: 3rem;
+margin-left: 4rem;
+margin-right: 4rem;
+color: hsl(var(--color-light));
+}
+
+.tag-description__title{
+margin: 4rem 0 0 0;
+font-size: 34px;
+font-family: 'Sintony', sans-serif;
+font-weight: bold;
+} 
+
+.tag-description__info{
+font-size: 18px;
+font-family: 'Prociono', serif;
+margin: .5rem 0;
+line-height: 200%;
+}
+
+.tag-descriptions__note{
+font-size: 18px;
+font-family: 'Sintony', sans-serif;
+color: hsl(var(--color-light));
+margin: .5rem 0;
+line-height: 200%;
+margin-left: 4rem;
+margin-right: 4rem;
+margin-top: 2rem;
+}
+
+.eols{
+margin: 2rem;
+align-items: center;
+}
+
+.exhibition{
+display: block;
+width: 600px;
+margin: 2rem auto;
+padding: 1rem;
+}
+
+.exhibition__tags{
+display: flex;
+}
+
+.exhibition__tag{
+margin: 1rem .5rem 0 0;
+border: solid;
+padding: .5rem;
+font-size: 16px;
+border-radius: var(--border-radius);
+font-family: 'Sintony', sans-serif;
+color: hsl(var(--color-light));
+}
+
+.exhibition__info{
+margin: 1rem 0;
+font-size: 18px;
+font-family: 'Prociono', serif;
+}
+
+.exhibition__description{
+font-family: 'Sintony', sans-serif;
+font-size: 16px;
+}
+
+.course_tag {
+background-color: hsl(var(--color-blue));
+}
+
+.working_with_code_video {
+background-color: hsl(var(--color-purple))
+}
+
+.human_communication_video {
+background-color: hsl(var(--color-green))
+}
+
+.research_and_design_video {
+background-color: hsl(var(--color-red))
+}
+
+.asking_questions_video {
+background-color: hsl(var(--color-orange))
+}
+
+.working_with_systems_video {
+background-color: hsl(var(--color-teal))
+}
+
+#kaltura_player {
+  width: 600px;
+  height: 427.5px
+}

@@ -1,0 +1,44 @@
+/* styling for foot bar that appears on every page */
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: hsl(var(--color-blue-dark));
+  margin-bottom: 0;
+  padding: 0.5em;
+
+}
+
+.foot-text { 
+  color: hsl(var(--color-light));
+  text-align: right;
+  margin-right: 1em;
+  padding: 2em;
+
+}
+.foot-text p {
+  font-family: "Prociono", sans-serif;
+  color: #E5E9E9;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 200%;
+}
+
+/* formatting and inverting color of "Phillips Academy Andover"
+image. Was originally dark grey. */
+.pa_logo {
+  filter: invert(100%);
+  width: 200px;
+  margin: 0;
+  margin-left: 30px;  
+}
+
+@media(max-width: 400px){
+  .foot {
+    flex-direction: column;
+  }
+  .foot-text {
+    text-align: center;
+  }
+}
+

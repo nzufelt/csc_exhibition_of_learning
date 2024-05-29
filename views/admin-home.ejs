@@ -1,0 +1,386 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Admin Page</title>
+    <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="admin-home.css">
+    <link rel="stylesheet" href="style.css"/>
+    
+    <link rel="stylesheet" href="popup.css"/>
+    <script src="popup.js"></script>
+
+    <script src="admin-home.js" defer></script>
+</head>
+
+<body>
+  <div class="top">
+    <h1 class="top__welcome">Welcome!</h1>
+    <p class="top__desc">
+          &emsp; Download an Exhibition of Learning excel template from the Download Form button, and fill it out with exhibitions from the microsoft form each student filled out. Don't forget to add your email (the same one you used to make your admin account), the academic year (please use the year of your fall term, so if this class is in 2022-2023 please enter 2022), and the current term (Fall, Winter, or Spring), and make sure to drag that information down so that it is filled out for every exhibition.
+        </p>
+    <p class="top__desc">
+          &emsp; Then upload your filled out excel form as an .xlsx file by selecting "choose file", picking your file, and then clicking "Submit Above Form."
+    </p>
+    <p class="top__desc">
+      &emsp; To get more information about uploading EoLs, please see <a href="/eol_uploading_instructions.md">this page.</a>
+    </p> 
+
+    <div class="top__buttons">
+      <a href="https://docs.google.com/spreadsheets/d/1aa_OA5dHOu7ps5N8lpN580LpyOZo2NbgJCFGNTN51bY/copy"><button class="top__button">Download Excel Template</button></a>
+
+      <form class="upload" action="/admin-home" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <button type = "submit" class="top__button">Submit Above Form</button>
+      </form>
+
+    </div>
+    
+  </div>
+
+    <div class="tags">
+      <h1 class="tags__header">Manage Tags:</h1>
+      <p class="top__desc">
+        &emsp; Use the manage existing tags to search for tags (specifically skills and courses) and then edit or delete them. Use the "Make New" buttons to create new courses and skills.
+    </p>
+      <div class="tag__container">
+      <button id="search_button" class="tags__button">Manage Existing Tag</button>
+
+      <div class="search_pop_up" id="search_pop_up">
+          <div class="search_section">
+              <div class="search_bar_container">
+                  <div class="search_bar">
+                      <input type="text" id="tag_search_bar" placeholder="Tag Search ... " onkeyup="tag_search()">
+                  </div>
+              </div>
+          </div>
+
+          <div class="all_tags">
+              <!-- SKILLS -->
+              <% if (skills.length > 0) {
+                skills.forEach(function(skill) {
+                  %>
+                  <button class ="tag <%= String(skill.throughline).toLowerCase().replaceAll(' ', '_')%> skill" onclick="openPopup(this)"><%-skill.skill_name%></button>
+                    <div class = "popup">
+                      <div class="popup_content">
+                        <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- DELETE SKILL FORM -->
+                        <form action="/delete-skill" method="post">
+                          <div class="form-group">
+                            <input type="hidden" name="skill_id" value="<%= skill.skill_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="DELETE THIS SKILL">
+                            <p class="log"><p>
+                          </div>
+                        </form>
+
+                        <!-- EDIT SKILL FORM -->
+                          <form action="/edit-skill" method="post">
+                            <div class="form-group">
+                                <label for="skill_name">Skill Name:</label>
+                                <input type="text" id="skill_name" name="skill_name" value="<%= skill.skill_name %>" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="skill_description">Skill Description:</label>
+                                <textarea id="skill_description" name="skill_description" rows = "6" required><%= skill.skill_description%></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="throughline">Throughline:</label>
+                                <input type="text" id="throughline" name="throughline" value="<%= skill.throughline %>" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="skill_id" value="<%= skill.skill_id %>" required>
+                            </div>
+                            <div class="form-group">
+                              <input type="submit" value="Submit">
+                              <p class="log"><p>
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  <%
+                })
+              }
+              %>
+
+              <!-- COURSES -->
+              <% if (courses.length > 0) {
+                courses.forEach(function(course) {
+                  %>
+                  <button class ="tag course" onclick="openPopup(this)"><%-course.course_number%>: <%-course.course_name%></button>
+                    <div class = "popup">
+                      <div class="popup_content">
+                        <span class="close_button" onclick="closePopup(this)">x</span>
+                        <!-- DELETE COURSE FORM -->
+                        <form action="/delete-course" method="post">
+                          <div class="form-group">
+                            <input type="hidden" name="course_id" value="<%= course.course_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="DELETE THIS COURSE">
+                            <p class="log"><p>
+                          </div>
+                        </form>
+
+                        <!-- EDIT COURSE FORM -->
+                        <form action="/edit-course" method="post">
+                          <div class="form-group">
+                              <label for="course_number">Course Number:</label>
+                              <input type="text" id="course_number" name="course_number" value="<%= course.course_number %>" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_name">Course Name:</label>
+                              <input type="text" id="course_name" name="course_name" value="<%= course.course_name %>" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_description">Course Description:</label>
+                              <textarea id="course_description" name="course_description" rows="6" required><%= course.course_description %></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="course_level">Course Level:</label>
+                              <input type="text" id="course_level" name="course_level" value="<%= course.course_level %>" required>
+                          </div>
+                          <div class="form-group">
+                              <input type="hidden" name="course_id" value="<%= course.course_id %>" required>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="Submit">
+                            <p class="log"><p>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
+                <%
+              })
+            }
+            %>
+              </div>
+            </div>
+                
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Course</button>
+                <div class = "popup">
+                  <div class="popup_content">
+                    <span class="close_button" onclick="closePopup(this)">x</span>
+                    <!-- CREATE COURSE FORM -->
+                    <form action="/create-course" method="post">
+                        <div class="form-group">
+                            <label for="course_number">Course Number:</label>
+                            <input type="text" id="course_number" name="course_number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_name">Course Name:</label>
+                            <input type="text" id="course_name" name="course_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_description">Course Description:</label>
+                            <textarea id="course_description" name="course_description" rows="6" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="course_level">Course Level:</label>
+                            <input type="text" id="course_level" name="course_level" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" value="Submit">
+                          <p class="log"><p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+      
+                <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Skill</button>
+                <div class = "popup">
+                  <div class="popup_content">
+                    <span class="close_button" onclick="closePopup(this)">x</span>
+                    <!-- CREATE SKILL FORM -->
+                    <form action="/create-skill" method="post">
+                      <div class="form-group">
+                          <label for="skill_name">Skill Name:</label>
+                          <input type="text" id="skill_name" name="skill_name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="skill_description">Skill Description:</label>
+                          <textarea id="skill_description" name="skill_description" rows = "6" required></textarea>
+                      </div>
+                      <div class="form-group">
+                          <label for="throughline">Throughline:</label>
+                          <input type="text" id="throughline" name="throughline" required>
+                      </div>
+                      <div class="form-group">
+                          <input type="submit" value="Submit">
+                          <p class="log"><p>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+              <div class="top">
+                <h1 class="tags__header">
+                  Manage Students/Admins:</h1>
+
+                  <p class="top__desc">
+                    &emsp; Use the manage existing tags to search for students and other admins and then edit or delete them. Use the "Make New" buttons to create new admins. Note that new students will be made automatically when you upload their exhibition.
+                </p>
+
+                <div class="tag__container">
+                  <button id="search_button_admin" class="tags__button">Manage Existing Student/Admin</button>
+
+                  <div class="search_pop_up" id="admin_search_pop_up">
+                    <div class="search_section">
+                        <div class="search_bar_container">
+                            <div class="search_bar">
+                                <input type="text" id="admin_search_bar" placeholder="Tag Search ... " onkeyup="tag_search_admin()">
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="all_admins">
+                        <!-- STUDENTS -->
+                        <% if (students.length > 0) {
+                          students.forEach(function(student) {
+                            %>
+                            <button class ="admin teacher" onclick="openPopup(this)"><%-student.first_name%> <%-student.last_name%></button>
+                              <div class = "popup">
+                                <div class="popup_content">
+                                  <span class="close_button" onclick="closePopup(this)">x</span>
+                                  <!-- DELETE STUDENTS FORM -->
+                                  <form action="/delete-user" method="post">
+                                    <div class="form-group">
+                                      <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="submit" value="DELETE THIS STUDENT">
+                                      <p class="log"><p>
+                                    </div>
+                                  </form>
+          
+                                  <!-- EDIT USER FORM -->
+                                    <form action="/edit-user" method="post">
+                                      <div class="form-group">
+                                          <label for="email">Student Email:</label>
+                                          <input type="text" id="email" name="email" value="<%= student.email %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="first_name">First Name:</label>
+                                          <input type="text" id="first_name" name="first_name" value="<%= student.first_name %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="last_name">Last Name:</label>
+                                          <input type="text" id="last_name" name="last_name" value="<%= student.last_name %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="graduation_year">Graduation Year:</label>
+                                          <input type="text" id="graduation_year" name="graduation_year" value="<%= student.graduation_year %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="bio">Student Bio:</label>
+                                          <textarea id="bio" name="bio" rows = "6" required><%= student.bio%></textarea>
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="submit" value="Submit">
+                                        <p class="log"><p>
+                                       </div>
+                                  </form>
+                                </div>
+                              </div>
+                            <%
+                          })
+                        }
+                        %>
+          
+                        <!-- TEACHERS -->
+                        <% if (teachers.length > 0) {
+                          teachers.forEach(function(teacher) {
+                            %>
+                            <button class ="admin teacher" onclick="openPopup(this)"><%= teacher.name %></button>
+                            <div class = "popup">
+                              <div class="popup_content">
+                                <span class="close_button" onclick="closePopup(this)">x</span>
+                                <!-- DELETE TEACHERS FORM -->
+                                <form action="/delete-admin" method="post">
+                                  <div class="form-group">
+                                    <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="submit" value="DELETE THIS TEACHER">
+                                    <p class="log"><p>
+                                  </div>
+                                </form>
+          
+                                <!-- EDIT ADMIN FORM -->
+                                <form action="/edit-admin" method="post">
+                                  <div class="form-group">
+                                      <label for="email">Email:</label>
+                                      <input type="text" id="email" name="email" value="<%= teacher.email %>" required>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="first_name">Password:</label>
+                                      <input type="text" id="password" name="password" required>
+                                  </div> 
+                                  <div class="form-group">
+                                      <label for="name">Name:</label>
+                                      <input type="text" id="name" name="name" value="<%= teacher.name %>" required>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="bio">Bio:</label>
+                                      <textarea id="bio" name="bio" rows = "6" required><%= teacher.bio%></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="submit" value="Submit">
+                                    <p class="log"><p>
+                                  </div>
+                                </form>
+                                </div>
+                              </div>
+                              <%
+                            })
+                          }
+                          %>
+                        
+                        </div>
+                      </div>
+
+                     <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Admin</button>
+                  <div class = "popup">
+                    <div class="popup_content">
+                      <span class="close_button" onclick="closePopup(this)">x</span>
+                      <!-- CREATE ADMIN FORM -->
+                        <form action="/create-admin" method="post">
+                          <div class="form-group">
+                              <label for="email">Email:</label>
+                              <input type="text" id="email" name="email" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="first_name">Password:</label>
+                              <input type="text" id="password" name="password" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="name">Name:</label>
+                              <input type="text" id="name" name="name" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="bio">Bio:</label>
+                              <textarea id="bio" name="bio" rows = "6" required></textarea>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" value="Submit">
+                            <p class="log"><p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          
+          
+  <script src="./public/home.js"></script>
+</body>

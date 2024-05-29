@@ -1,0 +1,342 @@
+<html>
+  <head>
+    <title>CS At Andover</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="csAtAndover.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Sintony:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Libre+Caslon+Display&family=Prociono&family=Quicksand:wght@300..700&family=Sintony:wght@400;700&display=swap" rel="stylesheet">
+    <script src="csAtAndover.js"></script>
+    <style>
+    .cs_at_andover {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  
+  <%- include('nav') %>
+  <body>
+    
+   
+    <div class="text_container">
+      <h1>
+        CS @ Andover
+      </h1>
+      <div class="blurb">
+        <h2 class= "blurb__header">
+        Computer Science Skills
+        </h2>
+        <p class= "blurb__text">
+          The Computer Science (CS) curriculum at Andover is organized around a student’s progression along
+          fifteen skills, organized into five throughlines, listed below. This collection of skills includes some
+          well-established practices, such as <b style="color:#894E94;font-size:17.5px;">Writing Code</b> and <b style="color:#BA4D34;font-size:17.5px;">Intentional Design</b>, but also includes skills less commonly taught but equally necessary, such as
+          <b style="color:#BA4D34;font-size:17.5px;">Citizenship in the Open Source Community</b> and <b style="color:#C08F35;font-size:17.5px;">Curiosity</b>. Every CS course touches on every skill to some extent, though skills show up with increased
+          focus in different courses.
+        </p>
+      </div> 
+    </div>
+    
+    
+    
+    <div class = "throughline working_with_code">
+      <div class = "throughline_title">
+        Working with Code
+      </div>
+      <div class = "skills_column">
+        <div class = "skill">
+          <button onclick="toggleText(this)">Writing Code <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students can write whatever code they can envision — the only limitations are their time, their theoretical content knowledge, and their imagination. When stuck, they employ a variety of tools to explore their confusion and solve their problems.</p>
+          </div>
+        </div>
+        <div class = "skill">
+          <button onclick="toggleText(this)">(Re)Factoring Code <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students have their own processes to ensure their code is properly factored, and can argue in favor of their factoring choices.</p> 
+          </div>
+        </div>
+        <div class = "skill bottom_skill">
+          <button onclick="toggleText(this)">Testing Code <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Without prompting, students use tools for testing their code to ensure they fully understand the capabilities and limitations of their code. They can use testing tools to gain understanding of the code of others.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class = "throughline human_communication">
+      <div class = "throughline_title">
+        Human Communication
+      </div>
+      <div class = "skills_column">
+        <div class = "skill">
+          <button onclick="toggleText(this)">Speaking in Translations <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students can discuss their ideas equally well to a classmate, a young child, or an expert in the field, matching a level of complexity of speech to that of their audience’s technical understanding. They use this skill to build connections across social divides and to deepen their relationships to their peers, other people, and the world.</p>
+          </div>
+        </div>
+        <div class = "skill">
+          <button onclick="toggleText(this)">Writing <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">While developing a subdomain of content knowledge as part of their coursework, students become familiar with the established literature of the given field, identify the gaps in this literature, and seek to fill them with their public-facing writing.</p>
+          </div> 
+        </div>
+        <div class = "skill bottom_skill">
+          <button onclick="toggleText(this)">Collaboration <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students make effective use of collaborative tools, and can understand and enact divisions of labor that allow for open, honest, and relationship-deepening communication. Every member of the group knows, understands, and can defend the work of others.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class = "throughline research_and_design">
+      <div class = "throughline_title">
+        Research and Design
+      </div>
+      <div class = "skills_column">
+        <div class = "skill">
+          <button onclick="toggleText(this)">Experimental Design and Observation <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students can use the outputs of code, whether theirs or that of others, to situate their understanding of the current functionality of the code and to identify next steps in continuing to build upon it. They can articulate the shortcomings of these technical outputs and can improve upon the tools that generate them. Without prompting, students can identify and execute experiments that isolate the desired functionality and allow them to learn and incorporate this knowledge into their regular practice.</p>
+          </div>
+        </div>
+        <div class = "skill">
+          <button onclick="toggleText(this)">Intentional Design <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students can perform deep research to design solutions to problems that exist in the real world. They have a design process that intentionally centers the appropriate audience for their work. They demonstrate care and attention for these external audiences and dependencies, and seek to know the ways to make their work accessible to all members of this audience.</p>          
+          </div>
+        </div>
+        <div class = "skill bottom_skill">
+          <button onclick="toggleText(this)">Citizenship in the Open Source Community <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">In addition to being able to effectively locate, understand, incorporate, and honor the work of others, students seek to improve upon the established literature and technology available in the greater Open Source Community in ways that are inclusive of others and their work. Their documentation meets industry standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class = "throughline asking_questions">
+      <div class = "throughline_title">
+        Asking Questions
+      </div>
+      <div class = "skills_column">
+        <div class = "skill">
+          <button onclick="toggleText(this)">Exploration and Research <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students have individualized research interests in the field of computer science, can articulate the beauty behind those interests, and can pursue research paths to deepen their understanding of them.</p>
+          </div>
+        </div>
+        <div class = "skill">
+          <button onclick="toggleText(this)">Curiosity <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students consistently cultivate an attitude of curiosity throughout their work in computer science and find opportunities to share their newfound learning with others.</p>
+          </div>
+        </div>
+        <div class = "skill bottom_skill">
+          <button onclick="toggleText(this)">Questioning Impact <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students can function as independent thinkers in interpreting the tasks placed before them. They work alongside the teacher and can offer feedback to the stated design process. They make carefully-reasoned arguments to challenge the potentially harmful impacts of their work and the technology sector at large. They acknowledge without prompting the identities present and absent in the rooms in which they work, and can identify strategies to mitigate these inequities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class = "throughline working_with_systems">
+      <div class = "throughline_title">
+        Working with Systems
+      </div>
+      <div class = "skills_column">
+        <div class = "skill">
+          <button onclick="toggleText(this)">Understanding Systems <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students leverage their understanding of the systems at play in their work to build upon the work of others, and they have established their own tools and practices for learning and understanding a system that is new to them.</p>
+          </div>
+        </div>
+        <div class = "skill">
+          <button onclick="toggleText(this)">Designing Systems <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">The systems that students design, and the tools students use to share them with the world, meet industry standards.</p>
+          </div>
+        </div>
+        <div class = "skill bottom_skill">
+          <button onclick="toggleText(this)">Tooling <svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="white" height="24" viewBox="0 -960 960 960" width="24"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></button>
+          <div class = "hidden_text">
+            <p class="skill_description">Students use their technical devices with authority and ease, building alongside their chosen technological “stacks” (instead of “against” or “in spite of” them). They inhabit a playful tinkering process to familiarize themselves with new tools. They are willing and excited to experiment with processes to streamline elements of their device usage. They seek to create pathways to automate those elements of their work that do not need careful attention and can identify moments to interupt this automation when needed. They use this attitude and knowledge to help others become more familiar with the technical tools they use, serving as teachers and ambassidors of technology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text_container">
+      <div class="blurb">
+        <h2 class="blurb__header">
+          Computer Science Courses
+        </h2>
+        <p class="blurb__text">
+          In an effort to align the CS skills with a student’s progression through the curriculum, and to lean into
+          student choice, the curriculum is structured around three <b style="color:#406B9A;font-size:16.5px;">levels</b> of courses, <b style="color:#406B9A;font-size:16.5px;">Introductory</b>,
+          <b style="color:#406B9A;font-size:16.5px;">Intermediate</b>, and <b style="color:#406B9A;font-size:16.5px;">Advanced</b>. Each course in a given level equally
+          prepares students for more advanced courses. Refer to the <a href="https://www.andover.edu/files/CourseOfStudy.pdf" style="font-weight:600;">Andover Course of Study</a> for more information about each course. 
+        </p>
+      </div> 
+    </div>
+    
+    
+    <div class="curriculum_map">
+      
+      <div class="courses_column">
+        <!-- INTRO CLASSES -->
+        <div class="course_group intro_courses">
+          <h3>
+             Introductory Courses
+          </h3>
+          <p>
+            No prerequisites required. 
+          </p>
+          <ul class="course_list intro">
+            <% if (courses.length > 0) {
+              courses.forEach(function(course) {
+                if (course.course_level == "Introductory") {
+                  %>
+                      <button onClick="toggleText(this)"><li><%-course.course_number%>: <%-course.course_name%><svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></li></button>
+                      <div class="hidden_text">
+                        <p class="course_description"><%-course.course_description%></p>
+                      </div>
+                  <%
+                }
+              })
+            }
+            %>
+          </ul>
+        </div>
+
+        <!-- INTERMEDIATE CLASSES -->
+        <div class="course_group intermediate_courses">
+          <h3>
+             Intermediate Courses
+          </h3>
+          <p>
+            Taken after one or more introductory course.
+          </p>
+          <ul class="course_list intermediate">
+            <% if (courses.length > 0) {
+              courses.forEach(function(course) {
+                if (course.course_level == "Intermediate") {
+                  %>
+                      <button onClick="toggleText(this)"><li><%-course.course_number%>: <%-course.course_name%><svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></li></button>
+                      <div class="hidden_text">
+                        <p class="course_description"><%-course.course_description%></p>
+                      </div>
+                  <%
+                }
+              })
+            }
+            %>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="courses_column">
+        <div class="course_group advanced_courses">
+          <h3>
+             Advanced Courses
+          </h3>
+          <p>
+            Available after three or more of any lower-level CS course. 
+          </p>
+          <ul class="course_list advanced">
+            <% if (courses.length > 0) {
+              courses.forEach(function(course) {
+                if (course.course_level == "Advanced") {
+                  %>
+                      <button onClick="toggleText(this)"><li><%-course.course_number%>: <%-course.course_name%><svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></li></button>
+                      <div class="hidden_text">
+                        <p class="course_description"><%-course.course_description%></p>
+                      </div>
+                  <%
+                }
+              })
+            }
+            %>
+          </ul>
+        </div>
+
+        <div class="course_group research_courses">
+          <h3>
+             Research Courses
+          </h3>
+          <p>
+            Available after the completion of an Advanced CS course. 
+          </p>
+          <ul class="course_list research">
+            <% if (courses.length > 0) {
+              courses.forEach(function(course) {
+                if (course.course_level == "Research") {
+                  %>
+                      <button onClick="toggleText(this)"><li><%-course.course_number%>: <%-course.course_name%><svg class="expandMore" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z"/></svg><svg class = "expandLess" xmlns="http://www.w3.org/2000/svg" fill="hsl(var(--color-light))" height="20" viewBox="0 -960 960 960" width="20"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z"/></svg></li></button>
+                      <div class="hidden_text">
+                        <p class="course_description"><%-course.course_description%></p>
+                      </div>
+                  <%
+                }
+              })
+            }
+            %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text_container">
+      <div class="blurb">
+        <p class="blurb__text">
+          When designing their courses, an instructor of an Intermediate or Advanced CS course knows that
+students have taken <em>some</em> previous CS courses, but they cannot be certain <em>which</em> courses — hence,
+instructors are required to rely on these skills as the backbone of the courses they build.
+        </p>
+      </div> 
+    </div>
+    
+    <div class="text_container">
+      <div class="blurb">
+          <h2 class= "blurb__header">
+          CS Skills in Courses</h2>
+          <p class= "blurb__text">
+            In each CS course that a student takes, they <b style="color:#406B9A;font-size:16.5px;">select two of these fifteen skills</b> to serve as their <b style="color:#406B9A;font-size:16.5px;">focus</b> for
+  that term. How this manifests depends on the course, the skill, and the student’s and instructor’s
+  preferences. Some examples might be:
+          </p>
+          <ul class="blurb__list">
+            <li>In an Introductory Game Development course, students choosing Experimental Design and
+  Observation as a focus should regularly reflect upon an error message
+  that they received from the computer while coding, walking the reader through how they resolved
+  the issue using the information contained in the error message.</li>
+            <li>In an Intermediate Scientific Computing course, students choosing the Tooling
+skill as a focus should experiment with several options for their development
+  environment, reflect on their personal system for file and folder organization, and create sharable
+  resources to guide future students accordingly.</li>
+          </ul>
+        <p class="blurb__text">
+          These skill focuses slightly alter the trajectory of an individual student in each class, though overall the
+volume of work being described in this document is a small portion of the work they do throughout the
+term.
+        </p>
+      </div> 
+    </div>
+    
+    <div class="text_container">
+      <div class="blurb">
+          <h2 class= "blurb__header">Choosing CS Courses</h2>
+          <p class= "blurb__text">
+            One of the biggest benefits of this system is that there are no drawbacks to pursuing your interest.
+Students should choose CS courses based on which courses sound interesting!
+          </p>
+      </div> 
+    </div>
+                               
+  </body>
+  
+  <%- include('foot') %>
+  
+  
+</html>

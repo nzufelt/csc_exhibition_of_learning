@@ -1,0 +1,111 @@
+/* styling for navigation bar, that appears on every page */
+/* Used this video as a resource: https://www.youtube.com/watch?v=U8smiWQ8Seg*/
+/* guidelines for nav bar design: https://webflow.com/blog/navigation-bar-design */
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  font-family: "Sintony", sans-serif;
+  background-color: hsl(var(--color-light));
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 998;
+}
+
+/* this class attribute will be applied to the navbar element if the user has scrolled at all  */
+.nav-shadow {
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+}
+
+/* formatting for the entire list of menu items */
+nav ul {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+nav li {
+  height: 50px;
+  padding: 10px 0px;
+  transition: transform 0.5s ease;
+}
+
+/* buttons "transform" when hovered over */
+nav li:hover {
+  transform: translatey(-2px);
+}
+
+nav a, 
+nav button {
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: hsl(var(--color-blue-dark));
+}
+
+.logo { 
+  margin-right: auto;
+}
+
+/* move the whole sidebar right a bit */
+.menu_item.about {
+  margin-right: 30px;
+}
+
+/* This sidebar originally exists off of the screen
+then slides left when the hamburger button is clicked*/
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 250px;
+  margin: 0;
+  z-index: 999;
+  background-color: rgba(247, 247, 247, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+/*  CSS transitions: https://www.w3schools.com/css/css3_transitions.asp  */
+  transition: right 0.3s ease;
+}
+
+/* sidebar will slide in from the right by changing top right corner position from -400 to 0 */
+.show-sidebar {
+  right: 0; 
+}
+
+/* hamburger button hidden by default */
+.hamburger {
+  display: none;
+}
+
+/* when screen width < 800, show the hamburger button instead of the menu_items */
+@media(max-width: 800px){
+  .menu_item{
+    display:none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* when screen width < 400, make the sidebar the full width and height of the screen rather than 250px */
+@media(max-width: 400px){
+  .sidebar{
+    width: 100%;
+    height: 100vh;
+  }
+}
