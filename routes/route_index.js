@@ -39,8 +39,6 @@ const handler = require('../handler/handler');
 
 initializePassport(
     passport,
-    // email => users.find(user => user.email === email),
-    // admin_id => users.find(user => user.admin_id === admin_id)
     email => adminController.GetAdminByEmail(email),
     admin_id => adminController.GetAdminById(admin_id)
 )

@@ -27,7 +27,6 @@ const getExhibitionsHomePage = async(req, res) => {
 // get a json string of the exhibitions that can be displayed on the home page
 const getExhibitionsHomePageJSON = async() => {
     try {
-        //console.log("starting")
         columns = ['exhibitions.exhibition_id', 'exhibitions.description', 'exhibitions.video_html_code', 'users.first_name', 'users.last_name', 'classes.academic_year', 'classes.term', 'courses.course_number', 'courses.course_name']
         const exhibitions = await db
             .select(columns.concat([
@@ -46,8 +45,6 @@ const getExhibitionsHomePageJSON = async() => {
             
             .groupBy(columns)
             ;
-            //console.log("returning");
-            //console.log(JSON.stringify(exhibitions));
         return exhibitions;
     } catch (error) {
         console.log(error)
@@ -141,9 +138,6 @@ const getTagDisplay = async(search_parameters) => {
     var skill_id_array = search_parameters.skill_id; 
 
     console.log(user_id_array);
-    //var academic_year = search_parameters.academic_year;
-    //var term = search_parameters.term;
-    //var course_level = search_parameters.course_level;
 
     var tag_display_array = [];
 
@@ -212,6 +206,8 @@ const getTagDisplay = async(search_parameters) => {
 }
 
 //CRUD OPERATIONS
+
+//create
 const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, description, video_html_code) => {
     const exhibition = await db('exhibitions')
     .returning("*")
@@ -226,13 +222,11 @@ const createExhibition = async(user_id_ref, class_id_ref, display_on_home_page, 
     return exhibition;
 }
 
-// IN PROGRESS
+//edit
 const editExhibition = async(exhibition_id, display_on_home_page, description, video_html_code, skill_id_1, skill_id_2) => {
     await db('exhibitions')
     .where("exhibition_id", exhibition_id)
     .update({
-        //user_id_ref,
-        //class_id_ref,
         display_on_home_page,
         description,
         video_html_code
@@ -255,13 +249,14 @@ const editExhibition = async(exhibition_id, display_on_home_page, description, v
     )
 }
 
-// IN PROGRESS
+// delete
 const deleteExhibition = async(exhibition_id) => {
     await db('exhibitions')
     .where("exhibition_id", exhibition_id)
     .del();
 }
 
+// export all functions
 module.exports = {
     getAllExhibitions,
     getExhibitionsHomePage,

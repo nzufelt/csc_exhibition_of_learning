@@ -1,6 +1,7 @@
 // functions associated with getting data from the admin table
 const db = require("../db/db")
 
+// get and send all admins
 const getAllAdmins = async(req, res) => {
     try {
         const admins = await db.select("*").from("admins");
@@ -11,6 +12,7 @@ const getAllAdmins = async(req, res) => {
     }
 }
 
+// get all admins as a json object
 const getAllAdminsJSON = async() => {
     try {
         const admins = await db.select("*").from("admins");
@@ -21,6 +23,7 @@ const getAllAdminsJSON = async() => {
     }
 }
 
+// get admins (json) by email
 const GetAdminByEmail = async(email) => {
     try {
         const admin = await db.select("*")
@@ -33,6 +36,7 @@ const GetAdminByEmail = async(email) => {
     }
 }
 
+// get admins (json) by admin_id
 const GetAdminById = async(id) => {
     try {
         const admin = await db.select("*")
@@ -46,6 +50,7 @@ const GetAdminById = async(id) => {
 }
 
 //CRUD OPERATIONS
+// create 
 const createAdmin = async(email, password, name, bio) => {
     console.log("creating admin!")
     await db('admins').insert({
@@ -56,7 +61,7 @@ const createAdmin = async(email, password, name, bio) => {
     });
 }
 
-// IN PROGRESS
+// edit
 const editAdmin = async(admin_id, email, password, name, bio) => {
     await db('admins')
     .where("admin_id", admin_id)
@@ -68,13 +73,14 @@ const editAdmin = async(admin_id, email, password, name, bio) => {
     });
 }
 
-// IN PROGRESS
+// delete
 const deleteAdmin = async(admin_id) => {
     await db('admins')
     .where("admin_id", admin_id)
     .del();
 }
 
+// export all functions
 module.exports = {
     getAllAdmins,
     GetAdminByEmail,

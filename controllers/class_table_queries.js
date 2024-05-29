@@ -1,6 +1,7 @@
 // functions associated with getting data from the class table
 const db = require("../db/db")
 
+// get and send all classes
 const getAllClasses = async(req, res) => {
     try {
         const courses = await db.select("*").from("classes")
@@ -11,7 +12,7 @@ const getAllClasses = async(req, res) => {
     }
 }
 
-// get unique academic years
+// get and send unique academic years
 const getAcademicYears = async(req, res) => {
     try {
         const years = await db.select("academic_year").from("classes")
@@ -24,6 +25,7 @@ const getAcademicYears = async(req, res) => {
     }
 }
 
+// get class_id (json) by all other information
 const getClassId = async(course_id, admin_id, academic_year, term) => {
     try {
         const courses = await db.select("*")
