@@ -21,6 +21,9 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('courses').insert([
+    {course_id: 1, course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
+    {course_id: 2, course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
+    
     {course_number: "CSC401", course_name: 'Programming in Python', course_description: "This course consists of an introduction to computational thinking primarily through the exploration of the Python programming language. Students will design and code their own programming projects. The course may include additional applications such as programmingrobots, introductory data analysis, game development, or other topics.", course_level:"Introductory"},
     {course_number: "CSC402", course_name: 'Web Development', course_description: "This course introduces students to building web pages in the languages of HTML and CSS, and also to programming in Javascript, the most standard language for offering dynamic behavior on the web. Students explore the tools needed for deploying and managing their own websites and get a preview of other aspects of programming for the web, such as databases, server-side systems, and web frameworks.", course_level:"Introductory"},
     {course_number: "CSC403", course_name: 'Discrete Mathematics', course_description: "This course introduces students to topics in computer science by way of studying the mathematics of discrete (finite or countable) objects in mathematics. Mathematical topics might include sets, graphs, combinatorics, logic, or groups. There will be a focus on both mathematical and computational thinking.", course_level:"Introductory"},
@@ -47,8 +50,8 @@ exports.seed = async function(knex) {
 
 
   await knex('classes').insert([
-    {class_id: 1, course_id_ref: 91, admin_id_ref: 103, academic_year: 2023, term: 1},
-    {class_id: 2, course_id_ref: 92, admin_id_ref: 104, academic_year: 2022, term: 2},
+    {class_id: 1, course_id_ref: 1, admin_id_ref: 103, academic_year: 2023, term: 1},
+    {class_id: 2, course_id_ref: 2, admin_id_ref: 104, academic_year: 2022, term: 2},
   ]);
 
   await knex('exhibitions').insert([
@@ -58,8 +61,8 @@ exports.seed = async function(knex) {
   ]);
 
   await knex('skills').insert([
-    {skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
-    {skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Writing Code"},
+    {skill_id: 1, skill_name: "Speaking in Translations", skill_description: "This skill ...", throughline: "Human Communication"},
+    {skill_id: 2, skill_name: "Refactoring Code", skill_description: "This skill ...", throughline: "Writing Code"},
   ]);
   
   await knex('exhibitionSkillPairs').insert([

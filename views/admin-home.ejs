@@ -38,7 +38,7 @@
     <div class="tags">
       <h1 class="tags__header">Manage Tags:</h1>
       <div class="tag__container">
-      <button id="search_button" class="tags__button">Manage Existing Tag</button>
+      <button id="search_button" class="tags__button">Manage Existing Tags</button>
 
       <div class="search_pop_up">
           <div class="search_section">
@@ -149,113 +149,6 @@
               })
             }
             %>
-
-              <!-- STUDENTS -->
-              <% if (students.length > 0) {
-                students.forEach(function(student) {
-                  %>
-                  <button class ="tag teacher" onclick="openPopup(this)"><%-student.first_name%> <%-student.last_name%></button>
-                    <div class = "popup">
-                      <div class="popup_content">
-                        <span class="close_button" onclick="closePopup(this)">x</span>
-                        <!-- DELETE STUDENTS FORM -->
-                        <form action="/delete-user" method="post">
-                          <div class="form-group">
-                            <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
-                          </div>
-                          <div class="form-group">
-                            <input type="submit" value="DELETE THIS STUDENT">
-                            <p class="log"><p>
-                          </div>
-                        </form>
-
-                        <!-- EDIT USER FORM -->
-                          <form action="/edit-user" method="post">
-                            <div class="form-group">
-                                <label for="email">Student Email:</label>
-                                <input type="text" id="email" name="email" value="<%= student.email %>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="first_name">First Name:</label>
-                                <input type="text" id="first_name" name="first_name" value="<%= student.first_name %>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="last_name">Last Name:</label>
-                                <input type="text" id="last_name" name="last_name" value="<%= student.last_name %>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="graduation_year">Graduation Year:</label>
-                                <input type="text" id="graduation_year" name="graduation_year" value="<%= student.graduation_year %>" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="bio">Student Bio:</label>
-                                <textarea id="bio" name="bio" rows = "6" required><%= student.bio%></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
-                            </div>
-                            <div class="form-group">
-                              <input type="submit" value="Submit">
-                              <p class="log"><p>
-                             </div>
-                        </form>
-                      </div>
-                    </div>
-                  <%
-                })
-              }
-              %>
-
-              <!-- TEACHERS -->
-              <% if (teachers.length > 0) {
-                teachers.forEach(function(teacher) {
-                  %>
-                  <button class ="tag teacher" onclick="openPopup(this)"><%= teacher.name %></button>
-                  <div class = "popup">
-                    <div class="popup_content">
-                      <span class="close_button" onclick="closePopup(this)">x</span>
-                      <!-- DELETE TEACHERS FORM -->
-                      <form action="/delete-admin" method="post">
-                        <div class="form-group">
-                          <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="submit" value="DELETE THIS TEACHER">
-                          <p class="log"><p>
-                        </div>
-                      </form>
-
-                      <!-- EDIT ADMIN FORM -->
-                      <form action="/edit-admin" method="post">
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="text" id="email" name="email" value="<%= teacher.email %>" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="first_name">Password:</label>
-                            <input type="text" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" value="<%= teacher.name %>" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bio">Bio:</label>
-                            <textarea id="bio" name="bio" rows = "6" required><%= teacher.bio%></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
-                        </div>
-                        <div class="form-group">
-                          <input type="submit" value="Submit">
-                          <p class="log"><p>
-                        </div>
-                      </div>
-                    </div>
-                    <%
-                  })
-                }
-                %>
               
               </div>
             </div>
@@ -317,9 +210,128 @@
               </div>
 
               <div class="top">
-                <h1 class="tags__header">
-                  Manage Admins:</h1>
-                
+                  <h1 class="tags__header">Manage Users/Admins:</h1>
+                  <div class="tag__container">
+                  <button id="search_button" class="tags__button">Manage Existing Users/Admins:</button>
+            
+                  <div class="search_pop_up">
+                      <div class="search_section">
+                          <div class="search_bar_container">
+                              <div class="search_bar">
+                                  <input type="text" id="tag_search_bar" placeholder="Tag Search ... " onkeyup="tag_search()">
+                              </div>
+                          </div>
+                        </div>
+            
+                          <!-- STUDENTS -->
+                          <% if (students.length > 0) {
+                            students.forEach(function(student) {
+                              %>
+                              <button class ="tag teacher" onclick="openPopup(this)"><%-student.first_name%> <%-student.last_name%></button>
+                                <div class = "popup">
+                                  <div class="popup_content">
+                                    <span class="close_button" onclick="closePopup(this)">x</span>
+                                    <!-- DELETE STUDENTS FORM -->
+                                    <form action="/delete-user" method="post">
+                                      <div class="form-group">
+                                        <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="submit" value="DELETE THIS STUDENT">
+                                        <p class="log"><p>
+                                      </div>
+                                    </form>
+            
+                                    <!-- EDIT USER FORM -->
+                                      <form action="/edit-user" method="post">
+                                        <div class="form-group">
+                                            <label for="email">Student Email:</label>
+                                            <input type="text" id="email" name="email" value="<%= student.email %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="first_name">First Name:</label>
+                                            <input type="text" id="first_name" name="first_name" value="<%= student.first_name %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last_name">Last Name:</label>
+                                            <input type="text" id="last_name" name="last_name" value="<%= student.last_name %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="graduation_year">Graduation Year:</label>
+                                            <input type="text" id="graduation_year" name="graduation_year" value="<%= student.graduation_year %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bio">Student Bio:</label>
+                                            <textarea id="bio" name="bio" rows = "6" required><%= student.bio%></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="user_id" value="<%= student.user_id %>" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <input type="submit" value="Submit">
+                                          <p class="log"><p>
+                                         </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              <%
+                            })
+                          }
+                          %>
+            
+                          <!-- TEACHERS -->
+                          <% if (teachers.length > 0) {
+                            teachers.forEach(function(teacher) {
+                              %>
+                              <button class ="tag teacher" onclick="openPopup(this)"><%= teacher.name %></button>
+                              <div class = "popup">
+                                <div class="popup_content">
+                                  <span class="close_button" onclick="closePopup(this)">x</span>
+                                  <!-- DELETE TEACHERS FORM -->
+                                  <form action="/delete-admin" method="post">
+                                    <div class="form-group">
+                                      <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="submit" value="DELETE THIS TEACHER">
+                                      <p class="log"><p>
+                                    </div>
+                                  </form>
+            
+                                  <!-- EDIT ADMIN FORM -->
+                                  <form action="/edit-admin" method="post">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="text" id="email" name="email" value="<%= teacher.email %>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="first_name">Password:</label>
+                                        <input type="text" id="password" name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" id="name" name="name" value="<%= teacher.name %>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bio">Bio:</label>
+                                        <textarea id="bio" name="bio" rows = "6" required><%= teacher.bio%></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="admin_id" value="<%= teacher.admin_id %>" required>
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="submit" value="Submit">
+                                      <p class="log"><p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <%
+                              })
+                            }
+                            %>
+                          
+                          </div>
+                        </div>
                 
                 <div class="tag__container">
                      <button id="make_new_tag_button" class ="tags__button" onclick="openPopup(this)">Make New Admin</button>
